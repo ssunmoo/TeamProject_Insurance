@@ -10,5 +10,6 @@ public class Start {
 		// Mainpage.getInstance().index();
 		// 
 		
+		Mainpage.getInstance().regist();
 	} // main 종료
 } // class 종료

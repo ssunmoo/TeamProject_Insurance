@@ -26,7 +26,29 @@ public class Mainpage {
 	
 	
 	
+	// --- 게시판 --- //
+	// 1. 문의글 등록
+	public void regist() {
+		
+		System.out.println("문의글 등록하기 >> ");
+		System.out.println("제목 : ");
+		String b_title = scanner.next();
+		
+		scanner.nextLine();
+		System.out.println("내용 : ");
+		String b_content = scanner.nextLine();
+		
+		System.out.println("비밀번호 : ");
+		String b_pw = scanner.next();
+		
+	} // regist 메소드 종료
+	
 
+	
+	
+	
+	
+	
 	
 
 	
