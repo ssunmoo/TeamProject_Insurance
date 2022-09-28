@@ -1,7 +1,6 @@
 # TeamProject_Insurance
 
 <div alinge = center>
- <img src="https://capsule-render.vercel.app/api?type=waving&color=d6e0f0&height=200&section=header&text=SOBREMESA&fontSize=90&fontColor=8d93ab" />
  <h3> 안녕하세요! [산대특] 2st. Team Progect 2조입니다. </h3><br>
  
  <h2> :raised_hands: 팀원 소개 :raised_hands: </h2>
