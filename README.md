@@ -51,42 +51,33 @@
     <h4> 김경주 :  </h4>
     <h4> 윤상진 :  </h4>
     <h4> 성지혜 :  </h4>
-    <h4> 허혜영 :  </h4>
+    <h4> 허혜영 :  </h4> <br><br>
     
   <h3> 09/30 </h3>
   공통 : 
     <h4> 김경주 :  </h4>
     <h4> 윤상진 :  </h4>
     <h4> 성지혜 :  </h4>
-    <h4> 허혜영 :  </h4>
+    <h4> 허혜영 :  </h4> <br><br>
     
   <h3> 10/03</h3>
   공통 : 
     <h4> 김경주 :  </h4>
     <h4> 윤상진 :  </h4>
     <h4> 성지혜 :  </h4>
-    <h4> 허혜영 :  </h4>
+    <h4> 허혜영 :  </h4> <br><br>
     
   <h3> 10/04</h3>
   공통 : 
     <h4> 김경주 :  </h4>
     <h4> 윤상진 :  </h4>
     <h4> 성지혜 :  </h4>
-    <h4> 허혜영 :  </h4>
+    <h4> 허혜영 :  </h4> <br><br>
     
   <h3> 10/05</h3>
   공통 :
     <h4> 김경주 :  </h4>
     <h4> 윤상진 :  </h4>
     <h4> 성지혜 :  </h4>
-    <h4> 허혜영 :  </h4>
+    <h4> 허혜영 :  </h4> <br><br>
     
-    <br><br>
-     <h2> :hammer: Tools :hammer:: </h2>
-     <h4> <img src="https://img.shields.io/badge/eclipse-2C2255?style=flat-square&logo=eclipse&logoColor=white"/> </h4> <br><br>
-  
-    <h2> :blossom: 사용한 Skill :blossom: </h2>
-    <h4> <img src="https://img.shields.io/badge/HTML-E04F11?style=flat-square&logo=HTML5&logoColor=white"/> <img src="https://img.shields.io/badge/CSS-1342DD?      style=flat-square&logo=CSS3&logoColor=white"/> <img src="https://img.shields.io/badge/JavaScript-FFCA28?style=flat-square&logo=JavaScript&logoColor=white"/> <img src="https://img.shields.io/badge/git-24292F?style=flat-square&logo=github&logoColor=white"/> </h4> <br><br>
-  
-    <h2> :round_pushpin: 추후 발전 방향 :round_pushpin: </h2>
-  
