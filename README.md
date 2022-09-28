@@ -4,7 +4,7 @@
  <h3> 안녕하세요! [산대특] 2st. Team Progect 2조입니다. </h3><br>
  
  <h2> :raised_hands: 팀원 소개 :raised_hands: </h2>
- <h4> 김경주 / 윤상진 / 성지혜 / 허혜영 </h4> <br><br>
+ <h4> 김경주 / 윤상진 / 성지혜 / 허혜영 </h4> <br>
  
  <h2> :star: 주제 :star: </h2>
  <h3> 보험가입 게시판 </h3>
