@@ -75,14 +75,21 @@ public class Mainpage {
 			System.out.print("  "+ dto.getB_num() + "\t");
 			System.out.print(dto.getB_title() + "\t");
 			System.out.print(dto.getB_content() + "\t\t");
-			System.out.print(dto.getName() + "\t");
-			System.out.print(dto.getPhone() + "\t\n");
+			board2();
+			System.out.print(dto.getPhone() + "\t\t");
 			System.out.println("-------------------------------------------------");
 		}
 		
 	} // board 메소드 종료
 	
-	
+	public void board2() {
+		ArrayList< Dto > list = Controller.getInStance().board2();
+
+		for( Dto dto : list ) {
+			System.out.print(dto.getName() + "\t");
+		}
+		
+	} // board 메소드 종료
 	
 	
 	
