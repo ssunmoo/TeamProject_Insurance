@@ -1,5 +1,7 @@
 package Controller;
 
+import java.util.ArrayList;
+
 import Model.Dao.Dao;
 import Model.Dto.Dto;
 
@@ -13,19 +15,21 @@ public class Controller {
 	public static Controller getInStance() {
 		return control;
 	}
-	
+
 	
 	
 	// --- 게시판 --- //
 	// 1. 문의글 등록
-	boolean regist( String b_title, String b_content, String b_pw ) {
-		
-		Dto dto = new Dto( 0, b_title, b_content, b_pw );
-				 
+	public boolean regist( String b_title, String b_content, String name, String phone, String b_pw) {
+		Dto dto = new Dto( 0, b_title, b_content, name, phone, b_pw );
 		return Dao.getInstance().regist(dto);
 				
 	}
-	
+
+	// 2. 게시판 보기
+	public ArrayList< Dto > board() {
+		return Dao.getInstance().board();
+	}
 	
 	
 	

@@ -31,26 +31,30 @@ public class Dto {
 	// 빈생성자
 	public Dto() { }
 
-	// 매개변수 4개 생성자
-	public Dto(int b_num, String b_title, String b_content, String b_pw) {
+	// 게시글 등록 생성자
+	public Dto(int b_num, String b_title, String b_content, String name, String phone, String b_pw ) {
 		this.b_num = b_num;
 		this.b_title = b_title;
 		this.b_content = b_content;
+		this.name = name;
+		this.phone = phone;
 		this.b_pw = b_pw;
 	}
 	
+	// 게시판 리스트 출력 생성자
+	public Dto(int b_num, String b_title, String b_content, String name, String phone ) {
+		this.b_num = b_num;
+		this.b_title = b_title;
+		this.b_content = b_content;
+		this.name = name;
+		this.phone = phone;
+	}
 	
 	
 	// getter, setter
 	public String getName() {
 		return name;
 	}
-
-
-
-	
-
-
 
 
 	public void setName(String name) {
