@@ -86,6 +86,47 @@ public class Mainpage {
 	
 	
 	
+	///////////////가입하기 && 접속 경
+	
+		void getsingup() {
+			int state = 0;
+			while(true) {
+			System.out.println("\t[안내]\t접속하려고 하는 경로를 선택해주세요\n");
+			System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬1.고객▬▬▬▬▬▬▬2.보험사▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"); int user = scanner.nextInt();
+			if(user ==1 ) {
+				System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬1.가입하기 ____ 2.로그인하기▬▬▬▬▬▬▬▬▬▬▬▬▬▬"); int singup = scanner.nextInt();
+				if(singup == 1) {
+				System.out.print("성명을 작성 : ");		String name = scanner.next();
+				System.out.print("비밀번호 작성 : ");		String pw = scanner.next();
+				System.out.print("전화번호 작성: ");		String phone = scanner.next();
+				System.out.print("주민등록번호 작성 : ");	String ssn = scanner.next();
+				
+				boolean result= Controller. getInStance().getsingup(name,pw,phone,ssn);
+				
+					if(result){System.out.println("가입성공하였습니다"); state = 1;}
+					
+					else {System.out.println("가입실패");}//가입 실패시
+				}
+				
+				
+				if(state == 1) { 
+					System.out.println("로그인하시겠습니까?[Y/N]"); String loginsign = scanner.next();
+						if(singup ==2 || loginsign=="Y"&&loginsign=="y"){
+							System.out.println("이름 : ");	String l_name = scanner.next();
+							System.out.print("전화번호 : ");	String l_phone = scanner.next();
+						
+						}
+			 		else {System.out.println("처음으로 돌아갑니다.");}
+						
+				}
+			}
+			
+			else if(user == 2) {}
+			else {System.out.println("경로가 없습니다.");}
+			}
+			
+		}
+	
 	
 	
 	

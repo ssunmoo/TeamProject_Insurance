@@ -32,8 +32,14 @@ public class Controller {
 	}
 	
 	
+	//////////////////////가입하기
 	
+	public boolean getsingup(String name,String pw, String phone, String ssn) {
+		Dto dto = new Dto(name, pw, phone, ssn);
+		return Dao.getInstance().getsingup(dto);
+
 	
+	}
 	
 	
 	
