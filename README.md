@@ -85,6 +85,6 @@
        <img src="https://img.shields.io/badge/MySQL-26689A?style=flat-square&logo=MySQL&logoColor=white"/> </h4> <br><br>
   
   <h2> :blossom: 사용한 Skill :blossom: </h2>
-  <h4> <img src="https://img.shields.io/badge/JAVA-E04F11?style=flat-square&logo=JAVA&logoColor=white"/>
+  <h4> <img src="https://img.shields.io/badge/JAVA-006600?style=flat-square&logo=JAVA&logoColor=white"/>
        <img src="https://img.shields.io/badge/git-24292F?style=flat-square&logo=github&logoColor=white"/> </h4> <br><br>
     
