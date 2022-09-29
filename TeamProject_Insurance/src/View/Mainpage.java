@@ -44,7 +44,7 @@ public class Mainpage {
 		String b_content = scanner.nextLine();
 		
 		System.out.println("이름 : ");
-		String name = scanner.nextLine();
+		String name = scanner.next();
 		
 		System.out.println("연락처 : ");
 		String phone = scanner.next();

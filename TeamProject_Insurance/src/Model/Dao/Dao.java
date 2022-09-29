@@ -76,12 +76,14 @@ public class Dao {
 	public ArrayList< Dto > board() {
 		
 		ArrayList< Dto > list = new ArrayList<>();
-		String sql = "select * from board";
+		String sql = " select * from member where phone = ? ";
 		
 		try {
-			ps = con.prepareStatement(sql);
-			rs = ps.executeQuery();
 			
+			//Dto dto = new Dto();
+			
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();			
 			while( rs.next() ) {
 				Dto dto = new Dto(
 						rs.getInt(1), rs.getString(2),
@@ -91,6 +93,7 @@ public class Dao {
 				list.add(dto);
 			} // while 종료
 			return list;
+			// 쿼리문 하나 더 작성해서 원하는 항목만 dto에 저장하ㄱㅣ 저장한걸 한번에 rs.next() 로 출력하기
 			
 		} catch (Exception e) {
 			System.out.println( e );
