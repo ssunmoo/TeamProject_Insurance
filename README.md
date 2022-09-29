@@ -15,12 +15,13 @@
   <h4> 둘째. </h4>
   <h4> 셋째. </h4>
   <h4> 넷째. </h4> <br>
+  <h5> 주제선정 이유 한줄 요약 </h5>
+
 </div>
 
 <h5> 주제선정 이유 한줄 요약 </h5>
 
 <div align=center>
-
   <h2> :heavy_check_mark: Features :heavy_check_mark: </h2>
   <h4> 각 페이지 별 핵심 기능 </h4> <br><br>
   
@@ -87,4 +88,6 @@
   <h2> :blossom: 사용한 Skill :blossom: </h2>
   <h4> <img src="https://img.shields.io/badge/Java-007396?style=flat&logo=Java&logoColor=white" />
        <img src="https://img.shields.io/badge/git-24292F?style=flat-square&logo=github&logoColor=white"/> </h4> <br><br>
+       
+</
     
