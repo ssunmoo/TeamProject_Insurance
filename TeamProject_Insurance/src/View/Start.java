@@ -14,8 +14,10 @@ public class Start {
 		// Mainpage에 있는 첫 시작 메소드 호출만
 		// Mainpage.getInstance().index();
 
-		Start member = new Start();
-		member.signup();
+		Start start = new Start();
+		start.regist();
+		start.signup();
+		
 		
 	} // main 종료
 	

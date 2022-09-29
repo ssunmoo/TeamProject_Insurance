@@ -31,6 +31,10 @@ public class Controller {
 		return Dao.getInstance().board();
 	}
 	
+	public ArrayList< Dto > board2() {
+		return Dao.getInstance().board2();
+	}
+	
 	
 	
 	

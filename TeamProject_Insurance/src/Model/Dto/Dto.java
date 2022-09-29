@@ -51,6 +51,33 @@ public class Dto {
 	}
 	
 	
+	public Dto(int b_num, String b_title, String b_content) {
+		super();
+		this.b_num = b_num;
+		this.b_title = b_title;
+		this.b_content = b_content;
+	}
+	
+	
+
+	public Dto(int b_num, String b_title, String b_content, String phone) {
+		this.b_num = b_num;
+		this.b_title = b_title;
+		this.b_content = b_content;
+		this.phone = phone;
+	}
+
+	public Dto(String name, String phone) {
+		super();
+		this.name = name;
+		this.phone = phone;
+	}
+
+	public Dto(String name) {
+		this.name = name;
+
+	}
+	
 	// getter, setter
 	public String getName() {
 		return name;

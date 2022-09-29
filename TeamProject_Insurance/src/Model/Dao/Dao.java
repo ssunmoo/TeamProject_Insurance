@@ -61,7 +61,7 @@ public class Dao {
 			ps.setString(3, dto.getName());
 			ps.setString(4, dto.getPhone());
 			ps.setString(5, dto.getB_pw());
-			ps.execute();
+			ps.executeQuery();
 			return true;
 			
 		} // try 종료
@@ -85,8 +85,7 @@ public class Dao {
 			while( rs.next() ) {
 				Dto dto = new Dto(
 						rs.getInt(1), rs.getString(2),
-						rs.getString(3), rs.getString(4),
-						rs.getString(5), rs.getString(6));
+						rs.getString(3), rs.getString(4));
 				
 				list.add(dto);
 			} // while 종료
@@ -96,11 +95,30 @@ public class Dao {
 			System.out.println( e );
 		}
 		return list;
-		
-		
 	} // board 메소드 종료
 	
-	
+	public ArrayList< Dto > board2() {
+			
+		ArrayList< Dto > list = new ArrayList<>();
+		String sql = "select name from member where phone = ? ";
+		
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while( rs.next() ) {
+				Dto dto = new Dto(
+						rs.getString(1));
+				
+				list.add(dto);
+			} // while 종료
+			return list;
+			
+		} catch (Exception e) {
+			System.out.println( e );
+		}
+		return list;
+	} // board 메소드 종료
 	
 	
 	
