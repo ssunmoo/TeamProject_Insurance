@@ -19,8 +19,6 @@
 
 </div>
 
-<h5> 주제선정 이유 한줄 요약 </h5>
-
 <div align=center>
   <h2> :heavy_check_mark: Features :heavy_check_mark: </h2>
   <h4> 각 페이지 별 핵심 기능 </h4> <br><br>
