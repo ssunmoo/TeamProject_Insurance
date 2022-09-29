@@ -1,9 +1,8 @@
-package Start;
+package View;
 
 import java.util.Scanner;
 import Controller.Controller;
 import Model.Dao.Dao;
-import View.Mainpage;
 
 
 public class Start {
