@@ -5,7 +5,7 @@
  <h3> 안녕하세요! [산대특] 2st. Team Progect 2조입니다. </h3><br>
  
  <h2> :raised_hands: 팀원 소개 :raised_hands: </h2>
- <h4> 김경주 / 윤상진 / 성지혜 / 허혜영 </h4> <br>
+ <h4> 김경주 / 윤상진 / 성지혜 / 허혜영 </h4> <br><br>
  
  <h2> :star: 주제 :star: </h2>
  <h3> 보험가입 게시판 </h3>
@@ -40,7 +40,7 @@
   <h2> :calendar: 일정 계획 :calendar: </h2>
    
   <h3> 09/26 </h3>
-  공통 : 주제 선정 <br> <br>
+  주제 선정 <br> <br>
   
   <h3> 09/28</h3>
   공통 : GIT 생성 및 Branch 분리 / 역할 분담 / 프로젝트명 선정 / DB 테이블 구성 <br><br>
