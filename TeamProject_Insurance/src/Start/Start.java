@@ -1,6 +1,8 @@
 package Start;
 
 import java.util.Scanner;
+import Controller.Controller;
+import Model.Dao.Dao;
 import View.Mainpage;
 
 
@@ -15,7 +17,8 @@ public class Start {
 
 		Start member = new Start();
 		member.signup();
-	}
+		
+	} // main 종료
 	
 	// 선택
 	void signup() {
@@ -38,5 +41,17 @@ public class Start {
 	} // signup end
 
 
+	// --- 게시판 --- //
+	// 1. 문의글 등록
+	
+	public void regist() {
+		Mainpage.getInstance().board();
+		Mainpage.getInstance().regist();
+		
+	}
 	
 } // class 종료
+
+
+
+
