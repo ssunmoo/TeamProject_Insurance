@@ -17,7 +17,7 @@ public class Mainpage {
 	
 	// 스캐너 선언
 	Scanner scanner = new Scanner(System.in);
-		
+	
 	
 	
 	
