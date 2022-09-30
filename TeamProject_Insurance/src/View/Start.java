@@ -9,6 +9,8 @@ public class Start {
 
 	Scanner scanner = new Scanner(System.in);
 	
+	// 메인 머지 후 메인 당겨옴 220930_19:41
+	
 	// 메소드
 	public static void main(String[] args) {
 		// Mainpage에 있는 첫 시작 메소드 호출만
