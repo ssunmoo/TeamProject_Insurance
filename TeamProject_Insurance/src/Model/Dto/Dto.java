@@ -70,17 +70,10 @@ public class Dto {
 
 	
 	
-	
 	// getter, setter
-	
-	
-	
-	
-	
 	public String getName() {
 		return name;
 	}
-
 
 	public String getL_name() {
 		return l_name;
