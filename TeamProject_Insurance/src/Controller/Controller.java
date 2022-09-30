@@ -17,17 +17,17 @@ public class Controller {
 	}
 
 	
-	//////////////////////가입하기
-		
+	
+	// --- 회원가입 --- //	
 	public boolean getsingup(String name,String pw, String phone, String ssn) {
-	Dto dto = new Dto(name, pw, phone, ssn);
-	return Dao.getInstance().getsingup(dto);
+		Dto dto = new Dto(name, pw, phone, ssn);
+		return Dao.getInstance().getsingup(dto);
 	}
 	
-	
+	// --- 로그인 --- //	
 	public boolean login(String l_name, String l_phone) {
-	Dto dto = new Dto(l_name, l_phone);
-	return Dao.getInstance().login(dto);
+		Dto dto = new Dto(l_name, l_phone);
+		return Dao.getInstance().login(dto);
 	}
 	
 	
@@ -39,7 +39,6 @@ public class Controller {
 	public boolean regist( String b_title, String b_content, String name, String phone, String b_pw) {
 		Dto dto = new Dto( 0, b_title, b_content, name, phone, b_pw );
 		return Dao.getInstance().regist(dto);
-				
 	}
 
 	// 2. 게시판 보기

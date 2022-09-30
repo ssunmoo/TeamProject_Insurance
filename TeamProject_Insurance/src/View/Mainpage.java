@@ -65,6 +65,7 @@ public class Mainpage {
 				///////////////////////////////////////////////////////////////////////////////
 
 				if (state == 1 || ch == 2) {
+					System.out.println(" ▬▬▬▬▬▬▬▬▬▬▬▬▬▬ 로그인 페이지 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
 					System.out.println("로그인하시겠습니까?[Y/N]");
 					String loginsign = scanner.next();
 					if (loginsign.equals("Y") || loginsign.equals("y")) {
