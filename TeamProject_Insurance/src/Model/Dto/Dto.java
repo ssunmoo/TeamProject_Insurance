@@ -9,8 +9,8 @@ public class Dto {
 	private String phone;		// 연락처(식별자 PK)
 	private String ssn;			// 주민번호
 	
-	private String l_name;	
-	private String l_phone;
+	private String l_name;		// 로그인 이름
+	private String l_phone;		// 로그인 번호
 	
 								// 게시판
 	private int b_num;			// 게시판 번호
