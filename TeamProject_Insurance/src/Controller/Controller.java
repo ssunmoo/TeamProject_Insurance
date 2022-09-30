@@ -20,8 +20,8 @@ public class Controller {
 	
 	// --- 게시판 --- //
 	// 1. 문의글 등록
-	public boolean regist( String b_title, String b_content, String name, String phone, String b_pw) {
-		Dto dto = new Dto( 0, b_title, b_content, name, phone, b_pw );
+	public boolean regist( String b_title, String b_content, String phone, String b_pw) {
+		Dto dto = new Dto( 0, b_title, b_content, phone, b_pw );
 		return Dao.getInstance().regist(dto);
 				
 	}
@@ -31,9 +31,10 @@ public class Controller {
 		return Dao.getInstance().board();
 	}
 	
-	public ArrayList< Dto > board2() {
-		return Dao.getInstance().board2();
-	}
+//	public ArrayList< Dto > board2( String phone ) {
+//		Dto dto = new Dto( phone );
+//		return Dao.getInstance().board2(dto);
+//	}
 	
 	
 	

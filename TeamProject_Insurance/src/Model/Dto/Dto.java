@@ -73,11 +73,11 @@ public class Dto {
 		this.phone = phone;
 	}
 
-	public Dto(String name) {
-		this.name = name;
-
-	}
 	
+	public Dto(String phone) {
+		this.phone = phone;
+	}
+
 	// getter, setter
 	public String getName() {
 		return name;

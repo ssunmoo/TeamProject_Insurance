@@ -9,6 +9,7 @@ import Model.Dto.Dto;
 
 
 public class Mainpage {
+	private static final String String = null;
 	// 현재 페이지 객체 선언
 	private static Mainpage Mpage = new Mainpage();
 	// 빈생성자
@@ -43,16 +44,13 @@ public class Mainpage {
 		System.out.println("내용 : ");
 		String b_content = scanner.nextLine();
 		
-		System.out.println("이름 : ");
-		String name = scanner.nextLine();
-		
 		System.out.println("연락처 : ");
 		String phone = scanner.next();
 		
 		System.out.println("비밀번호 : ");
 		String b_pw = scanner.next();
 		
-		boolean result = Controller.getInStance().regist( b_title, b_content, name, phone, b_pw );
+		boolean result = Controller.getInStance().regist( b_title, b_content, phone, b_pw );
 		
 		if( result ) {
 			System.out.println(" [안내] 문의글 등록이 완료되었습니다. ");
@@ -75,21 +73,21 @@ public class Mainpage {
 			System.out.print("  "+ dto.getB_num() + "\t");
 			System.out.print(dto.getB_title() + "\t");
 			System.out.print(dto.getB_content() + "\t\t");
-			board2();
-			System.out.print(dto.getPhone() + "\t\t");
-			System.out.println("-------------------------------------------------");
+			System.out.print(dto.getName() + "\t");
+			System.out.print(dto.getPhone() + "\t");
+			System.out.println("\n-------------------------------------------------");
 		}
 		
 	} // board 메소드 종료
 	
-	public void board2() {
-		ArrayList< Dto > list = Controller.getInStance().board2();
-
-		for( Dto dto : list ) {
-			System.out.print(dto.getName() + "\t");
-		}
-		
-	} // board 메소드 종료
+//	public void board2() {
+//		ArrayList< Dto > list = Controller.getInStance().board2(null);
+//
+//		for( Dto  : list ) {
+//			System.out.print(a.getName());
+//		}
+//		
+//	} // board 메소드 종료
 	
 	
 	
