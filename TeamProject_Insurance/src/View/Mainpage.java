@@ -22,6 +22,7 @@ public class Mainpage {
 	// 스캐너 선언
 	Scanner scanner = new Scanner(System.in);
 
+	
 /////////////// 가입하기 && 접속 경로 ///////////////////////////////////////////////////
 
 	void getsingup() {
@@ -95,56 +96,138 @@ public class Mainpage {
 
 	} // getsingup 메소드 종료
 
+
+
 	
 	// --- 게시판 --- //
+	
+	
 	// 1. 문의글 등록
 	public void regist() {
-
+		
 		System.out.println();
 		System.out.println("문의글 등록하기 ▶ ");
-
+		
 		System.out.println("제목 : ");
 		String b_title = scanner.next();
-
+		
 		scanner.nextLine();
 		System.out.println("내용 : ");
 		String b_content = scanner.nextLine();
-
-		System.out.println("이름 : ");
-		String name = scanner.next();
-
+		
 		System.out.println("연락처 : ");
 		String phone = scanner.next();
-
+		System.out.println( phone );
+		
 		System.out.println("비밀번호 : ");
 		String b_pw = scanner.next();
-
-		boolean result = Controller.getInStance().regist(b_title, b_content, name, phone, b_pw);
-
-		if (result) {
+		System.out.println( b_pw );
+		
+		boolean result = Controller.getInStance().regist( b_title, b_content, phone, b_pw );
+		
+		if( result ) {
 			System.out.println(" [안내] 문의글 등록이 완료되었습니다. ");
-		} else {
-			System.out.println(" [안내] 문의글 등록이 실패하였습니다 ");
 		}
-
+		else {
+			System.out.println(" [안내] 문의글 등록이 실패하였습니다 ");	
+		}
+		
 	} // regist 메소드 종료
 
 	// 2. 게시판 보기
 	public void board() {
-		ArrayList<Dto> list = Controller.getInStance().board();
-
-		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
-		System.out.println(" 번호\t제목\t내용\t\t이름\t연락처");
-		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
-		for (Dto dto : list) {
-			System.out.print("  " + dto.getB_num() + "\t");
+		ArrayList< Dto > list = Controller.getInStance().board();
+		
+		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+		System.out.println(" 번호\t제목\t이름\t연락처");
+		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+		for( Dto dto : list ) {
+			System.out.print("  "+ dto.getB_num() + "\t");
 			System.out.print(dto.getB_title() + "\t");
-			System.out.print(dto.getB_content() + "\t\t");
 			System.out.print(dto.getName() + "\t");
-			System.out.print(dto.getPhone() + "\t\n");
-			System.out.println("-------------------------------------------------");
+			System.out.print(dto.getPhone() + "\t");
+			System.out.println("\n-----------------------------------");
 		}
-
 	} // board 메소드 종료
+	
+	
+	// 3. 게시글 수정
+	public void update() {
+		
+	}
+	
+	// 4. 게시글 삭제
+	public void delete() {
+		
+	}
+	
+	
+	// 5. 게시글 상세보기
+	public void board_view() {
+		System.out.println("게시글 번호를 선택해주세요");
+		int num = scanner.nextInt();
+		ArrayList< Dto > list = Controller.getInStance().board_view(num);
+		
+		for( Dto dto : list ) {
+			System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+			System.out.println(" 제목 : " + dto.getB_title());
+			System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+			System.out.println(" 내용 : " + dto.getB_content() + "\n");
+			System.out.println("\n-----------------------------------");
+		}
+		
+		reply_view();
+		System.out.println("1. 답글 등록하기 2. 돌아가기");
+		int ch = scanner.nextInt();
+		if( ch == 1 ) {
+			reply();
+		}
+		else if ( ch == 2) {
+			return;
+		}
+		else {
+			System.out.println(" [안내] 잘못된 번호입니다 다시 선택해 주세요");
+		}
+	} // board_view 메소드 종료
+	
+	
+	// 6. 상담사 답글 쓰기
+	public void reply() {
+		scanner.nextLine();
+		System.out.println("답글 내용 : ");
+		String w_reply = scanner.nextLine();
+		System.out.println("상담사 이름 :");
+		String w_name = scanner.next();
+		
+		boolean result = Controller.getInStance().reply( w_reply );
+		
+		if( result ) {
+			System.out.println(" [안내] 문의글 등록이 완료되었습니다. ");
+		}
+		else {
+			System.out.println(" [안내] 문의글 등록이 실패하였습니다 ");	
+		}
+	} // reply 종료
+	
+	// 7. 상담사 답글 보기
+		public void reply_view() {
+			ArrayList< Dto > list = Controller.getInStance().reply_view();
+			for( Dto dto : list ) {
+				System.out.println(" ↪ re: " + dto.getW_reply() + "\n");
+				System.out.println("\t\t\t    [" + dto.getW_name()+"]");
+				System.out.println("-----------------------------------");
+			} 
+	} // reply_view 메소드 종료
+	
+	
+		
+		
+		
+		
+		
+		
+		
+		
+	
 
 } // class 종료
