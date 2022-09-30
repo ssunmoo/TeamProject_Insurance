@@ -27,14 +27,14 @@ public class Start {
 				int ch = scanner.nextInt();
 				if( ch == 1 ) {
 					System.out.println("이름 : ");		String name = scanner.next();
-					System.out.println("비밀번호 : ");	String pw = scanner.next();
+					System.out.println("비밀번호 : ");		String pw = scanner.next();
 					System.out.print("전화번호 : ");		String phone = scanner.next();
 					System.out.println("주민등록번호 : ");	String ssn = scanner.next();
+					System.out.println("가입이 완료되었습니다.");
 					break;} 
-				if( ch == 2 ) { System.out.println(" tjsxor ");}
-				
+				if( ch == 2 ) { System.out.println("");}
 				else{ System.out.println("알 수 없는 번호입니다."); }
-			 // if
+			 
 				
 		} // while end
 		

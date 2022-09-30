@@ -9,6 +9,9 @@ public class Dto {
 	private String phone;		// 연락처(식별자 PK)
 	private String ssn;			// 주민번호
 	
+	private String l_name;	
+	private String l_phone;
+	
 								// 게시판
 	private int b_num;			// 게시판 번호
 	private String b_title;		// 게시글 제목
@@ -50,12 +53,50 @@ public class Dto {
 		this.phone = phone;
 	}
 	
+	// 가입
+	public Dto(String name, String pw, String phone, String ssn) {
+		this.name = name;
+		this.pw = pw;
+		this.phone = phone;
+		this.ssn = ssn;
+		
+	}
+
+	public Dto(String l_name, String l_phone) {
+		super();
+		this.l_name = l_name;
+		this.l_phone = l_phone;
+	}
+
+	
+	
 	
 	// getter, setter
+	
+	
+	
+	
+	
 	public String getName() {
 		return name;
 	}
 
+
+	public String getL_name() {
+		return l_name;
+	}
+
+	public void setL_name(String l_name) {
+		this.l_name = l_name;
+	}
+
+	public String getL_phone() {
+		return l_phone;
+	}
+
+	public void setL_phone(String l_phone) {
+		this.l_phone = l_phone;
+	}
 
 	public void setName(String name) {
 		this.name = name;
