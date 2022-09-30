@@ -1,7 +1,9 @@
 package View;
 
+import java.awt.Taskbar.State;
 import java.util.ArrayList;
 import java.util.Scanner;
+import com.mysql.cj.QueryReturnType;
 
 import Controller.Controller;
 import Model.Dao.Dao;
@@ -21,14 +23,7 @@ public class Mainpage {
 	// 스캐너 선언
 	Scanner scanner = new Scanner(System.in);
 	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	// --- 게시판 --- //
 	// 1. 문의글 등록
 	public void regist() {
@@ -82,50 +77,72 @@ public class Mainpage {
 		
 	} // board 메소드 종료
 	
-	
-	
-	
-	
-	///////////////가입하기 && 접속 경
+			///////////////가입하기 && 접속 경///////////////////////////////////////////////////
 	
 		void getsingup() {
-			int state = 0;
-			while(true) {
-			System.out.println("\t[안내]\t접속하려고 하는 경로를 선택해주세요\n");
-			System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬1.고객▬▬▬▬▬▬▬2.보험사▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"); int user = scanner.nextInt();
-			if(user ==1 ) {
-				System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬1.가입하기 ____ 2.로그인하기▬▬▬▬▬▬▬▬▬▬▬▬▬▬"); int singup = scanner.nextInt();
-				if(singup == 1) {
-				System.out.print("성명을 작성 : ");		String name = scanner.next();
-				System.out.print("비밀번호 작성 : ");		String pw = scanner.next();
-				System.out.print("전화번호 작성: ");		String phone = scanner.next();
-				System.out.print("주민등록번호 작성 : ");	String ssn = scanner.next();
-				
-				boolean result= Controller. getInStance().getsingup(name,pw,phone,ssn);
-				
-					if(result){System.out.println("가입성공하였습니다"); state = 1;}
+			int state = 0; // 
+			
+			while( true ) {
+				System.out.println(" [안내] 접속하려는 경로를 선택해주세요.\n");
+				System.out.println(" 1.고객 2.보험사 : ");
+				int btn = scanner.nextInt();
 					
-					else {System.out.println("가입실패");}//가입 실패시
-				}
-				
-				
-				if(state == 1) { 
-					System.out.println("로그인하시겠습니까?[Y/N]"); String loginsign = scanner.next();
-						if(singup ==2 || loginsign=="Y"&&loginsign=="y"){
-							System.out.println("이름 : ");	String l_name = scanner.next();
-							System.out.print("전화번호 : ");	String l_phone = scanner.next();
+					if( btn == 1 ) { // 가입자 선택
+						System.out.println("1.회원가입 2.로그인 :  ");
+						int ch = scanner.nextInt();
 						
+						if( ch == 1 ) { // 회원가입 선택
+						
+							System.out.println(" ▬▬▬▬▬▬▬▬▬▬▬▬▬▬ 회원가입 페이지 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+					
+							System.out.print(" 이름[아이디] 입력: ");
+							String name = scanner.next();
+							
+							System.out.print(" 비밀번호 입력: ");
+							String pw = scanner.next();
+							
+							System.out.print(" 전화번호 입력: ");
+							String phone = scanner.next();
+							
+							System.out.print(" 주민등록번호 입력: ");
+							String ssn = scanner.next();
+							
+							boolean result = Controller.getInStance().getsingup( name, pw, phone, ssn );
+							
+							if( result ) {
+								System.out.println(" [안내] 회원가입이 완료되었습니다. "); state = 1;
+							}
+							else {
+								System.out.println(" [안내] 회원가입이 실패되었습니다. ");
+							}
+							
 						}
-			 		else {System.out.println("처음으로 돌아갑니다.");}
-						
+				///////////////////////////////////////////////////////////////////////////////
+				
+				if(state == 1||ch==2){ 
+					System.out.println("로그인하시겠습니까?[Y/N]"); String loginsign = scanner.next();
+					if(loginsign.equals("Y") || loginsign.equals("y")){
+							System.out.print("이름 : ");	String l_name = scanner.next();
+							System.out.print("전화번호 : ");	String l_phone = scanner.next();	
+							boolean result1 =  Controller. getInStance().login(l_name,l_phone);	
+								if(result1) {System.out.println("로그인되었습니다");state = 2;}
+								else{System.out.println("로그인실패하였습니다");}
+					}else{System.out.println("[취소]처음으로 돌아갑니다.");}
 				}
+
 			}
 			
-			else if(user == 2) {}
+			else if(btn == 2) {}
 			else {System.out.println("경로가 없습니다.");}
 			}
 			
 		}
+		
+		
+		
+		
+		
+		
 	
 	
 	

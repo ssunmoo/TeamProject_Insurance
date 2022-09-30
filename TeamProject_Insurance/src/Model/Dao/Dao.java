@@ -110,5 +110,24 @@ public class Dao {
 		} catch (Exception e) {System.out.println("singup오류"+e);}
 		return false;
 		}
+	//////////////////////////////////////////////////////////
+	public boolean login(Dto dto) {
+		String sql = "select  * from member where name = ? and phone = ?"; //select  name ,phone from member
+		try {
+			
+			ps = con.prepareStatement(sql);
+			ps.setString(1, dto.getL_name());
+			ps.setString(2, dto.getL_phone());
+			rs = ps.executeQuery();
+
+			if(rs.next()) {
+				return true;
+			}else {
+				return false;
+			}
+		
+			} catch (Exception e) {System.out.println("singup오류"+e);}
+		return false;
+		}
 	
 } // class 종료
