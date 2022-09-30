@@ -50,6 +50,13 @@ public class Dto {
 		this.phone = phone;
 	}
 	
+	// 회원가입 생성자
+	public Dto( String name, String pw, String phone, String ssn ) {
+		this.name = name;
+		this.pw = pw;
+		this.phone = phone;
+		this.ssn = ssn;
+	}
 	
 	// getter, setter
 	public String getName() {

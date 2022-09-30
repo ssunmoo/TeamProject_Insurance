@@ -22,11 +22,59 @@ public class Mainpage {
 	Scanner scanner = new Scanner(System.in);
 	
 	
-	
-	
-	
-	
-	
+	// --- 회원가입 --- //
+	public void signup() {
+		int state = 0; // 
+		
+		while( true ) {
+			System.out.println(" [안내] 접속하려는 경로를 선택해주세요.\n");
+			System.out.println(" 1.고객 2.보험사 : ");
+			int btn = scanner.nextInt();
+				
+				if( btn == 1 ) { // 가입자 선택
+					System.out.println("1.회원가입 2.로그인 :  ");
+					int ch = scanner.nextInt();
+					
+					if( ch == 1 ) { // 회원가입 선택
+					
+						System.out.println(" ▬▬▬▬▬▬▬▬▬▬▬▬▬▬ 회원가입 페이지 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+				
+						System.out.print(" 이름[아이디] 입력: ");
+						String name = scanner.next();
+						
+						System.out.print(" 비밀번호 입력: ");
+						String pw = scanner.next();
+						
+						System.out.print(" 전화번호 입력: ");
+						String phone = scanner.next();
+						
+						System.out.print(" 주민등록번호 입력: ");
+						String ssn = scanner.next();
+						
+						boolean result = Controller.getInStance().signup( name, pw, phone, ssn );
+						
+						if( result ) {
+							System.out.println(" [안내] 회원가입이 완료되었습니다. "); state = 1;
+						}
+						else {
+							System.out.println(" [안내] 회원가입이 실패되었습니다. ");
+						}
+						
+					}
+					else if( ch == 2 ) { // 로그인 선택
+						
+						System.out.println(" ▬▬▬▬▬▬▬▬▬▬▬▬▬▬ 로그인 페이지 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+						
+					}
+					
+					else if( btn == 2 ) {} // 보험사 선택
+					else { System.out.println(" [안내] 알 수 없는 번호입니다. "); }
+				
+				} // if end
+				
+		}// while end
+				
+	} // signup end
 	
 	
 	// --- 게시판 --- //

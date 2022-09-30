@@ -13,31 +13,20 @@ public class Start {
 	public static void main(String[] args) {
 		// Mainpage에 있는 첫 시작 메소드 호출만
 		// Mainpage.getInstance().index();
-
+		
+		// 출력형식 불러오기 ( Console창 )
 		Start start = new Start();
-		start.regist();
+		start.signup();		// 회원가입
+		start.regist();		// 문의글 등록
+		
 		
 	} // main 종료
 	
-	// 선택
-	void signup() {
-		while( true ) {
-			System.out.print("1.가입자 2.보험사 : ");
-				int ch = scanner.nextInt();
-				if( ch == 1 ) {
-					System.out.println("이름 : ");		String name = scanner.next();
-					System.out.println("비밀번호 : ");	String pw = scanner.next();
-					System.out.print("전화번호 : ");		String phone = scanner.next();
-					System.out.println("주민등록번호 : ");	String ssn = scanner.next();
-					break;} 
-				if( ch == 2 ) { System.out.println(" tjsxor ");}
-				
-				else{ System.out.println("알 수 없는 번호입니다."); }
-			 // if
-				
-		} // while end
-		
-	} // signup end
+	// --- 회원가입 --- //
+		// 회원정보 입력
+	public void signup() {
+		Mainpage.getInstance().signup();
+	}
 
 
 	// --- 게시판 --- //
