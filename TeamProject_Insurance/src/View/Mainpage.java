@@ -186,6 +186,7 @@ public class Mainpage {
 		}
 		else if ( ch == 2) {
 			return;
+			// .
 		}
 		else {
 			System.out.println(" [안내] 잘못된 번호입니다 다시 선택해 주세요");
@@ -193,7 +194,7 @@ public class Mainpage {
 	} // board_view 메소드 종료
 	
 	
-	// 6. 상담사 답글 쓰기
+	// 6. 상담사 답글 쓰기 
 	public void reply() {
 		scanner.nextLine();
 		System.out.println("답글 내용 : ");
