@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import Controller.Controller;
+import Model.Dto.BoardDto;
 import Model.Dto.Dto;
 
 public class Dao {
@@ -37,7 +38,7 @@ public class Dao {
 
 	} // Dao 메소드 종료
 
-	////////////////////// 가입하기&& 접속경로////////////////////////
+	////////////////////// 가입하기&& 접속경로 ////////////////////////
 	public boolean getsingup(Dto dto) {
 		String sql = "insert into member values(?,?,?,?)";
 		try {
@@ -78,7 +79,7 @@ public class Dao {
 
 	// --- 게시판 --- //
 	// 1. 문의글 등록
-	public boolean regist(Dto dto) {
+	public boolean regist(BoardDto dto) {
 		String sql = "insert into board values( null, ?, ?, ?, ? )";
 		// System.out.println(dto.toString());
 		try {
@@ -98,9 +99,9 @@ public class Dao {
 	} // regist 메소드 종료
 
 	// 2. 게시판 보기
-	public ArrayList<Dto> board() {
+	public ArrayList<BoardDto> board() {
 
-		ArrayList<Dto> list = new ArrayList<>();
+		ArrayList<BoardDto> list = new ArrayList<>();
 		String sql = "select b.b_num , b.b_title , b.b_content , m.name , m.phone from member m , board b where m.phone = b.phone ORDER BY (b.b_num);";
 
 		try {
@@ -108,7 +109,7 @@ public class Dao {
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
-				Dto dto = new Dto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+				BoardDto dto = new BoardDto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
 
 				list.add(dto);
 			} // while 종료
@@ -131,8 +132,8 @@ public class Dao {
 	} // delete 메소드 종료
 
 	// 5. 게시글 상세보기
-	public ArrayList<Dto> board_view(int b_num) {
-		ArrayList<Dto> list = new ArrayList<>();
+	public ArrayList<BoardDto> board_view(int b_num) {
+		ArrayList<BoardDto> list = new ArrayList<>();
 		String sql = "select * from board where b_num = ?";
 
 		try {
@@ -141,7 +142,7 @@ public class Dao {
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
-				Dto dto = new Dto(rs.getString(1), rs.getString(2));
+				BoardDto dto = new BoardDto(rs.getString(1), rs.getString(2));
 
 				list.add(dto);
 			} // while 종료
@@ -154,7 +155,7 @@ public class Dao {
 	} // board_view 메소드 종료
 
 	// 6. 상담사 답글 쓰기
-	public boolean reply(Dto dto) {
+	public boolean reply(BoardDto dto) {
 		String sql = "insert into subworker values( null, ? )";
 		System.out.println(dto.toString());
 		try {
@@ -171,17 +172,17 @@ public class Dao {
 	} // reply 메소드 종료
 
 	// 7. 상담사 답글 보기
-	public ArrayList<Dto> reply_view() {
+	public ArrayList<BoardDto> reply_view() {
 		String sql = "select sw.w_reply, w.w_name from worker w , subworker sw where w.w_num = sw.w_num";
 
-		ArrayList<Dto> list = new ArrayList<>();
+		ArrayList<BoardDto> list = new ArrayList<>();
 
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
-				Dto dto = new Dto(rs.getString(1), rs.getString(2));
+				BoardDto dto = new BoardDto(rs.getString(1), rs.getString(2));
 
 				list.add(dto);
 			} // while 종료

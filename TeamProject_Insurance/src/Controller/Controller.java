@@ -3,6 +3,7 @@ package Controller;
 import java.util.ArrayList;
 
 import Model.Dao.Dao;
+import Model.Dto.BoardDto;
 import Model.Dto.Dto;
 
 public class Controller {
@@ -37,13 +38,13 @@ public class Controller {
 	// --- 게시판 --- //
 	// 1. 문의글 등록
 	public boolean regist( String b_title, String b_content, String phone, String b_pw) {
-		Dto dto = new Dto( b_title, b_content, phone, b_pw );
+		BoardDto dto = new BoardDto( b_title, b_content, phone, b_pw );
 		// System.out.println( dto.toString() );
 		return Dao.getInstance().regist(dto);
 	}
 
 	// 2. 게시판 보기
-	public ArrayList< Dto > board() {
+	public ArrayList< BoardDto > board() {
 		return Dao.getInstance().board();
 	}
 	
@@ -58,19 +59,19 @@ public class Controller {
 	}
 	
 	// 5. 게시글 상세보기
-	public ArrayList< Dto > board_view( int b_num ) {
+	public ArrayList< BoardDto > board_view( int b_num ) {
 		return Dao.getInstance().board_view( b_num );
 	}
 	
 	// 6. 상담사 답글 쓰기
 	public boolean reply( String w_reply ) {
-		Dto dto = new Dto( w_reply );
+		BoardDto dto = new BoardDto( w_reply );
 		return Dao.getInstance().reply( dto );
 		
 	} // reply 종료
 	
 	// 7. 상담사 답글 보기
-	public ArrayList< Dto > reply_view() {
+	public ArrayList< BoardDto > reply_view() {
 		return Dao.getInstance().reply_view();
 	}
 

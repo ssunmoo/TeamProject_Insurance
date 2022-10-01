@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import Controller.Controller;
 import Model.Dao.Dao;
+import Model.Dto.BoardDto;
 import Model.Dto.Dto;
 
 public class Mainpage {
@@ -136,12 +137,12 @@ public class Mainpage {
 
 	// 2. 게시판 보기
 	public void board() {
-		ArrayList< Dto > list = Controller.getInStance().board();
+		ArrayList< BoardDto > list = Controller.getInStance().board();
 		
 		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
 		System.out.println(" 번호\t제목\t이름\t연락처");
 		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
-		for( Dto dto : list ) {
+		for( BoardDto dto : list ) {
 			System.out.print("  "+ dto.getB_num() + "\t");
 			System.out.print(dto.getB_title() + "\t");
 			System.out.print(dto.getName() + "\t");
@@ -164,11 +165,12 @@ public class Mainpage {
 	
 	// 5. 게시글 상세보기
 	public void board_view() {
-		System.out.println("게시글 번호를 선택해주세요");
+		board();
+		System.out.println(" [안내] 게시글 번호를 선택해주세요");
 		int num = scanner.nextInt();
-		ArrayList< Dto > list = Controller.getInStance().board_view(num);
+		ArrayList< BoardDto > list = Controller.getInStance().board_view(num);
 		
-		for( Dto dto : list ) {
+		for( BoardDto dto : list ) {
 			System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
 			System.out.println(" 제목 : " + dto.getB_title());
 			System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
@@ -211,8 +213,8 @@ public class Mainpage {
 	
 	// 7. 상담사 답글 보기
 		public void reply_view() {
-			ArrayList< Dto > list = Controller.getInStance().reply_view();
-			for( Dto dto : list ) {
+			ArrayList< BoardDto > list = Controller.getInStance().reply_view();
+			for( BoardDto dto : list ) {
 				System.out.println(" ↪ re: " + dto.getW_reply() + "\n");
 				System.out.println("\t\t\t    [" + dto.getW_name()+"]");
 				System.out.println("-----------------------------------");
