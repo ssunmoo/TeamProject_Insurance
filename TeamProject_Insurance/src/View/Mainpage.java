@@ -166,19 +166,23 @@ public class Mainpage {
 	// 5. 게시글 상세보기
 	public void board_view() {
 		board();
-		System.out.println(" [안내] 게시글 번호를 선택해주세요");
-		int num = scanner.nextInt();
-		ArrayList< BoardDto > list = Controller.getInStance().board_view(num);
 		
-		for( BoardDto dto : list ) {
-			System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
-			System.out.println(" 제목 : " + dto.getB_title());
-			System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
-			System.out.println(" 내용 : " + dto.getB_content() + "\n");
-			System.out.println("\n-----------------------------------");
+		System.out.println(" [안내] 게시글 번호를 선택해주세요");
+		int b_num = scanner.nextInt();
+		BoardDto dto = Controller.getInStance().board_view(b_num);
+		if( dto == null ) {
+			System.out.println(" [안내] 게시글이 없습니다");
+			return;
 		}
 		
-		reply_view();
+		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+		System.out.println(" 제목 : " + dto.getB_title());
+		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+		System.out.println(" 내용 : " + dto.getB_content() + "\n");
+		System.out.println("\n-----------------------------------");
+
+		
+		reply_view(b_num);
 		System.out.println("1. 답글 등록하기 2. 돌아가기");
 		int ch = scanner.nextInt();
 		if( ch == 1 ) {
@@ -186,7 +190,6 @@ public class Mainpage {
 		}
 		else if ( ch == 2) {
 			return;
-			// .
 		}
 		else {
 			System.out.println(" [안내] 잘못된 번호입니다 다시 선택해 주세요");
@@ -194,7 +197,7 @@ public class Mainpage {
 	} // board_view 메소드 종료
 	
 	
-	// 6. 상담사 답글 쓰기 
+	// 6. 상담사 답글 쓰기
 	public void reply() {
 		scanner.nextLine();
 		System.out.println("답글 내용 : ");
@@ -202,7 +205,7 @@ public class Mainpage {
 		System.out.println("상담사 이름 :");
 		String w_name = scanner.next();
 		
-		boolean result = Controller.getInStance().reply( w_reply );
+		boolean result = Controller.getInStance().reply( w_reply , w_name );
 		
 		if( result ) {
 			System.out.println(" [안내] 문의글 등록이 완료되었습니다. ");
@@ -213,8 +216,8 @@ public class Mainpage {
 	} // reply 종료
 	
 	// 7. 상담사 답글 보기
-		public void reply_view() {
-			ArrayList< BoardDto > list = Controller.getInStance().reply_view();
+		public void reply_view( int b_num ) {
+			ArrayList< BoardDto > list = Controller.getInStance().reply_view( b_num );
 			for( BoardDto dto : list ) {
 				System.out.println(" ↪ re: " + dto.getW_reply() + "\n");
 				System.out.println("\t\t\t    [" + dto.getW_name()+"]");

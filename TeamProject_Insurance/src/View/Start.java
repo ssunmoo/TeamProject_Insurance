@@ -17,7 +17,8 @@ public class Start {
 
 		Start start = new Start();
 		
-		start. board_view();
+		//start.board();
+		start.board_view();
 		// start.getsingup();
 
 	} // main 종료
@@ -37,6 +38,7 @@ public class Start {
 	// 게시판 보기
 	public void board() {
 		Mainpage.getInstance().board();
+		Mainpage.getInstance().regist();
 	}
 	
 	// 게시판 상세 보기
@@ -45,7 +47,7 @@ public class Start {
 	}
 	// 답글 보기
 	public void reply_view() {
-		Mainpage.getInstance().reply_view();
+		Mainpage.getInstance().reply_view( 0 );
 	}
 
 } // class 종료

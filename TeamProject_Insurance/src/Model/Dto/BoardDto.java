@@ -48,7 +48,7 @@ public class BoardDto {
 		this.b_pw = b_pw;
 	}
 		
-		// 게시판 리스트 출력 생성자
+	// 게시판 리스트 출력 생성자
 	public BoardDto(int b_num, String b_title, String b_content, String name, String phone ) {
 		this.b_num = b_num;
 		this.b_title = b_title;
@@ -57,6 +57,7 @@ public class BoardDto {
 		this.phone = phone;
 	}
 	
+	// 게시글 상세보기 생성자
 	public BoardDto(int b_num, String b_title, String b_content) {
 		super();
 		this.b_num = b_num;
@@ -72,13 +73,14 @@ public class BoardDto {
 		this.b_pw = b_pw;
 	}
 
-	// 게시글 상세보기 생성자
+	// 게시글 번호 선택
 	public BoardDto(int b_num) {
 		this.b_num = b_num;
 	}
 	
 	// 답글 등록 생성자
-	public BoardDto(String w_reply) {
+	public BoardDto(int b_num, int w_num, String w_name, String w_reply) {
+		this.b_num = b_num;
 		this.w_reply = w_reply;
 	}
 	
@@ -87,7 +89,7 @@ public class BoardDto {
 		this.w_reply = w_reply;
 		this.w_name = w_name;
 	}
-
+	
 	
 	
 	

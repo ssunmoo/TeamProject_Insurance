@@ -110,7 +110,6 @@ public class Dao {
 
 			while (rs.next()) {
 				BoardDto dto = new BoardDto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
-
 				list.add(dto);
 			} // while 종료
 			return list;
@@ -132,26 +131,27 @@ public class Dao {
 	} // delete 메소드 종료
 
 	// 5. 게시글 상세보기
-	public ArrayList<BoardDto> board_view(int b_num) {
-		ArrayList<BoardDto> list = new ArrayList<>();
+	public BoardDto board_view(int b_num) {
+		
+		BoardDto dto = null;
+		
 		String sql = "select * from board where b_num = ?";
-
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, b_num);
 			rs = ps.executeQuery();
 
-			while (rs.next()) {
-				BoardDto dto = new BoardDto(rs.getString(1), rs.getString(2));
-
-				list.add(dto);
-			} // while 종료
-			return list;
+			if ( rs.next() ) {
+				dto = new BoardDto(rs.getInt(1), rs.getString(2), rs.getString(3));
+				
+				return dto;
+			} 
 
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		return list;
+		return dto;
+	
 	} // board_view 메소드 종료
 
 	// 6. 상담사 답글 쓰기
@@ -172,17 +172,18 @@ public class Dao {
 	} // reply 메소드 종료
 
 	// 7. 상담사 답글 보기
-	public ArrayList<BoardDto> reply_view() {
-		String sql = "select sw.w_reply, w.w_name from worker w , subworker sw where w.w_num = sw.w_num";
+	public ArrayList<BoardDto> reply_view( int b_num ) {
+		String sql = "select b.b_num, sw.w_reply, w.w_name from worker w , subworker sw , board b where b.b_num = ? ";
 
 		ArrayList<BoardDto> list = new ArrayList<>();
 
 		try {
 			ps = con.prepareStatement(sql);
+			ps.setInt(1, b_num);
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
-				BoardDto dto = new BoardDto(rs.getString(1), rs.getString(2));
+				BoardDto dto = new BoardDto(rs.getString(2), rs.getString(3));
 
 				list.add(dto);
 			} // while 종료
@@ -194,4 +195,10 @@ public class Dao {
 		return list;
 	} // reply_view 메소드 종료
 
+	
+	
+	
+	
+	
+	
 } // class 종료

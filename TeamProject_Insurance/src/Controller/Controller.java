@@ -40,7 +40,7 @@ public class Controller {
 	public boolean regist( String b_title, String b_content, String phone, String b_pw) {
 		BoardDto dto = new BoardDto( b_title, b_content, phone, b_pw );
 		// System.out.println( dto.toString() );
-		return Dao.getInstance().regist(dto);
+		return Dao.getInstance().regist( dto );
 	}
 
 	// 2. 게시판 보기
@@ -59,20 +59,20 @@ public class Controller {
 	}
 	
 	// 5. 게시글 상세보기
-	public ArrayList< BoardDto > board_view( int b_num ) {
+	public BoardDto board_view( int b_num ) {
 		return Dao.getInstance().board_view( b_num );
 	}
 	
 	// 6. 상담사 답글 쓰기
-	public boolean reply( String w_reply ) {
-		BoardDto dto = new BoardDto( w_reply );
+	public boolean reply( String w_reply, String w_name ) {
+		BoardDto dto = new BoardDto( w_reply , w_name );
 		return Dao.getInstance().reply( dto );
 		
 	} // reply 종료
 	
 	// 7. 상담사 답글 보기
-	public ArrayList< BoardDto > reply_view() {
-		return Dao.getInstance().reply_view();
+	public ArrayList< BoardDto > reply_view( int b_num ) {
+		return Dao.getInstance().reply_view( b_num );
 	}
 
 	
