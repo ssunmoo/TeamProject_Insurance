@@ -20,9 +20,9 @@ public class Start {
 		//start.board();
 		start.board_view();
 		// start.getsingup();
-
+		// 
 	} // main 종료
-
+	
 	
 	
 	// 첫화면
