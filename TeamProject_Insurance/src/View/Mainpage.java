@@ -109,8 +109,6 @@ public class Mainpage {
 				else {
 					System.out.println(" ▶ [오류] 잘못된 번호입니다.");
 				}
-				
-				
 			} else {
 				System.out.println("경로가 없습니다.");
 			}
