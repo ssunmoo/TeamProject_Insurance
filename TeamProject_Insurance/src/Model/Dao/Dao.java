@@ -121,20 +121,42 @@ public class Dao {
 	} // board 메소드 종료
 
 	// 3. 게시글 수정
-	public void update() {
-
+	public boolean update( BoardDto dto ) {
+		String sql = "update board set b_title = ?, b_content = ? where b_num = ? ";
+		// 게시글 번호를 선택해서 타이틀이랑 내용을 바꾼다
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, dto.getB_title());
+			ps.setString(2, dto.getB_content());
+			ps.setInt(3, dto.getB_num());
+			ps.executeUpdate();
+			return true;
+			
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+		return false;
 	} // update 메소드 종료
 
 	// 4. 게시글 삭제
-	public void delete() {
-
+	public boolean delete( BoardDto dto ) {
+		String Sql = "delete from board where b_pw = ? ";
+		// System.out.println(dto.toString());
+		try {
+			ps = con.prepareStatement(Sql);
+			ps.setString(1, dto.getB_pw());
+			ps.executeUpdate();
+			return true;
+			
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+		return false;
 	} // delete 메소드 종료
 
 	// 5. 게시글 상세보기
 	public BoardDto board_view(int b_num) {
-		
 		BoardDto dto = null;
-		
 		String sql = "select * from board where b_num = ?";
 		try {
 			ps = con.prepareStatement(sql);
@@ -143,10 +165,8 @@ public class Dao {
 
 			if ( rs.next() ) {
 				dto = new BoardDto(rs.getInt(1), rs.getString(2), rs.getString(3));
-				
 				return dto;
 			} 
-
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -156,11 +176,13 @@ public class Dao {
 
 	// 6. 상담사 답글 쓰기
 	public boolean reply(BoardDto dto) {
-		String sql = "insert into subworker values( null, ? )";
+		String sql = "insert into subworker values( ?, ?, ? )";
 		System.out.println(dto.toString());
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, dto.getW_reply());
+			ps.setString(2, dto.getW_name());
+			ps.setInt(3, dto.getB_num());
 			ps.executeUpdate();
 			return true;
 
@@ -173,8 +195,13 @@ public class Dao {
 
 	// 7. 상담사 답글 보기
 	public ArrayList<BoardDto> reply_view( int b_num ) {
-		String sql = "select b.b_num, sw.w_reply, w.w_name from worker w , subworker sw , board b where b.b_num = ? ";
-
+		// String sql = "select b.b_num, sw.w_reply, w.w_name from worker w , subworker sw , board b where b.b_num = ? ";
+		String sql = "select sw.w_reply, w.w_name, sw.b_num\r\n"
+				+ "from subworker as sw\r\n"
+				+ "inner join worker as w\r\n"
+				+ "on sw.w_name = w.w_name\r\n"
+				+ "where sw.b_num = ? ";
+		
 		ArrayList<BoardDto> list = new ArrayList<>();
 
 		try {
@@ -183,7 +210,7 @@ public class Dao {
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
-				BoardDto dto = new BoardDto(rs.getString(2), rs.getString(3));
+				BoardDto dto = new BoardDto(rs.getString(1), rs.getString(2));
 
 				list.add(dto);
 			} // while 종료

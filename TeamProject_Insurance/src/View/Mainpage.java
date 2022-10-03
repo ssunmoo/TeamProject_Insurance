@@ -54,7 +54,7 @@ public class Mainpage {
 					System.out.print(" 주민등록번호 입력: ");
 					String ssn = scanner.next();
 
-					boolean result = Controller.getInStance().getsingup(name, pw, phone, ssn);
+					boolean result = Controller.getInStance().getsingup( name, pw, phone, ssn );
 
 					if (result) {
 						System.out.println(" [안내] 회원가입이 완료되었습니다. ");
@@ -86,10 +86,31 @@ public class Mainpage {
 						System.out.println("[취소]처음으로 돌아갑니다.");
 					}
 				}
-
 			}
 
 			else if (btn == 2) {
+				board();
+				System.out.println();
+				System.out.println("1. 문의글 등록  2. 문의글 수정 3. 문의글 삭제");
+				int board_ch = scanner.nextInt();
+				
+				if( board_ch == 1 ) {
+					System.out.println("▬▬▬▬▬▬▬▬▬▬▬ 문의글 등록하기 ▬▬▬▬▬▬▬▬▬▬▬\n");
+					regist();
+				}
+				else if ( board_ch == 2 ){
+					System.out.println("▬▬▬▬▬▬▬▬▬▬▬ 문의글 수정하기 ▬▬▬▬▬▬▬▬▬▬▬\n");
+					update();
+				}
+				else if ( board_ch == 3 ) {
+					System.out.println("▬▬▬▬▬▬▬▬▬▬▬ 문의글 삭제하기 ▬▬▬▬▬▬▬▬▬▬▬\n");
+					delete();
+				}
+				else {
+					System.out.println(" ▶ [오류] 잘못된 번호입니다.");
+				}
+				
+				
 			} else {
 				System.out.println("경로가 없습니다.");
 			}
@@ -102,35 +123,33 @@ public class Mainpage {
 	
 	// --- 게시판 --- //
 	
+	int selectNum = 0;
 	
 	// 1. 문의글 등록
 	public void regist() {
 		
-		System.out.println();
-		System.out.println("문의글 등록하기 ▶ ");
-		
-		System.out.println("제목 : ");
+		System.out.println(" 제목 : ");
 		String b_title = scanner.next();
 		
 		scanner.nextLine();
-		System.out.println("내용 : ");
+		System.out.println(" 내용 : ");
 		String b_content = scanner.nextLine();
 		
-		System.out.println("연락처 : ");
+		System.out.println(" 연락처 : ");
 		String phone = scanner.next();
 		System.out.println( phone );
 		
-		System.out.println("비밀번호 : ");
+		System.out.println(" 비밀번호 : ");
 		String b_pw = scanner.next();
 		System.out.println( b_pw );
 		
 		boolean result = Controller.getInStance().regist( b_title, b_content, phone, b_pw );
 		
 		if( result ) {
-			System.out.println(" [안내] 문의글 등록이 완료되었습니다. ");
+			System.out.println(" ▶ [안내] 문의글 등록이 완료되었습니다. ");
 		}
 		else {
-			System.out.println(" [안내] 문의글 등록이 실패하였습니다 ");	
+			System.out.println(" ▶ [안내] 문의글 등록이 실패하였습니다 ");	
 		}
 		
 	} // regist 메소드 종료
@@ -154,27 +173,70 @@ public class Mainpage {
 	
 	// 3. 게시글 수정
 	public void update() {
+		System.out.println(" ▶ [안내] 수정할 게시글을 선택해주세요");
+		int b_num = scanner.nextInt();
 		
-	}
-	
+		System.out.println(" ▶ [안내] 비밀번호를 입력해주세요");
+		String b_pw = scanner.next();
+		
+		System.out.println(" ▶ [안내] 수정할 제목을 입력해주세요");
+		String b_title = scanner.next();
+		
+		System.out.println(" ▶ [안내] 수정할 내용을 입력해주세요");
+		String b_content = scanner.next();
+		
+		BoardDto dto = new BoardDto(b_num, b_title, b_content, b_pw);
+		if ( dto.getB_pw().equals(b_pw) ) {
+			boolean result = Controller.getInStance().update( b_num, b_title, b_content, b_pw );
+			if( result ) {
+				System.out.println(" ▶ [안내] 게시글 수정이 완료되었습니다. ");
+			}
+			else {
+				System.out.println(" ▶ [오류] 게시글 수정 오류입니다.");
+			}
+		}
+		else {
+			System.out.println(" ▶ [오류] 비밀번호가 틀렸습니다. ");
+		}
+	} // update 메소드 종료
+		
 	// 4. 게시글 삭제
 	public void delete() {
+		System.out.println(" ▶ [안내] 삭제할 게시글을 선택해주세요");
+		int b_num = scanner.nextInt();
 		
-	}
+		System.out.println(" ▶ [안내] 비밀번호를 입력해주세요");
+		String pw = scanner.next();
+		
+		BoardDto dto = new BoardDto( b_num, pw );
+		if ( dto.getB_pw().equals(pw) ) {
+			boolean result = Controller.getInStance().delete( b_num, pw );
+			if( result ) {
+				System.out.println(" ▶ [안내] 게시글이 삭제 되었습니다. ");
+			}
+			else {
+				System.out.println(" ▶ [오류] 게시글 삭제 오류입니다.");
+			}
+		}
+		else {
+			System.out.println(" ▶ [오류] 비밀번호가 틀렸습니다. ");
+		}
+	} // delete 메소드 종료
 	
 	
 	// 5. 게시글 상세보기
 	public void board_view() {
 		board();
 		
-		System.out.println(" [안내] 게시글 번호를 선택해주세요");
+		System.out.println(" ▶ [안내] 게시글 번호를 선택해주세요");
 		int b_num = scanner.nextInt();
+		selectNum = b_num;	// 다른 메소드 사용하기위해..
+		
 		BoardDto dto = Controller.getInStance().board_view(b_num);
 		if( dto == null ) {
-			System.out.println(" [안내] 게시글이 없습니다");
+			System.out.println(" ▶ [안내] 게시글이 없습니다");
 			return;
 		}
-		
 		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
 		System.out.println(" 제목 : " + dto.getB_title());
 		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
@@ -192,7 +254,7 @@ public class Mainpage {
 			return;
 		}
 		else {
-			System.out.println(" [안내] 잘못된 번호입니다 다시 선택해 주세요");
+			System.out.println(" ▶ [안내] 잘못된 번호입니다 다시 선택해 주세요");
 		}
 	} // board_view 메소드 종료
 	
@@ -202,17 +264,20 @@ public class Mainpage {
 		scanner.nextLine();
 		System.out.println("답글 내용 : ");
 		String w_reply = scanner.nextLine();
+		
 		System.out.println("상담사 이름 :");
 		String w_name = scanner.next();
 		
-		boolean result = Controller.getInStance().reply( w_reply , w_name );
+		boolean result = Controller.getInStance().reply( w_reply , w_name, selectNum );
 		
 		if( result ) {
-			System.out.println(" [안내] 문의글 등록이 완료되었습니다. ");
+			System.out.println(" ▶ [안내] 문의글 등록이 완료되었습니다. ");
 		}
 		else {
-			System.out.println(" [안내] 문의글 등록이 실패하였습니다 ");	
+			System.out.println(" ▶ [안내] 문의글 등록이 실패하였습니다 ");	
 		}
+		
+		
 	} // reply 종료
 	
 	// 7. 상담사 답글 보기

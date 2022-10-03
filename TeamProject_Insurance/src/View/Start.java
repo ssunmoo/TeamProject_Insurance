@@ -18,8 +18,8 @@ public class Start {
 		Start start = new Start();
 		
 		//start.board();
-		start.board_view();
-		// start.getsingup();
+		//start.board_view();
+		start.getsingup();
 		// 
 	} // main 종료
 	

@@ -79,22 +79,34 @@ public class BoardDto {
 	}
 	
 	// 답글 등록 생성자
-	public BoardDto(int b_num, int w_num, String w_name, String w_reply) {
-		this.b_num = b_num;
+	public BoardDto( String w_reply, String w_name, int b_num ) {
 		this.w_reply = w_reply;
+		this.w_name = w_name;
+		this.b_num = b_num;
 	}
-	
+
 	// 답글 보기 생성자
 	public BoardDto(String w_reply, String w_name ) {
 		this.w_reply = w_reply;
 		this.w_name = w_name;
 	}
 	
+	// 게시글 삭제 생성자
+	public BoardDto(int b_num, String b_pw) {
+		this.b_pw = b_pw;
+	}
 	
+	// 게시글 수정 생성자
+	public BoardDto(int b_num, String b_title, String b_content, String b_pw) {
+		super();
+		this.b_num = b_num;
+		this.b_title = b_title;
+		this.b_content = b_content;
+		this.b_pw = b_pw;
+	}
 	
 	
 	// getter, setter
-	
 	public String getName() {
 		return name;
 	}
