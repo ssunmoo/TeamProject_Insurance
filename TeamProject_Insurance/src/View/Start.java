@@ -10,6 +10,7 @@ public class Start {
 	Scanner scanner = new Scanner(System.in);
 	
 	// 메인 머지 후 메인 당겨옴 220930_19:41
+	// 메인 머지 후 메인 당겨옴 221004_01:05
 	
 	// 메소드
 	public static void main(String[] args) {
