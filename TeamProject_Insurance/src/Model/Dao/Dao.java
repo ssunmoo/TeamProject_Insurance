@@ -55,7 +55,7 @@ public class Dao {
 		return false;
 	}
 
-	//////////////////////////////////////////////////////////
+	/////////////////////////로그인/////////////////////////////////
 	public boolean login(Dto dto) {
 		String sql = "select  * from member where name = ? and phone = ?"; // select name ,phone from member
 		try {
@@ -76,7 +76,76 @@ public class Dao {
 		}
 		return false;
 	}
+	///////////////////로그인 후 상태//////////////////////////
+	public boolean loginnext(Dto dto) {
+		String sql = "select  * from member where name = ? and pw =? and phone = ?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, dto.getName());
+			ps.setString(2, dto.getPw());
+			ps.setString(3, dto.getPhone());
+			rs = ps.executeQuery();
 
+			if (rs.next()) {
+				return true;
+			} else {
+				return false;
+			}
+
+			
+		} catch (Exception e) {System.out.println("loginnext"+e);}
+		return false;
+	}
+	////////////////////////////회원수정 및 탈퇴
+	public boolean result_update(Dto dto) {
+		String sql = "update member set name = ? where phone = ?";
+		try {
+
+			ps = con.prepareStatement(sql);
+			ps.setString(1, dto.getL_phone());
+			ps.setString(2, dto.getL_name());
+			ps.executeUpdate();
+			return true;
+			
+		} catch (Exception e) {
+			System.out.println("오류업데이트"+e);
+		}
+		return false;
+		
+	}
+	//////////////////////////비밀번호수정////////////////////
+	public boolean result_update_pw(Dto dto) {
+		String sql = "update member set pw = ? where phone = ?";
+		try {
+
+			ps = con.prepareStatement(sql);
+			ps.setString(1, dto.getL_phone());
+			ps.setString(2, dto.getPw());
+			ps.executeUpdate();
+			return true;
+			
+		} catch (Exception e) {
+			System.out.println("오류업데이트1"+e);
+		}
+		return false;
+		
+	}
+	//////////////////////회원탈퇴//////////////////
+	public boolean delete(Dto dto) {
+		String sql = "delete from member where phone = ? and name = ?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(2, dto.getL_name());
+			ps.setString(1,dto.getL_phone());
+			ps.executeUpdate();
+			return true;
+			
+		} catch (Exception e) {
+			System.out.println("오류업데이트1"+e);
+		}
+		return false;
+		
+	}
 	// --- 게시판 --- //
 	// 1. 문의글 등록
 	public boolean regist(BoardDto dto) {

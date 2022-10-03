@@ -16,11 +16,10 @@ public class Start {
 		// Mainpage에 있는 첫 시작 메소드 호출만
 
 		Start start = new Start();
-		
 		//start.board();
 		//start.board_view();
 		start.getsingup();
-		// 
+
 	} // main 종료
 	
 	
@@ -30,11 +29,19 @@ public class Start {
 		Mainpage.getInstance().getsingup();
 	}
 	
-	//가입하기
+	//가입하기 및 로그인
 	public void getsingup() {
 		Mainpage.getInstance().getsingup();
+		loginnext();
 	}
-
+	//로그인후 상태
+	public void loginnext() {
+		Mainpage.getInstance().loginnext();
+		Mainpage.getInstance().mypage();
+	}
+	
+	
+	
 	// 게시판 보기
 	public void board() {
 		Mainpage.getInstance().board();

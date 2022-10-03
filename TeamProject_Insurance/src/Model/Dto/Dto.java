@@ -61,7 +61,11 @@ public class Dto {
 		this.l_phone = l_phone;
 	}
 
-
+	public Dto(String name , String pw , String phone) {
+		this.name = name;
+		this.pw = pw;
+		this.phone= phone;
+	}
 
 	
 	// getter, setter
