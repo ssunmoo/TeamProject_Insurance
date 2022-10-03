@@ -30,8 +30,19 @@ public class Controller {
 		Dto dto = new Dto(l_name, l_phone);
 		return Dao.getInstance().login(dto);
 	}
-	
-	
+	//마이페이지
+	public boolean loginnext(String name,String pw, String phone) {
+		Dto dto = new Dto(name,pw,phone);
+		return Dao.getInstance().loginnext(dto);
+	}
+	public boolean result_update( String l_phone,String l_name) {
+		Dto dto = new Dto(l_phone , l_name);
+		return Dao.getInstance().result_update(dto);
+	}
+	public boolean delete(String delete_name ,String delete_num) {
+		Dto dto = new Dto(delete_name, delete_num); 
+		return Dao.getInstance().delete(dto);
+	}
 	
 	
 	

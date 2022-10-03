@@ -8,6 +8,7 @@ import Model.Dto.BoardDto;
 import Model.Dto.Dto;
 
 public class Mainpage {
+	int state = 0;//로그인 상태표시
 	// 현재 페이지 객체 선언
 	private static Mainpage Mpage = new Mainpage();
 
@@ -27,7 +28,7 @@ public class Mainpage {
 /////////////// 가입하기 && 접속 경로 ///////////////////////////////////////////////////
 
 	void getsingup() {
-		int state = 0; //
+		 //
 
 		while (true) {
 			System.out.println(" [안내] 접속하려는 경로를 선택해주세요.\n");
@@ -40,7 +41,7 @@ public class Mainpage {
 
 				if (ch == 1) { // 회원가입 선택
 
-					System.out.println(" ▬▬▬▬▬▬▬▬▬▬▬▬▬▬ 회원가입 페이지 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+					System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬ 회원가입 페이지 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
 
 					System.out.print(" 이름[아이디] 입력: ");
 					String name = scanner.next();
@@ -67,37 +68,138 @@ public class Mainpage {
 				///////////////////////////////////////////////////////////////////////////////
 
 				if (state == 1 || ch == 2) {
-					System.out.println(" ▬▬▬▬▬▬▬▬▬▬▬▬▬▬ 로그인 페이지 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
-					System.out.println("로그인하시겠습니까?[Y/N]");
+					System.out.println("===============로그인 페이지===============");
+					System.out.println("▬▬▬▬▬▬▬▬[안내]로그인하시겠습니까?[Y/N]▬▬▬▬▬▬▬▬");
+					System.out.println("=======================================");
 					String loginsign = scanner.next();
 					if (loginsign.equals("Y") || loginsign.equals("y")) {
-						System.out.print("이름 : ");
+						System.out.print("이름을 입력해주세요 : ");
 						String l_name = scanner.next();
-						System.out.print("전화번호 : ");
+						System.out.print("전화번호를 입력해주세요 : ");
 						String l_phone = scanner.next();
 						boolean result1 = Controller.getInStance().login(l_name, l_phone);
 						if (result1) {
-							System.out.println("로그인되었습니다");
+							System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬로그인되었습니다▬▬▬▬▬▬▬▬▬▬▬▬");
 							state = 2;
+								if(result1 ==true) {
+									System.out.println("\t\t\t"+l_name+"님 반갑습니다.");
+								}
 						} else {
-							System.out.println("로그인실패하였습니다");
+							System.out.println("[안내]로그인실패하였습니다.존재하지 않는 계정입니다 ");
+							System.out.println("다시 선택해주세요");
+							continue;
 						}
 					} else {
-						System.out.println("[취소]처음으로 돌아갑니다.");
+						System.out.println("[취소]처음으로 돌아갑니다.");continue;
 					}
-				}
+				}break;
 
 			}
-
-			else if (btn == 2) {
-			} else {
-				System.out.println("경로가 없습니다.");
-			}
+			else if (btn == 2) {}
+		    else {System.out.println("경로가 없습니다.");}
 		}
 
 	} // getsingup 메소드 종료
 
+	
+	////////////////////////////////로그인이후 상태선택//////////////
+	
+	void loginnext() {
+		while(true) {
+			if(state==2) {
+				System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬[선택이용]▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+				System.out.println("[1.보험가입 2.가입한 보험내역 확인 3.게시판이용]");
+				System.out.println("========[4.로그아웃][5.마이페이지]========");
+				System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+				System.out.println("선택란 : ");int ch2 = scanner.nextInt();
+					if(ch2==1) {}
+					else if(ch2==2){}
+					else if(ch2==3) {board();}
+					else if(state==2&&ch2==4) {
+							System.out.println("다음에 또 만나요");
+							state = 0;
+							getsingup();break;}
+					else if (ch2==5) {
+						System.out.print("▬▬▬▬▬▬▬▬▬▬▬▬이름을 입력해주세여:▬▬▬▬▬▬▬▬▬▬▬▬");
+						String name = scanner.next();
+						System.out.print("▬▬▬▬▬▬▬▬▬▬▬▬비밀번호를 입력해주세요:▬▬▬▬▬▬▬▬▬");
+						String pw = scanner.next();
+						System.out.print("▬▬▬▬▬▬▬▬▬▬▬▬전화번호를 입력해주세요:▬▬▬▬▬▬▬▬▬");
+						String phone = scanner.next();
+						boolean result1 = Controller.getInStance().loginnext(name,pw,phone);
+						if(result1) {
+							System.out.println("[안내]확인되었습니다");
+							state = 3;
+						}else {System.out.println("[안내]계정인증이 잘못되었습니다");
+							System.out.println("다시 입력해주세요");
+							continue;
+						}
+					}		
+					else {System.out.println("다시선택해주세요");ch2 = scanner.nextInt();}
+			}
+			break;
+		}
+		
+	}
+	void mypage() {
+		while(true) {
+			if(state ==3 ) {
+				System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[선택이용]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+				System.out.println("▬▬▬▬▬▬1.[회원정보수정]▬▬▬▬▬▬2.[회원탈퇴]▬▬▬▬▬▬"); 
+				System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+				try {
+					int mypage = scanner.nextInt();
+					if(mypage == 1) {
+						System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬수정할 항목 선택▬▬▬▬▬▬▬▬▬▬▬▬");
+						System.out.println("▬▬▬▬▬▬1.[이름]▬▬▬▬▬▬▬2.[비밀번호]▬▬▬▬▬▬");
+						System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"); int update = scanner.nextInt();
+							if(update == 1 && state == 3) {
+								System.out.println("[계정 인증]변경할 계정의 전화번호를 입력해주세요"); String phone = scanner.next();
+								System.out.println("변경할 이름을 입력해주세요");String update_name = scanner.next();
+								
+								boolean result_update = Controller.getInStance().result_update(phone, update_name);
+									if(result_update) {System.out.println("수정이 완료되었습니다.");}
+									else {System.out.println("전화번호가 틀렸습니다.");}
+							
+							}
+							else if (update == 2&& state == 3) {
+								System.out.println("[계정 인증]수정할 계정의 전화번호를 입력해주세요"); String phone = scanner.next();
+								System.out.println("변경할 이름을 입력해주세요");String update_pw = scanner.next();
+									boolean result_update_pw = Controller.getInStance().result_update(phone, update_pw);
+										if(result_update_pw) {System.out.println("수정이 완료되었습니다.");}
+										else {System.out.println("전화번호가 틀렸습니다.");}
+							}
+							else {System.out.println("선택할 수 없습니다.");}
+						
+					}
+					else if(mypage == 2) {
+						System.out.println("탈퇴할 계정의 이름을 입력해주세요"); String delete_name = scanner.next();
+						System.out.println("탈퇴할 계정의 전화번호를 입력해주세요"); String delete_num = scanner.next();
+						System.out.println("탈퇴할 계정의 비밀번호를 입력해주세요"); String delete_pw = scanner.next();
+						System.out.println(delete_name+"님 맞습니까?");
+						System.out.println("탈퇴하시겠습니까?[Y/N]"); String ch = scanner.next();
+							if(ch.equals("y")|| ch.equals("Y")) {
+								System.out.println("[안내]탈퇴하겠습니다.");
+								boolean  delete = Controller.getInStance().delete(delete_name,delete_num);
+									if(delete) {System.out.println("탈퇴가 완료되었습니다");}
+									else {System.out.println("탈퇴가 실패하였습니다.[계정없음]");continue;}
+								
+								}else {System.out.println("취소하겠습니다");}
+							}
+					else {System.out.println("선택할 수 없습니다");}
+				} catch (Exception e) {
+					System.out.println("숫자를 입력해주세요");return;
+					
+				}
+								
+				
+			}
+		}
+		
+		
+	}
 
+///////////////////////////////////////////////////
 
 	
 	// --- 게시판 --- //
@@ -143,6 +245,7 @@ public class Mainpage {
 		System.out.println(" 번호\t제목\t이름\t연락처");
 		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
 		for( BoardDto dto : list ) {
+		
 			System.out.print("  "+ dto.getB_num() + "\t");
 			System.out.print(dto.getB_title() + "\t");
 			System.out.print(dto.getName() + "\t");
