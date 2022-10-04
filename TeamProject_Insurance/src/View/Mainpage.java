@@ -1,5 +1,6 @@
 package View;
 
+
 import java.util.ArrayList;
 import java.util.Scanner;
 import Controller.Controller;
@@ -28,6 +29,7 @@ public class Mainpage {
 	// ---가입하기 && 접속 경로 --- //
 
 	void getsingup() {
+
 		while (true) {
 			System.out.println(" [안내] 접속하려는 경로를 선택해주세요.\n");
 			System.out.println(" 1.고객 2.보험사 : ");
@@ -61,10 +63,9 @@ public class Mainpage {
 					} else {
 						System.err.println(" [안내] 회원가입이 실패되었습니다. ");
 					}
-
 				} // ch 1 회원가입 if 종료
-				
-			///////////////////////////////////////////////////////////////////////////////
+			
+				////////////////////////////////////로그인///////////////////////////////////////////
 
 				if (state == 1 || ch == 2) {
 					System.out.println("===============로그인 페이지===============");
@@ -82,6 +83,7 @@ public class Mainpage {
 							state = 2;
 								if(result1 ==true) {
 									System.out.println("\t\t\t"+l_name+"님 반갑습니다.");
+									loginnext();
 								}
 						} else {
 							System.err.println("[안내]로그인 실패하였습니다.존재하지 않는 계정입니다 ");
@@ -135,14 +137,13 @@ public class Mainpage {
 				System.out.println("[1.보험가입 2.가입한 보험내역 확인 3.게시판이용]");
 				System.out.println("========[4.로그아웃][5.마이페이지]========");
 				System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+
 				System.out.println("선택 ▶  ");int ch2 = scanner.nextInt();
 					if(ch2==1) {
-						
 						list();
 					}
-					else if(ch2==2){}
+					else if(ch2==2){myinsurance();}
 					else if(ch2==3) {
-						
 						while ( true ) {
 							Boardpage.getInstance().board();
 							System.out.println();
@@ -173,32 +174,33 @@ public class Mainpage {
 							}
 						} // while 종료
 					} // ch2 == 3 종료
-					
+
 					else if(state==2&&ch2==4) {
-						System.out.println("로그아웃 되었습니다.");
+						System.out.println("다음에 또 만나요");
 						state = 0;
 						getsingup();break;}
-					else if (ch2==5) {
-						System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬이름을 입력해주세요:▬▬▬▬▬▬▬▬▬▬▬▬");
+				else if (ch2==5) {
+						System.out.print("이름을 입력해주세여:");
 						String name = scanner.next();
-						System.out.print("▬▬▬▬▬▬▬▬▬▬▬▬비밀번호를 입력해주세요:▬▬▬▬▬▬▬▬▬");
+						System.out.print("비밀번호를 입력해주세요:");
 						String pw = scanner.next();
-						System.out.print("▬▬▬▬▬▬▬▬▬▬▬▬전화번호를 입력해주세요:▬▬▬▬▬▬▬▬▬");
+						System.out.print("전화번호를 입력해주세요:");
 						String phone = scanner.next();
 						boolean result1 = Controller.getInStance().loginnext(name,pw,phone);
 						if(result1) {
-							System.out.println("[안내] 확인되었습니다");
+							System.out.println("[안내]확인되었습니다");
 							state = 3;
-						}else {System.err.println("[안내] 계정인증이 잘못되었습니다");
-							System.err.println("다시 입력해주세요");
+						}else {System.out.println("[안내]계정인증이 잘못되었습니다");
+							System.out.println("다시 입력해주세요");
 							continue;
 						}
 					}		
-					else {System.out.println("다시 선택해주세요");ch2 = scanner.nextInt();}
+				else {System.out.println("다시선택해주세요");ch2 = scanner.nextInt();}
 			}
 			break;
 		} // while 종료
 	} // loginnext 메소드 종료
+	
 	
 	//////////////////////보험가입////////////////////////
 	void list() {
@@ -223,14 +225,14 @@ public class Mainpage {
 		}
 	}
 	
-	//////////////////////////////////////////////////////////
-	
-	// --- 마이페이지 --- //
+
+	//////////////////////////////////////////////수정&탈퇴///////////////////////////////
+
 	void mypage() {
 		while(true) {
 			if(state == 3 ) {
 				System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[선택이용]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
-				System.out.println("▬▬▬▬▬▬1.[회원정보수정]▬▬▬▬▬▬2.[회원탈퇴]▬▬▬▬▬▬"); 
+				System.out.println("==1.[회원정보수정]=============2.[회원탈퇴]=="); 
 				System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
 				try {
 					int mypage = scanner.nextInt();
@@ -266,12 +268,17 @@ public class Mainpage {
 							if(ch.equals("y")|| ch.equals("Y")) {
 								System.out.println("[안내] 탈퇴하겠습니다.");
 								boolean  delete = Controller.getInStance().delete(delete_name,delete_num);
-									if(delete) {System.out.println("탈퇴가 완료되었습니다");}
-									else {System.err.println("탈퇴가 실패하였습니다. [계정없음]");continue;}
-								
-								}else {System.out.println("취소 하겠습니다");}
-							} // mypage == 2 if 종료
-					else {System.out.println("선택할 수 없습니다");}
+
+									if(delete) {System.out.println("탈퇴가 완료되었습니다");
+												System.out.println("메인화면으로 넘어갑니다.");
+												getsingup();
+									}
+									
+									else {System.out.println("탈퇴가 실패하였습니다.[계정없음]");continue;}
+
+								}else {System.out.println("취소하겠습니다");}
+							}
+					else{System.out.println("선택할 수 없습니다");}
 				} catch (Exception e) {
 					System.out.println("숫자를 입력해주세요");return;
 					
@@ -280,8 +287,24 @@ public class Mainpage {
 		} // while 종료
 	} // mypage 메소드 종료
 
-///////////////////////////////////////////////////
 
+///////////////////////////////////보험 내역 확인//////////////////////////////////////////////////
+	void myinsurance() {
+		while(true) {
+			
+			System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬가입된 보험 리스트▬▬▬▬▬▬▬▬▬▬▬▬▬");
+			System.out.println("순서\t"+"\t종류\t\t담당상담사");
+			
+			
+			System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+			System.out.println("확인할 보험을 선택해주세요"); int choice = scanner.nextInt();
+			System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+				
+			}
+		
+	}
+	
+	
 
 		
 		
