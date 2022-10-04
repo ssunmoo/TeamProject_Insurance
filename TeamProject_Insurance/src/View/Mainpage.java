@@ -282,19 +282,27 @@ public class Mainpage {
 ///////////////////////////////////보험 내역 확인//////////////////////////////////////////////////
 	void myinsurance() {
 		while(true) {
-			
+			ArrayList<Dto>myinsur = Controller.getInStance().myinsur();
 			System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬가입된 보험 리스트▬▬▬▬▬▬▬▬▬▬▬▬▬");
-			System.out.println("순서\t"+"\t종류\t\t담당상담사");
-			
-			
-			System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
-			System.out.println("확인할 보험을 선택해주세요"); int choice = scanner.nextInt();
-			System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+			System.out.println("=[선택번호]==========보험명========보험내용===");
 				
-			}
+				if(!myinsur.equals(null)) {
+					for(Dto dto : myinsur) {
+					System.out.print(" [" + dto.getS_num() + "]\t\t");
+					System.out.print("  " + dto.getS_name() + "\t\t");
+					System.out.println("  " + dto.getS_text() + "\t");
+					}
+				}else if(myinsur.equals(null)) {System.out.println("가입한 보험이 없습니다.");}
+				
+			System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+			System.out.println("확인할 보험을 선택해주세요 [y][뒤로가기]: "); String choice = scanner.next();
+				if(choice.equals("y")||choice.equals("Y")) {
+					loginnext();
+				}	
+				
 		
+		}
 	}
-	
 	
 
 		

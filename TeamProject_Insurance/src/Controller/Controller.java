@@ -51,7 +51,9 @@ public class Controller {
 	
 	///////////////////////////////보험내역확인//////////////////////
 	
-	
+	public ArrayList<Dto>myinsur(){
+		return Dao.getInstance().myinsur();
+	}
 
 	
 	

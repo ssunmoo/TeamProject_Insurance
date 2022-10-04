@@ -33,7 +33,7 @@ public class Dao {
 		} // try 종료
 
 		catch (Exception e) {
-			System.out.println(e);
+			System.out.println("오류"+e);
 		} // catch 종료
 	} // Dao 메소드 종료
 
@@ -180,13 +180,29 @@ public class Dao {
 			} 
 			return list;
 		}
-		catch (Exception e) {System.out.println("list"+e);
+		catch (Exception e) {System.out.println("list11"+e);
 				return list;
 		}
 		
 	} // list 메소드 종료
 		
-
-
+	///////////가입 보험 표시/////////////
+	
+	public ArrayList<Dto>myinsur(){
+		ArrayList<Dto>myinsur =new ArrayList<>();
+		String sql = "select* from history ";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				Dto dto = new Dto(rs.getString(1),rs.getString(2),rs.getString(3));
+				myinsur.add(dto);
+			}
+			return myinsur;
+		} catch (Exception e) {
+			System.out.println("myinsur"+e);
+		}
+		return myinsur;	
+	}
 	
 } // class 종료
