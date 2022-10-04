@@ -18,7 +18,7 @@ public class Start {
 		Start start = new Start();
 		//start.board();
 		//start.board_view();
-		start.getsingup();
+		start.work();
 
 	} // main 종료
 	
@@ -55,6 +55,17 @@ public class Start {
 	// 답글 보기
 	public void reply_view() {
 		Mainpage.getInstance().reply_view( 0 );
+	}
+	
+	
+	
+	public void work() {
+		Mainpage.getInstance().age();
+		Mainpage.getInstance().category();
+	}
+	
+	public void category() {
+		Mainpage.getInstance().category();
 	}
 
 } // class 종료
