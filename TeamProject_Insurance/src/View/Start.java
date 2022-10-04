@@ -15,7 +15,7 @@ public class Start {
 		//start.board();
 		//start.board_view();
 		start.getsingup();
-		
+
 	} // main 종료
 	
 	// 첫화면
@@ -51,11 +51,63 @@ public class Start {
 		Boardpage.getInstance().reply_view( 0 );
 	}
 
+	//////////////////////////////////////////////////////////////
 	
+	// 상담사 리스트
+	public void worklist() {
+		Workpage.getInstance().worklist();
+	}
+	// 상담사 추가
+	public void view_regist() {
+		Workpage.getInstance().view_regist();
+	}
+
+	//////////////////////////////////////////////////////////////
+	// 보험리스트 출력
 	
+	//암보험 리스트
+	public void listinsurance() {
+		Workpage.getInstance().listinsurance();
+	}
+	//손해보험 리스트
+	public void listinsurance2() {
+		Workpage.getInstance().listinsurance2();
+	}
+	//치아보험 리스트
+	public void listinsurance3() {
+		Workpage.getInstance().listinsurance3();
+	}
+	//암 리스트
+	public void listadd() {
+		Workpage.getInstance().listadd( );
+	}
+	//손해 리스트
+	public void listadd2() {
+		Workpage.getInstance().listadd2();
+	}
+	//치아 리스트
+	public void listadd3() {
+		Workpage.getInstance().listadd3();
+	}
 	
+	//암 리스트 삭제
+	public void listdelete() {
+		Workpage.getInstance().listdelete();
+	}
+	//손해 리스트 삭제
+	public void listdelete2() {
+		Workpage.getInstance().listdelete2();
+	}
+	//치아 리스트 삭제
+	public void listdelete3() {
+		Workpage.getInstance().listdelete3();
+	}
 	
-	
+	// 추천
+	public void age() {
+		Workpage.getInstance().age();
+	}
+
 } // class 종료
 
 

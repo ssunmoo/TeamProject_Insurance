@@ -37,6 +37,14 @@ public class WorkDto {
 		this.phone1 = phone1;
 	}
 	
+
+	// 보험 리스트 보기
+	public WorkDto(int s_num, String s_name, String s_text, int age) {
+	     this.s_num = s_num;
+	     this.s_name = s_name;
+	     this.s_text = s_text;
+	     this.age = age;
+	}
 	public WorkDto(int c_num, int s_num, String s_name, String s_text, int age) {
 		super();
 		this.c_num = c_num;
@@ -46,9 +54,12 @@ public class WorkDto {
 		this.age = age;
 	}
 	
-	public WorkDto(int int1, String string, String string2, int int2) {
-		// TODO Auto-generated constructor stub
+	public WorkDto(int w_num, String w_name) {
+		super();
+		this.w_num = w_num;
+		this.w_name = w_name;
 	}
+
 	
 	@Override
 	public String toString() {
@@ -63,23 +74,20 @@ public class WorkDto {
 	
 	// 가입 생성자
 	public void Dto(String name, String pw, String phone, String ssn) {
-		this.name = name;
-		this.pw = pw;
-		this.phone = phone;
-		this.ssn = ssn;
+	this.name = name;
+	this.pw = pw;
+	this.phone = phone;
+	this.ssn = ssn;
 	}
 	
 	// 로그인 생성자
 	public void Dto(String l_name, String l_phone) {
-		this.l_name = l_name;
-		this.l_phone = l_phone;
+	this.l_name = l_name;
+	this.l_phone = l_phone;
+	
 	}
 	
-	// 상담사 리스트
-	public WorkDto(int w_num, String w_name) {
-		this.w_num = w_num;
-		this.w_name = w_name;
-	}
+	
 	
 	
 	// getter, setter
