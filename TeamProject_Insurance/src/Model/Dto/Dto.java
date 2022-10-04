@@ -67,7 +67,6 @@ public class Dto {
 		this.phone= phone;
 	}
 
-	
 	// getter, setter
 	
 	

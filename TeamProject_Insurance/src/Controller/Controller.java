@@ -16,6 +16,14 @@ public class Controller {
 	public static Controller getInStance() {
 		return control;
 	}
+	
+	
+	
+	// --- 회원가입 --- //
+	public boolean signup( String name, String pw, String phone, String ssn ) {
+		Dto dto = new Dto( name, pw, phone, ssn );
+		return Dao.getInstance().signup(dto);
+	}
 
 	
 	

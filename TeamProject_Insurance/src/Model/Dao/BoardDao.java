@@ -117,7 +117,7 @@ public class BoardDao {
 	// 5. 게시글 상세보기
 	public BoardDto board_view(int b_num) {
 		BoardDto dto = null;
-		String sql = "select * from board where b_num = ?";
+		String sql = "select * from board where b_num = ? ";
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, b_num);
@@ -131,7 +131,6 @@ public class BoardDao {
 			System.out.println(e);
 		}
 		return dto;
-	
 	} // board_view 메소드 종료
 
 	// 6. 상담사 답글 쓰기

@@ -35,7 +35,6 @@ public class Dao {
 		catch (Exception e) {
 			System.out.println(e);
 		} // catch 종료
-
 	} // Dao 메소드 종료
 
 	////////////////////// 가입하기&& 접속경로 ////////////////////////
@@ -146,12 +145,26 @@ public class Dao {
 		return false;
 		
 	}
-	
 
 	
-	
-	
-	
+	// --- 회원가입 --- //
+		// 1. 가입 개인정보 입력
+	public boolean signup( Dto dto ) {
+		String sql = "insert into member values(?,?,?,?);";
+		try {
+			ps = con.prepareStatement(sql);
+			//
+			ps.setString( 1 , dto.getName() );
+			ps.setString( 2 , dto.getPw() );
+			ps.setString( 3 , dto.getPhone() );
+			ps.setString( 4 , dto.getSsn() );
+			ps.executeUpdate();
+			return true;
+		}catch( Exception e ) {
+			System.out.println( "0"+e );
+		}
+		return false;
+	} // signup end
 	
 	
 } // class 종료
