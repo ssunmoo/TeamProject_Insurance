@@ -1,9 +1,9 @@
 package Model.Dto;
 
 public class Dto {
-	
+	 
 	// 필드
-								// 회원
+								// 회원가입
 	private String name;		// 이름
 	private String pw;			// 비밀번호
 	private String phone;		// 연락처(식별자 PK)
@@ -66,8 +66,12 @@ public class Dto {
 		this.pw = pw;
 		this.phone= phone;
 	}
-
 	
+	// 보험가입 생성자
+	public Dto(int c_num) {
+		this.c_num = c_num;
+	}
+
 	// getter, setter
 	
 	
@@ -214,6 +218,7 @@ public class Dto {
 	public void setW_reply(String w_reply) {
 		this.w_reply = w_reply;
 	}
+	
 	
 	
 	
