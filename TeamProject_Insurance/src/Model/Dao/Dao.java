@@ -37,6 +37,7 @@ public class Dao {
 		} // catch 종료
 	} // Dao 메소드 종료
 
+	
 	////////////////////// 가입하기&& 접속경로 ////////////////////////
 	public boolean getsingup(Dto dto) {
 		String sql = "insert into member values(?,?,?,?)";
@@ -52,13 +53,12 @@ public class Dao {
 			System.out.println("singup오류" + e);
 		}
 		return false;
-	}
+	} // getsingup 메소드 종료
 
-	/////////////////////////로그인/////////////////////////////////
+	// --- 로그인 --- //
 	public boolean login(Dto dto) {
 		String sql = "select  * from member where name = ? and phone = ?"; // select name ,phone from member
 		try {
-
 			ps = con.prepareStatement(sql);
 			ps.setString(1, dto.getL_name());
 			ps.setString(2, dto.getL_phone());
@@ -69,13 +69,12 @@ public class Dao {
 			} else {
 				return false;
 			}
-
 		} catch (Exception e) {
 			System.out.println("singup오류" + e);
 		}
 		return false;
 	}
-	///////////////////로그인 후 상태//////////////////////////
+	// 1. 로그인 후 상태
 	public boolean loginnext(Dto dto) {
 		String sql = "select  * from member where name = ? and pw =? and phone = ?";
 		try {
@@ -90,12 +89,12 @@ public class Dao {
 			} else {
 				return false;
 			}
-
-			
 		} catch (Exception e) {System.out.println("loginnext"+e);}
 		return false;
-	}
-	////////////////////////////회원수정 및 탈퇴
+	} // loginnext 메소드 종료
+	
+	
+	// 2. 회원수정 및 탈퇴
 	public boolean result_update(Dto dto) {
 		String sql = "update member set name = ? where phone = ?";
 		try {
@@ -107,12 +106,13 @@ public class Dao {
 			return true;
 			
 		} catch (Exception e) {
-			System.out.println("오류업데이트"+e);
+			System.out.println("오류업데이트" + e);
 		}
 		return false;
 		
-	}
-	//////////////////////////비밀번호수정////////////////////
+	} // result_update 메소드 종료
+	
+	// 3. 비밀번호수정
 	public boolean result_update_pw(Dto dto) {
 		String sql = "update member set pw = ? where phone = ?";
 		try {
@@ -124,12 +124,13 @@ public class Dao {
 			return true;
 			
 		} catch (Exception e) {
-			System.out.println("오류업데이트1"+e);
+			System.out.println("오류업데이트1" + e);
 		}
 		return false;
 		
-	}
-	//////////////////////회원탈퇴//////////////////
+	} // result_update_pw 메소드 종료
+	
+	// 4. 회원탈퇴
 	public boolean delete(Dto dto) {
 		String sql = "delete from member where phone = ? and name = ?";
 		try {
@@ -140,31 +141,32 @@ public class Dao {
 			return true;
 			
 		} catch (Exception e) {
-			System.out.println("오류업데이트1"+e);
+			System.out.println("오류업데이트1" + e);
 		}
 		return false;
 		
-	}
+	} // delete 메소드 종료
 
-	
-	// --- 회원가입 --- //
-		// 1. 가입 개인정보 입력
-	public boolean signup( Dto dto ) {
-		String sql = "insert into member values(?,?,?,?);";
+	// --- 보험가입 --- //
+	public ArrayList<Dto> list(){
+		ArrayList<Dto>list = new ArrayList<>();
+		String sql = "select c_title from sublist where c_num = ?;";
 		try {
 			ps = con.prepareStatement(sql);
-			//
-			ps.setString( 1 , dto.getName() );
-			ps.setString( 2 , dto.getPw() );
-			ps.setString( 3 , dto.getPhone() );
-			ps.setString( 4 , dto.getSsn() );
-			ps.executeUpdate();
-			return true;
-		}catch( Exception e ) {
-			System.out.println( "0"+e );
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				Dto dto = new Dto(rs.getInt(1));
+				list.add(dto);
+			} 
+			return list;
 		}
-		return false;
-	} // signup end
-	
+		catch (Exception e) {System.out.println("list"+e);
+				return list;
+		}
+		
+	} // list 메소드 종료
+		
+
+
 	
 } // class 종료

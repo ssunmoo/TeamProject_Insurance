@@ -18,15 +18,6 @@ public class Controller {
 	}
 	
 	
-	
-	// --- 회원가입 --- //
-	public boolean signup( String name, String pw, String phone, String ssn ) {
-		Dto dto = new Dto( name, pw, phone, ssn );
-		return Dao.getInstance().signup(dto);
-	}
-
-	
-	
 	// --- 회원가입 --- //	
 	public boolean getsingup(String name,String pw, String phone, String ssn) {
 		Dto dto = new Dto(name, pw, phone, ssn);
@@ -38,6 +29,7 @@ public class Controller {
 		Dto dto = new Dto(l_name, l_phone);
 		return Dao.getInstance().login(dto);
 	}
+	
 	//마이페이지
 	public boolean loginnext(String name,String pw, String phone) {
 		Dto dto = new Dto(name,pw,phone);
@@ -52,9 +44,15 @@ public class Controller {
 		return Dao.getInstance().delete(dto);
 	}
 	
+	// --- 보험가입 --- //
+	public ArrayList<Dto>list() {
+		return Dao.getInstance().list();
+	}
 	
 	
 	
+	
+
 
 	
 	
