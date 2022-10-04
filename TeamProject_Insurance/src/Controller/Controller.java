@@ -49,6 +49,11 @@ public class Controller {
 		return Dao.getInstance().list();
 	}
 	
+	///////////////////////////////보험내역확인//////////////////////
+	
+	
+
+	
 	
 	
 	

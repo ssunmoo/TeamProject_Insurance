@@ -4,7 +4,6 @@ import java.util.Scanner;
 import Controller.Controller;
 import Model.Dao.Dao;
 
-
 public class Start {
 
 	Scanner scanner = new Scanner(System.in);
