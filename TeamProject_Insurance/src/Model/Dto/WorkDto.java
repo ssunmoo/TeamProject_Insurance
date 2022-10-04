@@ -63,24 +63,28 @@ public class WorkDto {
 	
 	// 가입 생성자
 	public void Dto(String name, String pw, String phone, String ssn) {
-	this.name = name;
-	this.pw = pw;
-	this.phone = phone;
-	this.ssn = ssn;
+		this.name = name;
+		this.pw = pw;
+		this.phone = phone;
+		this.ssn = ssn;
 	}
 	
 	// 로그인 생성자
 	public void Dto(String l_name, String l_phone) {
-	this.l_name = l_name;
-	this.l_phone = l_phone;
+		this.l_name = l_name;
+		this.l_phone = l_phone;
 	}
 	
-	
+	// 상담사 리스트
+	public WorkDto(int w_num, String w_name) {
+		this.w_num = w_num;
+		this.w_name = w_name;
+	}
 	
 	
 	// getter, setter
 	public String getName() {
-	return name;
+		return name;
 	}
 	
 	public String getPhone1() {
