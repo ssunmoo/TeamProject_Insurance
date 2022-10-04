@@ -211,7 +211,6 @@ public class Mainpage {
 ///////////////////////////////////보험 내역 확인//////////////////////////////////////////////////
 	void myinsurance() {
 		while(true) {
-			
 			System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬가입된 보험 리스트▬▬▬▬▬▬▬▬▬▬▬▬▬");
 			System.out.println("순서\t"+"\t종류\t\t담당상담사");
 			

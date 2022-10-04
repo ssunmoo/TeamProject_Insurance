@@ -146,6 +146,25 @@ public class Dao {
 		return false;
 		
 	}
+	
+	//////////////////가입 내역////////////
+//	ArrayList<Dto>myinsurance(){
+//		ArrayList<Dto>list = new ArrayList<>();
+//		String sql = "select * from history";
+//		try {
+//			ps = con.prepareStatement(sql);
+//			rs = ps.executeQuery();
+//			while(rs.next()) {
+//				list.add(rs.getString(1));
+//			}
+//			return list;
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
+//		return list;
+//		
+//	}
+	
 	// --- 게시판 --- //
 	// 1. 문의글 등록
 	public boolean regist(BoardDto dto) {
