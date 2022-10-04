@@ -24,7 +24,6 @@ public class Start {
 	} // main 종료
 	
 	
-	
 	// 첫화면
 	public void signup() {
 		Mainpage.getInstance().getsingup();
@@ -45,17 +44,17 @@ public class Start {
 	
 	// 게시판 보기
 	public void board() {
-		Mainpage.getInstance().board();
-		Mainpage.getInstance().regist();
+		Boardpage.getInstance().board();
+		Boardpage.getInstance().regist();
 	}
 	
 	// 게시판 상세 보기
 	public void board_view() {
-		Mainpage.getInstance().board_view();
+		Boardpage.getInstance().board_view();
 	}
 	// 답글 보기
 	public void reply_view() {
-		Mainpage.getInstance().reply_view( 0 );
+		Boardpage.getInstance().reply_view( 0 );
 	}
 
 } // class 종료
