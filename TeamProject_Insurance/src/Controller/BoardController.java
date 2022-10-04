@@ -46,13 +46,12 @@ public class BoardController {
 	// 5. 게시글 상세보기
 	public BoardDto board_view( int b_num ) {
 		return BoardDao.getInstance().board_view( b_num );
-	}
+	} 
 	
 	// 6. 상담사 답글 쓰기
 	public boolean reply( String w_reply, String w_name, int b_num ) {
 		BoardDto dto = new BoardDto( w_reply , w_name, b_num );
 		return BoardDao.getInstance().reply( dto );
-		
 	} // reply 종료
 	
 	// 7. 상담사 답글 보기

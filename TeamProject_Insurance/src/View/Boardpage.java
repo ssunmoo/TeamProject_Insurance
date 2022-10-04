@@ -185,13 +185,13 @@ public class Boardpage {
 	} // reply 종료
 	
 	// 7. 상담사 답글 보기
-		public void reply_view( int b_num ) {
-			ArrayList< BoardDto > list = BoardController.getInStance().reply_view( b_num );
-			for( BoardDto dto : list ) {
-				System.out.println(" ↪ re: " + dto.getW_reply() + "\n");
-				System.out.println("\t\t\t    [" + dto.getW_name()+"]");
-				System.out.println("-----------------------------------");
-			} 
+	public void reply_view( int b_num ) {
+		ArrayList< BoardDto > list = BoardController.getInStance().reply_view( b_num );
+		for( BoardDto dto : list ) {
+			System.out.println(" ↪ re: " + dto.getW_reply() + "\n");
+			System.out.println("\t\t\t    [" + dto.getW_name()+"]");
+			System.out.println("-----------------------------------");
+		} 
 	} // reply_view 메소드 종료
 	
 }
