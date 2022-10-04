@@ -113,9 +113,9 @@ public class Workpage {
 			if (btn == 1) {
 				c_listinsurance();
 			} else if (btn == 2) {
-				listinsurance2();
+				c_listinsurance2();
 			} else if (btn == 3) {
-				listinsurance3();
+				c_listinsurance3();
 			}
 		}
 	}
@@ -298,8 +298,20 @@ public class Workpage {
 			}
 		}
 	}
+	// [ 고객 ] history 만들기
+		public void c_make() {
+			String name = Mainpage.getInstance().name;
+			boolean result = WorkController.c_make(name);
+			if (result) {
+				System.out.println("안내) 히스토리 생성 완료 ");
+			} else {
+				System.out.println("안내) 히스토리 생성 오류 ");
+			}
+			return;
+		}
 	// [ 고객 ] history 리스트
 		public void history() {
+			String name = Mainpage.getInstance().name;
 			ArrayList<WorkDto> listinsurance = WorkController.getInStance().history();
 			System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
 			System.out.println(" 번호   \t    명칭    \t 내용    \t    금액");
@@ -334,7 +346,8 @@ public class Workpage {
 		System.out.println("가입할 보험 번호를 입력해주세요 ");
 		System.out.print(" 번호 : ");
 		int choice = scanner.nextInt();
-		boolean result = WorkController.c_listadd(choice);
+		String name = Mainpage.getInstance().name;
+		boolean result = WorkController.c_listadd(choice , name);
 		if (result) {
 			System.out.println("안내) 암 보험 가입 완료 ");
 		} else {
@@ -346,7 +359,8 @@ public class Workpage {
 		void c_delete() {
 			System.out.print(" 삭제할 번호 : ");
 			int delete = scanner.nextInt();
-			boolean result = WorkController.c_delete(delete);
+			String name = Mainpage.getInstance().name;
+			boolean result = WorkController.c_delete(delete , name);
 			if (result) {
 				System.out.println("리스트 삭제 성공");
 			} else {
@@ -449,35 +463,23 @@ public class Workpage {
 
 	// 추천보험
 	public void age() {
-		int birth = Integer.parseInt(phone1);
-		int age = (2022 - 1900 - birth + 1);
-		ArrayList<WorkDto> recommend = WorkController.getInStance().recommend(age);
-		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
-		System.out.println(" 번호   \t    명칭    \t 내용    \t    금액");
+		String phone1 = Mainpage.getInstance().phone1;
+		String stringbirth = WorkController.age(phone1);
+		int intbirth = Integer.parseInt(stringbirth);
+		int age = (2022 - 1900 - intbirth + 1);
+		String stringage = Integer.toString(age);
+		char A = stringage.charAt(0);
+		ArrayList<WorkDto> recommend = WorkController.getInStance().recommend(A);
+		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬추천보험▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+		System.out.println("   명칭    \t 내용    \t    금액");
 		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
 		for (WorkDto dto1 : recommend) {
-			System.out.print("  " + dto1.getS_num() + "\t");
-			System.out.print("  " + dto1.getS_name() + "\t");
-			System.out.print("  " + dto1.getS_text() + "\t");
-			System.out.print("  " + dto1.getC_num() + "\t");
+			System.out.print( dto1.getS_text() + "\t\t");
+			System.out.print( dto1.getS_name() + "\t\t");
+			System.out.print( dto1.getAge() + "\t\t\t");
 			System.out.println("\n-------------------------------------------------");
 		}
-		while (true) {
-			System.out.println("1.추가 2.삭제 3.수정. 0.돌아가기");
-			int btn = scanner.nextInt();
-			if (btn == 1) {
-				listadd2();
-				break;
-			} else if (btn == 2) {
-				listdelete3();
-				break;
-			} else if (btn == 3) {
-			} else if (btn == 0) {
-				break;
-			} else {
-				System.out.println("잘못된 입력값 입니다.");
-			}
-		}
+		
 
 	} // board_view 메소드 종료
 

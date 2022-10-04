@@ -11,6 +11,7 @@ import Controller.Controller;
 import Model.Dto.BoardDto;
 import Model.Dto.Dto;
 import Model.Dto.WorkDto;
+import View.Mainpage;
 
 public class WorkDao {
 
@@ -148,8 +149,26 @@ public class WorkDao {
 	// 2. 보험 리스트 추가
 	
 	// [ 고객 ] history list 추가
-		public boolean c_listadd(int choice) {
-			String sql = "insert into history select * from sublist where s_num = ? ;";
+		public boolean c_make(String name) {
+			String sql ="create table "+name+"( \r\n"
+					+ "     s_num int auto_increment primary key,\r\n"
+					+ "	 s_name varchar(10),\r\n"
+					+ "	 s_text text,\r\n"
+					+ "	 c_num int ,\r\n"
+					+ "	 age int \r\n"
+					+ ");";
+			try {
+				ps = con.prepareStatement(sql);
+				ps.executeUpdate();
+				return true;
+			} catch (Exception e) {
+				System.out.println("경고) 히스토리 생성 실패 : " + e);
+			}
+			return false;
+		}
+	// [ 고객 ] history list 추가
+		public boolean c_listadd(int choice , String name) {
+			String sql = "insert into "+name+" select * from sublist where s_num = ? ;";
 			try {
 				ps = con.prepareStatement(sql);
 				ps.setInt(1, choice);
@@ -162,8 +181,8 @@ public class WorkDao {
 		}
 		
 	// [ 고객 ] history list 삭제  
-		public boolean c_delete(int delete) {
-			String sql = "delete from history where s_num = ?;";
+		public boolean c_delete(int delete,String name) {
+			String sql = "delete from "+name+" where s_num = ?;";
 			try {
 				ps = con.prepareStatement(sql);
 				ps.setInt(1, delete);
@@ -176,8 +195,10 @@ public class WorkDao {
 		
 	// [ 고객 ] history 출력
 		public ArrayList<WorkDto> history() {
+			String name = Mainpage.getInstance().name;
 			ArrayList<WorkDto> listinsurance = new ArrayList<>();
-			String sql = "select * from history;";
+
+			String sql = "select * from "+name+";";
 			try {
 				ps = con.prepareStatement(sql);
 				rs = ps.executeQuery();
@@ -187,7 +208,7 @@ public class WorkDao {
 				}
 				return listinsurance;
 			} catch (Exception e) {
-				System.out.println(e);
+				System.out.println(" 히스토리 불러오기 오류" + e);
 			}
 			return listinsurance;
 		}
@@ -283,31 +304,30 @@ public class WorkDao {
 
 	// 보험 추천
 	// 나이 출력
-	public WorkDto age(String phone1) {
+	public String age(String phone1) {
 		String sql = "select substring( ssn , 1, 2) as age  from member where phone = ?;";
-		WorkDto dto = null;
+		String intbirth = null ;
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, phone1);
 			rs = ps.executeQuery();
 
 			if (rs.next()) {
-				dto = new WorkDto(rs.getString(1));
-				return dto;
+				intbirth = rs.getString(1);
+				return intbirth;
 			}
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		return dto;
+		return intbirth;
 	}
-
+	
 	// 해당 나이 추천 보험 출력
-	public ArrayList<WorkDto> recommend(int age) {
+	public ArrayList<WorkDto> recommend( char A) {
 		ArrayList<WorkDto> recommend = new ArrayList<>();
-		String sql = "select *  from sublist a, sublist2 b, sublist3 c where a.age and b.age and c.age like ? ;";
+		String sql = "select *  from sublist where age like '"+A+"%' union all select *  from sublist2 where age like '"+A+"%' union all select *  from sublist3 where age like '"+A+"%';";
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setString(1, age + "%");
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				WorkDto dto1 = new WorkDto(rs.getInt(1), rs.getInt(4), rs.getString(3), rs.getString(2), rs.getInt(5));

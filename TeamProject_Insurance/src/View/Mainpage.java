@@ -23,7 +23,8 @@ public class Mainpage {
 	
 	// 스캐너 선언
 	Scanner scanner = new Scanner(System.in);
-
+	public String name;
+	public String phone1;
 	
 	// ---가입하기 && 접속 경로 --- //
 
@@ -58,6 +59,11 @@ public class Mainpage {
 					if (result) {
 						System.out.println(" [안내] 회원가입이 완료되었습니다. ");
 						state = 1;
+						this.name = name;
+						this.phone1 = phone;
+						Workpage.getInstance().c_make();
+						Workpage.getInstance().age();
+						
 					} else {
 						System.err.println(" [안내] 회원가입이 실패되었습니다. ");
 					}
@@ -80,8 +86,11 @@ public class Mainpage {
 						if (result1) {
 							System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬로그인 되었습니다▬▬▬▬▬▬▬▬▬▬▬▬");
 							state = 2;
+							this.name = l_name;
+							this.phone1 = l_phone;
 								if(result1 ==true) {
 									System.out.println("\t\t\t"+l_name+"님 반갑습니다.");
+									Workpage.getInstance().age();
 								}
 						} else {
 							System.err.println("[안내]로그인 실패하였습니다.존재하지 않는 계정입니다 ");

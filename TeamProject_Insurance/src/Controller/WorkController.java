@@ -55,14 +55,17 @@ public class WorkController {
 	public ArrayList<WorkDto> listinsurance3() {
 		return WorkDao.getInstance().listinsurance3();
 	}
-	
+	// [ 고객 ]history 만들기
+		public static boolean c_make(String name) {
+			return WorkDao.getInstance().c_make(name);
+		}
 	// [ 고객 ]history 추가
-	public static boolean c_listadd(int choice) {
-		return WorkDao.getInstance().c_listadd(choice);
+	public static boolean c_listadd(int choice, String name) {
+		return WorkDao.getInstance().c_listadd(choice, name);
 	}
 	// [ 고객 ]history 삭제
-	public static boolean c_delete(int delete) {
-		return WorkDao.getInstance().c_delete(delete);
+	public static boolean c_delete(int delete,String name) {
+		return WorkDao.getInstance().c_delete(delete,name);
 	}
 	// [ 고객 ]history 출력
 	public ArrayList<WorkDto> history() {
@@ -101,13 +104,13 @@ public class WorkController {
 	}
 
 	// 나이 출력
-	public static WorkDto age(String phone1) {
+	public static String age(String phone1) {
 		return WorkDao.getInstance().age(phone1);
 	}
 
 	// 동년배 보험 추천
-	public ArrayList<WorkDto> recommend(int age) {
-		return WorkDao.getInstance().recommend(age);
+	public ArrayList<WorkDto> recommend(char A) {
+		return WorkDao.getInstance().recommend(A);
 	}
 
 }
