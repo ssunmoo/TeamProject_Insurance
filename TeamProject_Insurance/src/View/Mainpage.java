@@ -31,9 +31,10 @@ public class Mainpage {
 	void getsingup() {
 
 		while (true) {
-			System.out.println(" [안내] 접속하려는 경로를 선택해주세요.\n");
-			System.out.println(" 1.고객 2.보험사 : ");
-			int btn = scanner.nextInt();
+			System.out.println(" ==================[안내]=================== \n");
+			System.out.println(" \t   접속하려는 경로를 선택해주세요.\n");
+			System.out.println(" ================1.고객 2.보험사============== ");
+			System.out.println("선택 :");int btn = scanner.nextInt();
 
 			if (btn == 1) { // 가입자 선택
 				System.out.println("1.회원가입 2.로그인 :  ");
