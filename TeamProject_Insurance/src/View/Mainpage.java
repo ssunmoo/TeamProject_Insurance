@@ -95,29 +95,36 @@ public class Mainpage {
 			}
 
 			else if (btn == 2) {
-
-				System.out.println("1. 게시판 확인  2. 상담사 관리 3. 보험내역 관리 4. 가입내역 확인");
-				int menu_ch = scanner.nextInt();
-				
-				if ( menu_ch == 1 ) {
-					Boardpage.getInstance().board_view();
-				}
-				else if ( menu_ch == 2 ) {
-					// 상담사 관리 메소드
-				}
-				else if ( menu_ch == 3 ) {
-					// 보험내역 관리 메소드
-				}
-				else if ( menu_ch == 4 ) {
-					// 가입내역 확인 메소드
-				}
-				else {
-					System.err.println(" ▶ [오류] 잘못된 번호입니다.");
-				}
-				
+				while( true ) {
+					System.out.println(" 1. 게시판 확인  2. 상담사 관리 3. 보험내역 관리 4. 가입내역 확인");
+					int menu_ch = scanner.nextInt();
+					
+					if ( menu_ch == 1 ) {
+						Boardpage.getInstance().board_view();
+						continue;
+					}
+					else if ( menu_ch == 2 ) {
+						// 상담사 관리 메소드
+						continue;
+					}
+					else if ( menu_ch == 3 ) {
+						// 보험내역 관리 메소드
+						continue;
+					}
+					else if ( menu_ch == 4 ) {
+						// 가입내역 확인 메소드
+						continue;
+					}
+					else {
+						System.err.println(" ▶ [오류] 잘못된 번호입니다.");
+						
+					}
+				} // while 종료
 			} else {
-				System.err.println("경로가 없습니다.");
+				System.err.println("▶ [오류] 잘못된 번호입니다.");
 			}
+			
+			
 		} // while 종료
 	} // getsingup 메소드 종료
 

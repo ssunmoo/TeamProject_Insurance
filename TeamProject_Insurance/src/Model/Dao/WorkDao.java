@@ -39,30 +39,39 @@ public class WorkDao {
 
 	} // WorkDao 메소드 종료
 
-///////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////
-
-	// 상담사 리스트 보기
-		public ArrayList<WorkDto> workerlist() {
-			return WorkDao.getInstance().workerlist();
-		}
 	
-	// 상담사 추가
-		public static boolean w_regist(String w_name) {
-			return WorkDao.getInstance().w_regist(w_name);
-		}
-	///////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////
+	// 상담사 리스트
+	public ArrayList< WorkDto > workerlist() {
+        ArrayList< WorkDto > listworker = new ArrayList<>();
+        String sql = "select * from worker;";
+        try {
+           ps = con.prepareStatement(sql);
+           rs = ps.executeQuery();
+           while( rs.next() ) {
+              WorkDto dto = new WorkDto(
+                    rs.getInt(1),rs.getString(2)
+                    );
+              listworker.add(dto);
+           } 
+           return listworker;
+        } catch (Exception e) {System.out.println( e );}
+        return listworker;
+     }
+  
+  // 상담사 추가
+  public boolean w_regist (String w_name) {
+     String sql = "insert into worker values ( null, ?)";
+     try {
+        ps = con.prepareStatement(sql);
+        ps.setString(1, w_name);
+        ps.executeUpdate();
+        return true;
+     } catch (Exception e) {System.out.println("경고) 상담사 추가 실패 : " + e);}
+        return false;
+  }
 	
 	// --- 보험 --- //
-	// --- 보험 --- //
-	// --- 보험 --- //
 	
-	// 1. 보험 리스트
 	// 1. 보험 리스트
 	// 암보험
 	public ArrayList<WorkDto> listinsurance() {
@@ -118,7 +127,7 @@ public class WorkDao {
 		return listinsurance;
 	}
 
-	// 2. 보험 리스트 추가	
+
 	// 2. 보험 리스트 추가
 	// 암 list 추가
 	public boolean listadd(String s_name, String s_text) {
