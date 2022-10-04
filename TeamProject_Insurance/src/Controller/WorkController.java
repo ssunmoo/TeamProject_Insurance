@@ -57,18 +57,18 @@ public class WorkController {
 	}
 
 	// 암 리스트 추가
-	public static boolean listadd(String s_name, String s_text) {
-		return WorkDao.getInstance().listadd(s_name, s_text);
+	public static boolean listadd(String s_name, String s_text, int age ) {
+		return WorkDao.getInstance().listadd(s_name, s_text, age);
 	}
 
 	// 손해 리스트 추가
-	public static boolean listadd2(String s_name, String s_text) {
-		return WorkDao.getInstance().listadd2(s_name, s_text);
+	public static boolean listadd2(String s_name, String s_text, int age) {
+		return WorkDao.getInstance().listadd2(s_name, s_text, age);
 	}
 
 	// 치아 리스트 추가
-	public static boolean listadd3(String s_name, String s_text) {
-		return WorkDao.getInstance().listadd3(s_name, s_text);
+	public static boolean listadd3(String s_name, String s_text, int age) {
+		return WorkDao.getInstance().listadd3(s_name, s_text, age);
 	}
 
 	// 암 list 삭제

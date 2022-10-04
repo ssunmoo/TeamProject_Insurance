@@ -62,14 +62,14 @@ public class Workpage {
 		}
 	}
 
-//상담사 추가
+	//상담사 추가
 	void view_regist() {
 		System.out.println(">>> 상담사 추가 ");
 		System.out.print(" 이름 : ");
 		String w_name = scanner.next();
-// 1. 메소드 호출[ 통신 ] 
+		// 1. 메소드 호출[ 통신 ] 
 		boolean result = WorkController.w_regist(w_name);
-// 2. 메소드 호출한 결과
+		// 2. 메소드 호출한 결과
 		if (result) {
 			System.out.println("안내) 상담사 등록 완료 ");
 		} else {
@@ -78,15 +78,12 @@ public class Workpage {
 		return;
 	}
 
-//////////////////////////////보험 ////////////////////////////////////
-//////////////////////////////보험 /////////////////////////////////////
-//////////////////////////////보험 /////////////////////////////////////
-//////////////////////////////보험 /////////////////////////////////////
+	//////////////////////////////보험 ////////////////////////////////////
+
 	String phone1;
 
-//보험 리스트 출력
-//보험 리스트 출력
-//보험 리스트 출력
+
+	//보험 리스트 출력
 	void category() {
 		while (true) {
 			System.out.println("1.암보험 2.손해보험 3.치아보험");
@@ -101,7 +98,7 @@ public class Workpage {
 		}
 	}
 
-//암보험 리스트
+	//암보험 리스트
 	public void listinsurance() {
 		ArrayList<WorkDto> listinsurance = WorkController.getInStance().listinsurance();
 		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
@@ -133,7 +130,7 @@ public class Workpage {
 		}
 	}
 
-//손해보험 리스트
+	//손해보험 리스트
 	public void listinsurance2() {
 		ArrayList<WorkDto> listinsurance = WorkController.getInStance().listinsurance2();
 		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
@@ -153,7 +150,7 @@ public class Workpage {
 				listadd2();
 				break;
 			} else if (btn == 2) {
-				listdelete3();
+				listdelete2();
 				break;
 			} else if (btn == 3) {
 			} else if (btn == 0) {
@@ -164,7 +161,7 @@ public class Workpage {
 		}
 	}
 
-//치아보험 리스트
+	//치아보험 리스트
 	public void listinsurance3() {
 		ArrayList<WorkDto> listinsurance = WorkController.getInStance().listinsurance3();
 		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
@@ -195,14 +192,17 @@ public class Workpage {
 		}
 	}
 
-//암 list 추가
+	//암 list 추가
 	void listadd() {
 		System.out.println(">>> 암 list 추가 ");
 		System.out.print(" 명칭 : ");
 		String s_name = scanner.next();
 		System.out.print(" 내용 : ");
 		String s_text = scanner.next();
-		boolean result = WorkController.listadd(s_name, s_text);
+		System.out.println(" 보장 나이 : ");
+		int age = scanner.nextInt();
+		
+		boolean result = WorkController.listadd(s_name, s_text, age);
 		if (result) {
 			System.out.println("안내) 암 등록 완료 ");
 		} else {
@@ -211,14 +211,17 @@ public class Workpage {
 		return;
 	}
 
-//손해 list 추가
+	//손해 list 추가
 	void listadd2() {
 		System.out.println(">>> 손해 list 추가 ");
 		System.out.print(" 명칭 : ");
 		String s_name = scanner.next();
 		System.out.print(" 내용 : ");
 		String s_text = scanner.next();
-		boolean result = WorkController.listadd2(s_name, s_text);
+		System.out.println(" 보장 나이 : ");
+		int age = scanner.nextInt();
+		
+		boolean result = WorkController.listadd2(s_name, s_text, age);
 		if (result) {
 			System.out.println("안내) 손해 등록 완료 ");
 		} else {
@@ -227,14 +230,17 @@ public class Workpage {
 		return;
 	}
 
-//치아 list 추가
+	//치아 list 추가
 	void listadd3() {
 		System.out.println(">>> 치아 list 추가 ");
 		System.out.print(" 명칭 : ");
 		String s_name = scanner.next();
 		System.out.print(" 내용 : ");
 		String s_text = scanner.next();
-		boolean result = WorkController.listadd3(s_name, s_text);
+		System.out.println(" 보장 나이 : ");
+		int age = scanner.nextInt();
+		
+		boolean result = WorkController.listadd3(s_name, s_text, age);
 		if (result) {
 			System.out.println("안내) 치아 등록 완료 ");
 		} else {
@@ -243,7 +249,7 @@ public class Workpage {
 		return;
 	}
 
-//암 list 삭제  
+	//암 list 삭제  
 	void listdelete() {
 		System.out.print(" 삭제할 번호 : ");
 		int s_num = scanner.nextInt();
@@ -255,7 +261,7 @@ public class Workpage {
 		}
 	}
 
-//손해 list 삭제  
+	//손해 list 삭제  
 	void listdelete2() {
 		System.out.print(" 삭제할 번호 : ");
 		int s_num = scanner.nextInt();
@@ -267,7 +273,7 @@ public class Workpage {
 		}
 	}
 
-//치아 list 삭제  
+	//치아 list 삭제  
 	void listdelete3() {
 		System.out.print(" 삭제할 번호 : ");
 		int s_num = scanner.nextInt();

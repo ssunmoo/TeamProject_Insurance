@@ -136,7 +136,7 @@ public class BoardDao {
 	// 6. 상담사 답글 쓰기
 	public boolean reply(BoardDto dto) {
 		String sql = "insert into subworker values( ?, ?, ? )";
-		System.out.println(dto.toString());
+		// System.out.println(dto.toString());
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, dto.getW_reply());

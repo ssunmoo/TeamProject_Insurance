@@ -104,11 +104,11 @@ public class Mainpage {
 						continue;
 					}
 					else if ( menu_ch == 2 ) {
-						// 상담사 관리 메소드
+						Workpage.getInstance().work();
 						continue;
 					}
 					else if ( menu_ch == 3 ) {
-						// 보험내역 관리 메소드
+						Workpage.getInstance().category();
 						continue;
 					}
 					else if ( menu_ch == 4 ) {
@@ -117,14 +117,11 @@ public class Mainpage {
 					}
 					else {
 						System.err.println(" ▶ [오류] 잘못된 번호입니다.");
-						
 					}
 				} // while 종료
 			} else {
 				System.err.println("▶ [오류] 잘못된 번호입니다.");
 			}
-			
-			
 		} // while 종료
 	} // getsingup 메소드 종료
 
@@ -146,27 +143,37 @@ public class Mainpage {
 					else if(ch2==2){}
 					else if(ch2==3) {
 						
-						Boardpage.getInstance().board();
-						System.out.println();
-						System.out.println("1. 문의글 등록  2. 문의글 수정 3. 문의글 삭제");
-						int board_ch = scanner.nextInt();
-						
-						if( board_ch == 1 ) {
-							System.out.println("▬▬▬▬▬▬▬▬▬▬▬ 문의글 등록하기 ▬▬▬▬▬▬▬▬▬▬▬\n");
-							Boardpage.getInstance().regist();
-						}
-						else if ( board_ch == 2 ){
-							System.out.println("▬▬▬▬▬▬▬▬▬▬▬ 문의글 수정하기 ▬▬▬▬▬▬▬▬▬▬▬\n");
-							Boardpage.getInstance().update();
-						}
-						else if ( board_ch == 3 ) {
-							System.out.println("▬▬▬▬▬▬▬▬▬▬▬ 문의글 삭제하기 ▬▬▬▬▬▬▬▬▬▬▬\n");
-							Boardpage.getInstance().delete();
-						}
-						else {
-							System.out.println(" ▶ [오류] 잘못된 번호입니다.");
-						}
-					}
+						while ( true ) {
+							Boardpage.getInstance().board();
+							System.out.println();
+							System.out.println("1. 문의글 등록  2. 문의글 수정 3. 문의글 삭제 4. 돌아가기 ");
+							int board_ch = scanner.nextInt();
+							
+							if( board_ch == 1 ) {
+								System.out.println("▬▬▬▬▬▬▬▬▬▬▬ 문의글 등록하기 ▬▬▬▬▬▬▬▬▬▬▬\n");
+								Boardpage.getInstance().regist();
+								continue;
+							}
+							else if ( board_ch == 2 ){
+								System.out.println("▬▬▬▬▬▬▬▬▬▬▬ 문의글 수정하기 ▬▬▬▬▬▬▬▬▬▬▬\n");
+								Boardpage.getInstance().update();
+								continue;
+							}
+							else if ( board_ch == 3 ) {
+								System.out.println("▬▬▬▬▬▬▬▬▬▬▬ 문의글 삭제하기 ▬▬▬▬▬▬▬▬▬▬▬\n");
+								Boardpage.getInstance().delete();
+								continue;
+							}
+							else if( board_ch == 4 ) {
+								break;
+							}
+							else {
+								System.out.println(" ▶ [오류] 잘못된 번호입니다.");
+								continue;
+							}
+						} // while 종료
+					} // ch2 == 3 종료
+					
 					else if(state==2&&ch2==4) {
 						System.out.println("로그아웃 되었습니다.");
 						state = 0;

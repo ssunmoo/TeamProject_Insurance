@@ -76,12 +76,14 @@ public class WorkDao {
 	// 암보험
 	public ArrayList<WorkDto> listinsurance() {
 		ArrayList<WorkDto> listinsurance = new ArrayList<>();
-		String sql = "select * from sublist;";
+		String sql = "select s_num, s_name, s_text, age from sublist";
+		System.out.println(listinsurance.toString());
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				WorkDto dto = new WorkDto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4));
+				
 				listinsurance.add(dto);
 			}
 			return listinsurance;
@@ -94,7 +96,7 @@ public class WorkDao {
 	// 손해보험
 	public ArrayList<WorkDto> listinsurance2() {
 		ArrayList<WorkDto> listinsurance = new ArrayList<>();
-		String sql = "select * from sublist2;";
+		String sql = "select s_num, s_name, s_text, age from sublist";
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
@@ -112,7 +114,7 @@ public class WorkDao {
 	// 치아보험
 	public ArrayList<WorkDto> listinsurance3() {
 		ArrayList<WorkDto> listinsurance = new ArrayList<>();
-		String sql = "select * from sublist3;";
+		String sql = "select s_num, s_name, s_text, age from sublist";
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
@@ -130,12 +132,13 @@ public class WorkDao {
 
 	// 2. 보험 리스트 추가
 	// 암 list 추가
-	public boolean listadd(String s_name, String s_text) {
-		String sql = "insert into sublist values ( null, ? , ? , null)";
+	public boolean listadd(String s_name, String s_text, int age) {
+		String sql = "insert into sublist values ( null, ? , ? , null, ? )";
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, s_name);
 			ps.setString(2, s_text);
+			ps.setInt(3, age);
 			ps.executeUpdate();
 			return true;
 		} catch (Exception e) {
@@ -145,12 +148,13 @@ public class WorkDao {
 	}
 
 	// 손해 list 추가
-	public boolean listadd2(String s_name, String s_text) {
-		String sql = "insert into sublist2 values ( null, ? , ? , null)";
+	public boolean listadd2(String s_name, String s_text, int age) {
+		String sql = "insert into sublist2 values ( null, ? , ? , null, ?)";
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, s_name);
 			ps.setString(2, s_text);
+			ps.setInt(3, age);
 			ps.executeUpdate();
 			return true;
 		} catch (Exception e) {
@@ -160,12 +164,13 @@ public class WorkDao {
 	}
 
 	// 치아 list 추가
-	public boolean listadd3(String s_name, String s_text) {
-		String sql = "insert into sublist2 values ( null, ? , ? , null)";
+	public boolean listadd3(String s_name, String s_text, int age) {
+		String sql = "insert into sublist3 values ( null, ? , ? , null, ?)";
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, s_name);
 			ps.setString(2, s_text);
+			ps.setInt(3, age);
 			ps.executeUpdate();
 			return true;
 		} catch (Exception e) {
