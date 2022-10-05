@@ -23,7 +23,9 @@ public class Mainpage {
 
 	// 스캐너 선언
 	Scanner scanner = new Scanner(System.in);
-
+	public String name;
+	public String phone1;
+	
 	/////////////// 가입하기 && 접속 경로 ///////////////////////////////////////////////////
 
 	void getsingup() {
@@ -58,6 +60,9 @@ public class Mainpage {
 					if (result) {
 						System.out.println(" [안내] 회원가입이 완료되었습니다. ");
 						state = 1;
+						this.name = name;
+						this.phone1 = phone;
+						Workpage.getInstance().c_make();
 					} else {
 						System.out.println(" [안내] 회원가입이 실패되었습니다. ");
 					}
@@ -77,14 +82,16 @@ public class Mainpage {
 						String l_phone = scanner.next();
 						boolean result1 = Controller.getInStance().login(l_name, l_phone);
 						if (result1) {
-							System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬로그인되었습니다▬▬▬▬▬▬▬▬▬▬▬▬");
+							System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬로그인 되었습니다▬▬▬▬▬▬▬▬▬▬▬▬");
 							state = 2;
-							if (result1 == true) {
-								System.out.println("\t\t\t" + l_name + "님 반갑습니다.");
-								loginnext();
-							}
+							this.name = l_name;
+							this.phone1 = l_phone;
+								if(result1 ==true) {
+									System.out.println("\t\t\t"+l_name+"님 반갑습니다.");
+									// Workpage.getInstance().age();
+								}
 						} else {
-							System.out.println("[안내]로그인실패하였습니다.존재하지 않는 계정입니다 ");
+							System.err.println("[안내]로그인 실패하였습니다.존재하지 않는 계정입니다 ");
 							System.out.println("다시 선택해주세요");
 							continue;
 						}
@@ -138,8 +145,13 @@ public class Mainpage {
 				System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
 				System.out.println("선택란 : ");
 				int ch2 = scanner.nextInt();
-				if (ch2 == 1) {
-				} 
+				if(ch2==1) {
+					
+					Workpage.getInstance().c_category();
+				}
+				else if(ch2==2){ 
+					Workpage.getInstance().history();
+				}
 				else if(ch2==3) {
 					while ( true ) {
 						Boardpage.getInstance().board();

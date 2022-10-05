@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import Controller.Controller;
 import Model.Dto.BoardDto;
 import Model.Dto.Dto;
+import View.Mainpage;
 
 public class Dao {
 
