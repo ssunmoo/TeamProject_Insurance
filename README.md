@@ -53,14 +53,8 @@
   <h3> 09/30 </h3>
     <h4> 김경주 :  로그인기능 구현/오류수정, 회원가입&로그인 코드통합</h4>
     <h4> 윤상진 :  보험 카테고리 DB연동 및 생성</h4>
-    <h4> 성지혜 :  회원가입 추가기능 구현[ 개인정보 입력 후 가입완료 확인/오류수정 ], 보험리스트 대/소분류 엑셀표 작성</h4>
+    <h4> 성지혜 :  회원가입 추가기능 구현[ 가입완료 확인/오류수정 ], 보험리스트 대/소분류 엑셀표 작성</h4>
     <h4> 허혜영 :  문의게시판 오류수정, 게시판 상세보기&답글 추가 기능 구현</h4> <br><br>
-    
-  <h3> 10/03</h3>
-    <h4> 김경주 :  </h4>
-    <h4> 윤상진 :  </h4>
-    <h4> 성지혜 :  </h4>
-    <h4> 허혜영 :  </h4> <br><br>
     
   <h3> 10/04</h3>
     <h4> 김경주 :  </h4>
@@ -82,5 +76,10 @@
   <h4> <img src="https://img.shields.io/badge/Java-007396?style=flat&logo=Java&logoColor=white" />
        <img src="https://img.shields.io/badge/git-24292F?style=flat-square&logo=github&logoColor=white"/> </h4> <br><br>
        
-</
+  <h2> :round_pushpin: 추후 발전 방향 :round_pushpin: </h2>
+  1. <br>
+  2. <br>
+  3.
+       
+</div>
     
