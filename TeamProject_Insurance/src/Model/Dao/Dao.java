@@ -148,23 +148,22 @@ public class Dao {
 	}
 	
 	//////////////////가입 내역////////////
-//	ArrayList<Dto>myinsurance(){
-//		ArrayList<Dto>list = new ArrayList<>();
-//		String sql = "select * from history";
-//		try {
-//			ps = con.prepareStatement(sql);
-//			rs = ps.executeQuery();
-//			while(rs.next()) {
-//				list.add(rs.getString(1));
-//			}
-//			return list;
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//		}
-//		return list;
-//		
-//	}
-	
+	//	ArrayList<Dto>myinsurance(){
+	//		ArrayList<Dto>list = new ArrayList<>();
+	//		String sql = "select * from history";
+	//		try {
+	//			ps = con.prepareStatement(sql);
+	//			rs = ps.executeQuery();
+	//			while(rs.next()) {
+	//				list.add(rs.getString(1));
+	//			}
+	//			return list;
+	//		} catch (Exception e) {
+	//			// TODO: handle exception
+	//		}
+	//		return list;
+	//		
+	//	}
 
 
 	// --- 보험가입 --- //
