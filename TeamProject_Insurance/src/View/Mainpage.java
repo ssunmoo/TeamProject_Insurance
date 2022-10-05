@@ -95,8 +95,8 @@ public class Mainpage {
 					break;
 				} // state == 1 || ch == 2 종료
 			} // btn == 1 종료
-			////
-			else if (btn == 2) {
+			
+			else if (btn == 2) { // 보험사 선택 시
 				while( true ) {
 					System.out.println(" 1. 게시판 확인  2. 상담사 관리 3. 보험내역 관리 4. 가입내역 확인");
 					int menu_ch = scanner.nextInt();
