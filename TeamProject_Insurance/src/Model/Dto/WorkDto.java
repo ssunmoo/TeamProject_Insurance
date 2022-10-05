@@ -88,6 +88,16 @@ public class WorkDto {
 	
 	}
 	
+	
+	
+	public WorkDto(int s_num, String s_name, String s_text) {
+		
+		this.s_num = s_num;
+		this.s_name = s_name;
+		this.s_text = s_text;
+	}
+
+
 	// getter, setter
 	public String getName() {
 		return name;

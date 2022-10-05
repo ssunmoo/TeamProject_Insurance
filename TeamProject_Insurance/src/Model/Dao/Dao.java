@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import Controller.Controller;
 import Model.Dto.BoardDto;
 import Model.Dto.Dto;
+import Model.Dto.WorkDto;
 
 public class Dao {
 
@@ -187,14 +188,14 @@ public class Dao {
 		
 	///////////가입 보험 표시/////////////
 	
-	public ArrayList<Dto>myinsur(){
-		ArrayList<Dto>myinsur =new ArrayList<>();
-		String sql = "select* from history ";
+	public ArrayList<WorkDto>myinsur(){
+		ArrayList<WorkDto>myinsur =new ArrayList<>();
+		String sql = "select s_num ,s_name,s_text from history ";
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				Dto dto = new Dto(rs.getString(1),rs.getString(2),rs.getString(3));
+				WorkDto dto = new WorkDto(rs.getInt(1),rs.getString(2),rs.getString(3));
 				myinsur.add(dto);
 			}
 			return myinsur;

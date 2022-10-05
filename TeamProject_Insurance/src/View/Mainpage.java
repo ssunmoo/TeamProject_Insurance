@@ -6,6 +6,7 @@ import Controller.Controller;
 import Model.Dao.Dao;
 import Model.Dto.BoardDto;
 import Model.Dto.Dto;
+import Model.Dto.WorkDto;
 
 public class Mainpage {
 	int state = 0;// 로그인 상태표시
@@ -139,8 +140,8 @@ public class Mainpage {
 				System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
 				System.out.println("선택란 : ");
 				int ch2 = scanner.nextInt();
-				if (ch2 == 1) {
-				} 
+				if (ch2 == 1) {list();}
+				else if(ch2==2) {myinsurance();}
 				else if(ch2==3) {
 					while ( true ) {
 						Boardpage.getInstance().board();
@@ -290,9 +291,9 @@ public class Mainpage {
 			System.out.println("1.암보험 2.종합보험 3.운전자보험 4.치아보험 : ");
 			int cl = scanner.nextInt();
 			if (cl == 1) {
-
+					
 			} else if (cl == 2) {
-
+						
 			} else if (cl == 3) {
 
 			} else if (cl == 4) {
@@ -308,12 +309,12 @@ public class Mainpage {
 	void myinsurance() {
 
 		while(true) {
-			ArrayList<Dto>myinsur = Controller.getInStance().myinsur();
+			ArrayList<WorkDto>myinsur = Controller.getInStance().myinsur();
 			System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬가입된 보험 리스트▬▬▬▬▬▬▬▬▬▬▬▬▬");
 			System.out.println("=[선택번호]==========보험명========보험내용===");
 				
 				if(!myinsur.equals(null)) {
-					for(Dto dto : myinsur) {
+					for(WorkDto dto : myinsur) {
 					System.out.print(" [" + dto.getS_num() + "]\t\t");
 					System.out.print("  " + dto.getS_name() + "\t\t");
 					System.out.println("  " + dto.getS_text() + "\t");

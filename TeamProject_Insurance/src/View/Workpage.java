@@ -230,7 +230,6 @@ public class Workpage {
 			}
 		}
 	}
-	
 	// [고객] 손해보험 리스트
 	public void c_listinsurance2() {
 		ArrayList<WorkDto> listinsurance = WorkController.getInStance().listinsurance2();
