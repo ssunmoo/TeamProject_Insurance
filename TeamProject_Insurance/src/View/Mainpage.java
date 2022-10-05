@@ -305,11 +305,11 @@ public class Mainpage {
 			System.out.println("1.암보험 2.종합보험 3.운전자보험 4.치아보험 : ");
 			int cl = scanner.nextInt();
 			if (cl == 1) {
-
+					Workpage.getInstance().listinsurance();
 			} else if (cl == 2) {
-
+					Workpage.getInstance().listinsurance2();
 			} else if (cl == 3) {
-
+					Workpage.getInstance().listinsurance3();
 			} else if (cl == 4) {
 			} else {
 				System.err.println("알 수 없는 번호입니다.");
@@ -318,6 +318,13 @@ public class Mainpage {
 			ArrayList<Dto> list = Controller.getInStance().list();
 		}
 	}
+	
+///////////////////////////////////////////////////////////////////////////
+
+	
+	
+	
+	
 
 ///////////////////////////////////보험 내역 확인//////////////////////////////////////////////////
 	void myinsurance() {
