@@ -37,14 +37,13 @@ public class WorkDto {
 		this.phone1 = phone1;
 	}
 	
-
-	// 보험 리스트 보기
-	public WorkDto(int s_num, String s_name, String s_text, int age) {
+	   // 보험 리스트 보기
+	  public WorkDto(int s_num, String s_name, String s_text, int age) {
 	     this.s_num = s_num;
 	     this.s_name = s_name;
 	     this.s_text = s_text;
 	     this.age = age;
-	}
+	   }
 	public WorkDto(int c_num, int s_num, String s_name, String s_text, int age) {
 		super();
 		this.c_num = c_num;
@@ -60,14 +59,14 @@ public class WorkDto {
 		this.w_name = w_name;
 	}
 
+
 	
 	@Override
 	public String toString() {
-		return "WorkDto [name=" + name + ", pw=" + pw + ", phone=" + phone + ", ssn=" + ssn + ", phone1=" + phone1
-				+ ", l_name=" + l_name + ", l_phone=" + l_phone + ", b_num=" + b_num + ", b_title=" + b_title
-				+ ", b_content=" + b_content + ", b_pw=" + b_pw + ", c_num=" + c_num + ", c_title=" + c_title
-				+ ", s_num=" + s_num + ", s_name=" + s_name + ", s_text=" + s_text + ", age=" + age + ", w_num=" + w_num
-				+ ", w_name=" + w_name + ", w_reply=" + w_reply + "]";
+	return "Dto [name=" + name + ", pw=" + pw + ", phone=" + phone + ", ssn=" + ssn + ", b_num=" + b_num
+	+ ", b_title=" + b_title + ", b_content=" + b_content + ", b_pw=" + b_pw + ", c_num=" + c_num
+	+ ", c_title=" + c_title + ", s_num=" + s_num + ", s_name=" + s_name + ", s_text=" + s_text + ", w_num="
+	+ w_num + ", w_name=" + w_name + ", w_reply=" + w_reply + "]";
 	}
 	
 	// 빈생성자
@@ -85,10 +84,7 @@ public class WorkDto {
 	public void Dto(String l_name, String l_phone) {
 	this.l_name = l_name;
 	this.l_phone = l_phone;
-	
 	}
-	
-	
 	
 	public WorkDto(int s_num, String s_name, String s_text) {
 		
@@ -97,12 +93,11 @@ public class WorkDto {
 		this.s_text = s_text;
 	}
 
-
 	// getter, setter
 	public String getName() {
-		return name;
+	return name;
 	}
-
+	
 	public String getPhone1() {
 		return phone1;
 	}
