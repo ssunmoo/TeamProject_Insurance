@@ -25,7 +25,7 @@ public class Boardpage {
 	Scanner scanner = new Scanner(System.in);
 	
 	// --- 게시판 --- //
-	// 
+	//.
 	int selectNum = 0;
 	
 	// 1. 문의글 등록
