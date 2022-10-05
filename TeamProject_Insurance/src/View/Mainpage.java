@@ -3,6 +3,7 @@ package View;
 import java.util.ArrayList;
 import java.util.Scanner;
 import Controller.Controller;
+import Controller.WorkController;
 import Model.Dao.Dao;
 import Model.Dto.BoardDto;
 import Model.Dto.Dto;
@@ -30,7 +31,7 @@ public class Mainpage {
 	/////////////// 가입하기 && 접속 경로 ///////////////////////////////////////////////////
 
 	void getsingup() {
-
+		Boardpage.getInstance().board();
 		while (true) {
 			System.out.println(" ==================[안내]=================== \n");
 			System.out.println(" \t   접속하려는 경로를 선택해주세요.\n");
@@ -193,21 +194,8 @@ public class Mainpage {
 					state = 0;
 					getsingup();break;}
 				else if (ch2==5) {
-						System.out.print("이름을 입력해주세여:");
-						String name = scanner.next();
-						System.out.print("비밀번호를 입력해주세요:");
-						String pw = scanner.next();
-						System.out.print("전화번호를 입력해주세요:");
-						String phone = scanner.next();
-						boolean result1 = Controller.getInStance().loginnext(name,pw,phone);
-						if(result1) {
-							System.out.println("[안내]확인되었습니다");
-							state = 3;
-						}else {System.out.println("[안내]계정인증이 잘못되었습니다");
-							System.out.println("다시 입력해주세요");
-							continue;
-						}
-					}		
+					myinsurance();
+				}
 				else {System.out.println("다시선택해주세요");ch2 = scanner.nextInt();}
 			}
 			break;
@@ -217,7 +205,7 @@ public class Mainpage {
 	////////////////////////////////////////////// 수정&탈퇴///////////////////////////////
 	void mypage() {
 		while (true) {
-			if (state == 3) {
+			
 				System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[선택이용]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
 				System.out.println("==1.[회원정보수정]=============2.[회원탈퇴]==");
 				System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
@@ -296,8 +284,7 @@ public class Mainpage {
 
 			}
 		}
-
-	}
+	
 
 //////////////////////보험가입////////////////////////
 	void list() {
@@ -329,30 +316,25 @@ public class Mainpage {
 
 ///////////////////////////////////보험 내역 확인//////////////////////////////////////////////////
 	void myinsurance() {
+		ArrayList<WorkDto>myinsur = Controller.getInStance().myinsur();
+				System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬마이페이지▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\t");
+				System.out.print("성명 : [" + this.name + "] 님\t\t\t");
+				System.out.println("전화번호 : [" + this.phone1 + "]");
+				String phone1 = Mainpage.getInstance().phone1;
+				String stringbirth = WorkController.age(phone1);
+				int intbirth = Integer.parseInt(stringbirth);
+				int age = (2022 - 1900 - intbirth + 1);
+				System.out.print("나이 : ["+age+"] 세\t\t\t");
+				System.out.println(" 보험가입 여부 : []");
+		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+			mypage();
+		System.out.println("[뒤로가기][y]: "); String choice = scanner.next();
+			if(choice.equals("y")||choice.equals("Y")) {
+				loginnext();
+			}else {System.err.println("다시 입력해주세요");}
+			
+}
 
-		while(true) {
-			ArrayList<WorkDto>myinsur = Controller.getInStance().myinsur();
-			System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬가입된 보험 리스트▬▬▬▬▬▬▬▬▬▬▬▬▬");
-			System.out.println("=[선택번호]==========보험명========보험내용===");
-				
-				
-					for(WorkDto dto : myinsur) {
-					System.out.print(" [" + dto.getS_num() + "]\t\t");
-					System.out.print("  " + dto.getS_name() + "\t\t");
-					System.out.println("  " + dto.getS_text() + "\t");
-					}
-				
-				
-			System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
-			System.out.println("확인할 보험을 선택해주세요 [y][뒤로가기]: "); String choice = scanner.next();
-				if(choice.equals("y")||choice.equals("Y")) {
-					loginnext();
-				}	
-				
-		
-		}
-	}
-	
 
 	
 

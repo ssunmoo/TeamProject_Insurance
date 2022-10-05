@@ -191,12 +191,12 @@ public class Dao {
 	
 	public ArrayList<WorkDto>myinsur(){
 		ArrayList<WorkDto>myinsur =new ArrayList<>();
-		String sql = "select s_num ,s_name,s_text from history ";
+		String sql = "select name,phone from member";
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				WorkDto dto = new WorkDto(rs.getInt(1),rs.getString(2),rs.getString(3));
+				WorkDto dto = new WorkDto(rs.getString(1),rs.getString(2));
 				myinsur.add(dto);
 			}
 			return myinsur;

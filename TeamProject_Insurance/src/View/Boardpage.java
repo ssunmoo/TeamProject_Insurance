@@ -61,10 +61,12 @@ public class Boardpage {
 	// 2. 게시판 보기
 	public void board() {
 		ArrayList< BoardDto > list = BoardController.getInStance().board();
+	
+		System.out.println("   ▬▬▬▬▬▬▬▬▬▬▬▬▬▬[문의게시판]▬▬▬▬▬▬▬▬▬▬▬▬▬");
+		System.out.println("    번호\t\t제목\t이름\t연락처");
+		System.out.println("   ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n");
 		
-		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
-		System.out.println(" 번호\t제목\t이름\t연락처");
-		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+
 		for( BoardDto dto : list ) {
 		
 			System.out.print("  "+ dto.getB_num() + "\t");
