@@ -139,53 +139,59 @@ public class Mainpage {
 				System.out.println("선택란 : ");
 				int ch2 = scanner.nextInt();
 				if (ch2 == 1) {
-				} else if (ch2 == 2) {
-					myinsurance();
-				} else if (ch2 == 3) {
-
-					Boardpage.getInstance().board();
-					System.out.println();
-					System.out.println("1. 문의글 등록  2. 문의글 수정 3. 문의글 삭제");
-					int board_ch = scanner.nextInt();
-
-					if (board_ch == 1) {
-						System.out.println("▬▬▬▬▬▬▬▬▬▬▬ 문의글 등록하기 ▬▬▬▬▬▬▬▬▬▬▬\n");
-						Boardpage.getInstance().regist();
-					} else if (board_ch == 2) {
-						System.out.println("▬▬▬▬▬▬▬▬▬▬▬ 문의글 수정하기 ▬▬▬▬▬▬▬▬▬▬▬\n");
-						Boardpage.getInstance().update();
-					} else if (board_ch == 3) {
-						System.out.println("▬▬▬▬▬▬▬▬▬▬▬ 문의글 삭제하기 ▬▬▬▬▬▬▬▬▬▬▬\n");
-						Boardpage.getInstance().delete();
-					}
+				} 
+				else if(ch2==3) {
+					while ( true ) {
+						Boardpage.getInstance().board();
+						System.out.println();
+						System.out.println("1. 문의글 등록  2. 문의글 수정 3. 문의글 삭제 4. 돌아가기 ");
+						int board_ch = scanner.nextInt();
+						
+						if( board_ch == 1 ) {
+							System.out.println("▬▬▬▬▬▬▬▬▬▬▬ 문의글 등록하기 ▬▬▬▬▬▬▬▬▬▬▬\n");
+							Boardpage.getInstance().regist();
+							continue;
+						}
+						else if ( board_ch == 2 ){
+							System.out.println("▬▬▬▬▬▬▬▬▬▬▬ 문의글 수정하기 ▬▬▬▬▬▬▬▬▬▬▬\n");
+							Boardpage.getInstance().update();
+							continue;
+						}
+						else if ( board_ch == 3 ) {
+							System.out.println("▬▬▬▬▬▬▬▬▬▬▬ 문의글 삭제하기 ▬▬▬▬▬▬▬▬▬▬▬\n");
+							Boardpage.getInstance().delete();
+							continue;
+						}
+						else if( board_ch == 4 ) {
+							break;
+						}
+						else {
+							System.out.println(" ▶ [오류] 잘못된 번호입니다.");
+							continue;
+						}
+					} // while 종료
 				} // ch2 == 3 종료
-				else if (state == 2 && ch2 == 4) {
+				else if(state==2&&ch2==4) {
 					System.out.println("다음에 또 만나요");
 					state = 0;
-					getsingup();
-					break;
-				}
-
-				else if (ch2 == 5) {
-					System.out.print("이름을 입력해주세여:");
-					String name = scanner.next();
-					System.out.print("비밀번호를 입력해주세요:");
-					String pw = scanner.next();
-					System.out.print("전화번호를 입력해주세요:");
-					String phone = scanner.next();
-					boolean result1 = Controller.getInStance().loginnext(name, pw, phone);
-					if (result1) {
-						System.out.println("[안내] 확인되었습니다");
-						state = 3;
-					} else {
-						System.err.println("[안내] 계정인증이 잘못되었습니다");
-						System.err.println("다시 입력해주세요");
-						continue;
-					}
-				} else {
-					System.out.println("다시선택해주세요");
-					ch2 = scanner.nextInt();
-				}
+					getsingup();break;}
+				else if (ch2==5) {
+						System.out.print("이름을 입력해주세여:");
+						String name = scanner.next();
+						System.out.print("비밀번호를 입력해주세요:");
+						String pw = scanner.next();
+						System.out.print("전화번호를 입력해주세요:");
+						String phone = scanner.next();
+						boolean result1 = Controller.getInStance().loginnext(name,pw,phone);
+						if(result1) {
+							System.out.println("[안내]확인되었습니다");
+							state = 3;
+						}else {System.out.println("[안내]계정인증이 잘못되었습니다");
+							System.out.println("다시 입력해주세요");
+							continue;
+						}
+					}		
+				else {System.out.println("다시선택해주세요");ch2 = scanner.nextInt();}
 			}
 			break;
 		}
