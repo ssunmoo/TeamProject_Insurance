@@ -29,7 +29,7 @@ public class Dto {
 	private int w_num;			// 상담사 번호
 	private String w_name;		// 상담사 이름
 	private String w_reply;		// 답글
-	
+	 
 	
 	
 	

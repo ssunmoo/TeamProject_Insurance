@@ -39,145 +39,199 @@ public class WorkDao {
 
 	} // WorkDao 메소드 종료
 
+
 	
-	// 상담사 리스트
+	
+	// --- 상담사 --- //
+		
+	// 상담사 리스트. 
 	public ArrayList< WorkDto > workerlist() {
-        ArrayList< WorkDto > listworker = new ArrayList<>();
-        String sql = "select * from worker;";
-        try {
-           ps = con.prepareStatement(sql);
-           rs = ps.executeQuery();
-           while( rs.next() ) {
-              WorkDto dto = new WorkDto(
-                    rs.getInt(1),rs.getString(2)
-                    );
-              listworker.add(dto);
-           } 
-           return listworker;
-        } catch (Exception e) {System.out.println( e );}
-        return listworker;
-     }
-  
-  // 상담사 추가
-  public boolean w_regist (String w_name) {
-     String sql = "insert into worker values ( null, ?)";
-     try {
-        ps = con.prepareStatement(sql);
-        ps.setString(1, w_name);
-        ps.executeUpdate();
-        return true;
-     } catch (Exception e) {System.out.println("경고) 상담사 추가 실패 : " + e);}
-        return false;
-  }
+			ArrayList< WorkDto > listworker = new ArrayList<>();
+			String sql = "select * from worker;";
+			try {
+				ps = con.prepareStatement(sql);
+				rs = ps.executeQuery();
+				while( rs.next() ) {
+					WorkDto dto = new WorkDto(
+							rs.getInt(1),rs.getString(2)
+							);
+					listworker.add(dto);
+				} 
+				return listworker;
+			} catch (Exception e) {System.out.println( e );}
+			return listworker;
+		}
+	
+	// 상담사 추가
+	public boolean w_regist (String w_name) {
+		String sql = "insert into worker values ( null, ?)";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, w_name);
+			ps.executeUpdate();
+			return true;
+		} catch (Exception e) {System.out.println("경고) 상담사 추가 실패 : " + e);}
+			return false;
+	}
+
+	
 	
 	// --- 보험 --- //
-	
+
 	// 1. 보험 리스트
-	// 암보험
-	public ArrayList<WorkDto> listinsurance() {
-		ArrayList<WorkDto> listinsurance = new ArrayList<>();
-		String sql = "select s_num, s_name, s_text, age from sublist";
-		System.out.println(listinsurance.toString());
-		try {
-			ps = con.prepareStatement(sql);
-			rs = ps.executeQuery();
-			while (rs.next()) {
-				WorkDto dto = new WorkDto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4));
-				
-				listinsurance.add(dto);
-			}
-			return listinsurance;
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		return listinsurance;
-	}
+	   // 암보험
+	   public ArrayList<WorkDto> listinsurance() {
+	      ArrayList<WorkDto> listinsurance = new ArrayList<>();
+	      String sql = "select s_num, s_name, s_text, age from sublist";
+	      System.out.println(listinsurance.toString());
+	      try {
+	         ps = con.prepareStatement(sql);
+	         rs = ps.executeQuery();
+	         while (rs.next()) {
+	            WorkDto dto = new WorkDto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4));
+	            
+	            listinsurance.add(dto);
+	         }
+	         return listinsurance;
+	      } catch (Exception e) {
+	         System.out.println(e);
+	      }
+	      return listinsurance;
+	   }
 
-	// 손해보험
-	public ArrayList<WorkDto> listinsurance2() {
-		ArrayList<WorkDto> listinsurance = new ArrayList<>();
-		String sql = "select s_num, s_name, s_text, age from sublist";
-		try {
-			ps = con.prepareStatement(sql);
-			rs = ps.executeQuery();
-			while (rs.next()) {
-				WorkDto dto = new WorkDto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4));
-				listinsurance.add(dto);
-			}
-			return listinsurance;
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		return listinsurance;
-	}
+	   // 손해보험
+	   public ArrayList<WorkDto> listinsurance2() {
+	      ArrayList<WorkDto> listinsurance = new ArrayList<>();
+	      String sql = "select s_num, s_name, s_text, age from sublist2";
+	      try {
+	         ps = con.prepareStatement(sql);
+	         rs = ps.executeQuery();
+	         while (rs.next()) {
+	            WorkDto dto = new WorkDto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4));
+	            listinsurance.add(dto);
+	         }
+	         return listinsurance;
+	      } catch (Exception e) {
+	         System.out.println(e);
+	      }
+	      return listinsurance;
+	   }
 
-	// 치아보험
-	public ArrayList<WorkDto> listinsurance3() {
-		ArrayList<WorkDto> listinsurance = new ArrayList<>();
-		String sql = "select s_num, s_name, s_text, age from sublist";
-		try {
-			ps = con.prepareStatement(sql);
-			rs = ps.executeQuery();
-			while (rs.next()) {
-				WorkDto dto = new WorkDto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4));
-				listinsurance.add(dto);
-			}
-			return listinsurance;
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		return listinsurance;
-	}
+	   // 치아보험
+	   public ArrayList<WorkDto> listinsurance3() {
+	      ArrayList<WorkDto> listinsurance = new ArrayList<>();
+	      String sql = "select s_num, s_name, s_text, age from sublist3";
+	      try {
+	         ps = con.prepareStatement(sql);
+	         rs = ps.executeQuery();
+	         while (rs.next()) {
+	            WorkDto dto = new WorkDto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4));
+	            listinsurance.add(dto);
+	         }
+	         return listinsurance;
+	      } catch (Exception e) {
+	         System.out.println(e);
+	      }
+	      return listinsurance;
+	   }
 
-
+	   
 	// 2. 보험 리스트 추가
-	// 암 list 추가
-	public boolean listadd(String s_name, String s_text, int age) {
-		String sql = "insert into sublist values ( null, ? , ? , null, ? )";
-		try {
-			ps = con.prepareStatement(sql);
-			ps.setString(1, s_name);
-			ps.setString(2, s_text);
-			ps.setInt(3, age);
-			ps.executeUpdate();
-			return true;
-		} catch (Exception e) {
-			System.out.println("경고) 암보험 추가 실패 : " + e);
+	
+	// [ 고객 ] history list 추가
+		public boolean c_listadd(int choice) {
+			String sql = "insert into history select * from sublist where s_num = ? ;";
+			try {
+				ps = con.prepareStatement(sql);
+				ps.setInt(1, choice);
+				ps.executeUpdate();
+				return true;
+			} catch (Exception e) {
+				System.out.println("경고) 암보험 추가 실패 : " + e);
+			}
+			return false;
 		}
-		return false;
-	}
+		
+	// [ 고객 ] history list 삭제  
+		public boolean c_delete(int delete) {
+			String sql = "delete from history where s_num = ?;";
+			try {
+				ps = con.prepareStatement(sql);
+				ps.setInt(1, delete);
+				ps.executeUpdate();
+				return true;
+			} catch (Exception e) {
+			}
+			return false;
+		}
+		
+	// [ 고객 ] history 출력
+		public ArrayList<WorkDto> history() {
+			ArrayList<WorkDto> listinsurance = new ArrayList<>();
+			String sql = "select * from history;";
+			try {
+				ps = con.prepareStatement(sql);
+				rs = ps.executeQuery();
+				while (rs.next()) {
+					WorkDto dto = new WorkDto(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4));
+					listinsurance.add(dto);
+				}
+				return listinsurance;
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+			return listinsurance;
+		}
+		
+		
+	 // 2. 보험 리스트 추가
+	   // 암 list 추가
+	   public boolean listadd(String s_name, String s_text, int age) {
+	      String sql = "insert into sublist values ( null, ? , ? , null, ? )";
+	      try {
+	         ps = con.prepareStatement(sql);
+	         ps.setString(1, s_name);
+	         ps.setString(2, s_text);
+	         ps.setInt(3, age);
+	         ps.executeUpdate();
+	         return true;
+	      } catch (Exception e) {
+	         System.out.println("경고) 암보험 추가 실패 : " + e);
+	      }
+	      return false;
+	   }
 
-	// 손해 list 추가
-	public boolean listadd2(String s_name, String s_text, int age) {
-		String sql = "insert into sublist2 values ( null, ? , ? , null, ?)";
-		try {
-			ps = con.prepareStatement(sql);
-			ps.setString(1, s_name);
-			ps.setString(2, s_text);
-			ps.setInt(3, age);
-			ps.executeUpdate();
-			return true;
-		} catch (Exception e) {
-			System.out.println("경고) 손해보험 추가 실패 : " + e);
-		}
-		return false;
-	}
+	   // 손해 list 추가
+	   public boolean listadd2(String s_name, String s_text, int age) {
+	      String sql = "insert into sublist2 values ( null, ? , ? , null, ?)";
+	      try {
+	         ps = con.prepareStatement(sql);
+	         ps.setString(1, s_name);
+	         ps.setString(2, s_text);
+	         ps.setInt(3, age);
+	         ps.executeUpdate();
+	         return true;
+	      } catch (Exception e) {
+	         System.out.println("경고) 손해보험 추가 실패 : " + e);
+	      }
+	      return false;
+	   }
 
-	// 치아 list 추가
-	public boolean listadd3(String s_name, String s_text, int age) {
-		String sql = "insert into sublist3 values ( null, ? , ? , null, ?)";
-		try {
-			ps = con.prepareStatement(sql);
-			ps.setString(1, s_name);
-			ps.setString(2, s_text);
-			ps.setInt(3, age);
-			ps.executeUpdate();
-			return true;
-		} catch (Exception e) {
-			System.out.println("경고) 치아보험 추가 실패 : " + e);
-		}
-		return false;
-	}
+	   // 치아 list 추가
+	   public boolean listadd3(String s_name, String s_text, int age) {
+	      String sql = "insert into sublist3 values ( null, ? , ? , null, ?)";
+	      try {
+	         ps = con.prepareStatement(sql);
+	         ps.setString(1, s_name);
+	         ps.setString(2, s_text);
+	         ps.setInt(3, age);
+	         ps.executeUpdate();
+	         return true;
+	      } catch (Exception e) {
+	         System.out.println("경고) 치아보험 추가 실패 : " + e);
+	      }
+	      return false;
+	   }
 
 	// 암 list 삭제  
 	public boolean listdelete(int s_num) {

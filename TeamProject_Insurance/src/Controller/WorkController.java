@@ -22,9 +22,6 @@ public class WorkController {
 	}
 
 	///////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////
 
 	// 상담사 리스트 보기
 	public ArrayList<WorkDto> workerlist() {
@@ -35,9 +32,6 @@ public class WorkController {
 	public static boolean w_regist(String w_name) {
 		return WorkDao.getInstance().w_regist(w_name);
 	}
-	///////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////
 
 	// 보험 리스트
@@ -56,8 +50,23 @@ public class WorkController {
 		return WorkDao.getInstance().listinsurance3();
 	}
 
+	// [ 고객 ]history 추가
+	public static boolean c_listadd(int choice) {
+		return WorkDao.getInstance().c_listadd(choice);
+	}
+
+	// [ 고객 ]history 삭제
+	public static boolean c_delete(int delete) {
+		return WorkDao.getInstance().c_delete(delete);
+	}
+
+	// [ 고객 ]history 출력
+	public ArrayList<WorkDto> history() {
+		return WorkDao.getInstance().history();
+	}
+
 	// 암 리스트 추가
-	public static boolean listadd(String s_name, String s_text, int age ) {
+	public static boolean listadd(String s_name, String s_text, int age) {
 		return WorkDao.getInstance().listadd(s_name, s_text, age);
 	}
 

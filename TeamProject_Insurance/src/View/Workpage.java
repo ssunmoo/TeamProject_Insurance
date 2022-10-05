@@ -13,24 +13,21 @@ public class Workpage {
 
 	// 현재 페이지 객체 선언
 	private static Workpage workpage = new Workpage();
-
+	
 	// 빈생성자
 	private Workpage() {
 	}
-
+	
 	// 싱글톤 메소드
 	public static Workpage getInstance() {
 		return workpage;
-	}
-
-	// 스캐너 선언
+	}	
+	
+	// 스캐너 선언	
 	Scanner scanner = new Scanner(System.in);
 
+	//////////////////////////////상담사 /////////////////////////////////////
 
-	//////////////////////////////상담사 /////////////////////////////////////
-	//////////////////////////////상담사 /////////////////////////////////////
-	//////////////////////////////상담사 /////////////////////////////////////
-	//////////////////////////////상담사 /////////////////////////////////////
 	
 	//상담사 리스트 출력
 	void work() {
@@ -78,18 +75,29 @@ public class Workpage {
 		return;
 	}
 
-	//////////////////////////////보험 ////////////////////////////////////
-
 	String phone1;
 
-
-	//보험 리스트 출력
 	void category() {
 		while (true) {
 			System.out.println("1.암보험 2.손해보험 3.치아보험");
 			int btn = scanner.nextInt();
 			if (btn == 1) {
 				listinsurance();
+			} else if (btn == 2) {
+				listinsurance2();
+			} else if (btn == 3) {
+				listinsurance3();
+			}
+		}
+	}
+	
+	//고객 히스토리 출력
+	void c_category() {
+		while (true) {
+			System.out.println("1.암보험 2.손해보험 3.치아보험");
+			int btn = scanner.nextInt();
+			if (btn == 1) {
+				c_listinsurance();
 			} else if (btn == 2) {
 				listinsurance2();
 			} else if (btn == 3) {
@@ -130,7 +138,7 @@ public class Workpage {
 		}
 	}
 
-	//손해보험 리스트
+	// 손해보험 리스트
 	public void listinsurance2() {
 		ArrayList<WorkDto> listinsurance = WorkController.getInStance().listinsurance2();
 		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
@@ -141,6 +149,7 @@ public class Workpage {
 			System.out.print("  " + dto.getS_name() + "\t");
 			System.out.print("  " + dto.getS_text() + "\t");
 			System.out.print("  " + dto.getC_num() + "\t");
+			System.out.print("  " + dto.getAge() + "\t");
 			System.out.println("\n-------------------------------------------------");
 		}
 		while (true) {
@@ -161,7 +170,7 @@ public class Workpage {
 		}
 	}
 
-	//치아보험 리스트
+	// 치아보험 리스트
 	public void listinsurance3() {
 		ArrayList<WorkDto> listinsurance = WorkController.getInStance().listinsurance3();
 		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
@@ -172,6 +181,7 @@ public class Workpage {
 			System.out.print("  " + dto.getS_name() + "\t");
 			System.out.print("  " + dto.getS_text() + "\t");
 			System.out.print("  " + dto.getC_num() + "\t");
+			System.out.print("  " + dto.getAge() + "\t");
 			System.out.println("\n-------------------------------------------------");
 		}
 		while (true) {
@@ -192,64 +202,204 @@ public class Workpage {
 		}
 	}
 
+	// [고객] 암보험 리스트
+	public void c_listinsurance() {
+		ArrayList<WorkDto> listinsurance = WorkController.getInStance().listinsurance();
+		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+		System.out.println(" 번호   \t    명칭    \t 내용    \t    금액");
+		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+		for (WorkDto dto : listinsurance) {
+			System.out.print("  " + dto.getS_num() + "\t");
+			System.out.print("  " + dto.getS_name() + "\t");
+			System.out.print("  " + dto.getS_text() + "\t");
+			System.out.print("  " + dto.getC_num() + "\t");
+			System.out.print("  " + dto.getAge() + "\t");
+			System.out.println("\n-------------------------------------------------");
+		}
+		while (true) {
+			System.out.println("1.가입 0.돌아가기");
+			int btn = scanner.nextInt();
+			if (btn == 1) {
+				c_listadd();
+				break;
+			}
+			  else if (btn == 0) {
+				break;
+			} else {
+				System.out.println("잘못된 입력값 입니다.");
+			}
+		}
+	}
+	
+	// [고객] 손해보험 리스트
+	public void c_listinsurance2() {
+		ArrayList<WorkDto> listinsurance = WorkController.getInStance().listinsurance2();
+		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+		System.out.println(" 번호   \t    명칭    \t 내용    \t    금액");
+		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+		for (WorkDto dto : listinsurance) {
+			System.out.print("  " + dto.getS_num() + "\t");
+			System.out.print("  " + dto.getS_name() + "\t");
+			System.out.print("  " + dto.getS_text() + "\t");
+			System.out.print("  " + dto.getC_num() + "\t");
+			System.out.print("  " + dto.getAge() + "\t");
+			System.out.println("\n-------------------------------------------------");
+		}
+		while (true) {
+			System.out.println("1.가입 0.돌아가기");
+			int btn = scanner.nextInt();
+			if (btn == 1) {
+				c_listadd();
+				break;
+			}
+			  else if (btn == 0) {
+				break;
+			} else {
+				System.out.println("잘못된 입력값 입니다.");
+			}
+		}
+	}
+	// [고객] 치아보험 리스트
+	public void c_listinsurance3() {
+		ArrayList<WorkDto> listinsurance = WorkController.getInStance().listinsurance3();
+		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+		System.out.println(" 번호   \t    명칭    \t 내용    \t    금액");
+		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+		for (WorkDto dto : listinsurance) {
+			System.out.print("  " + dto.getS_num() + "\t");
+			System.out.print("  " + dto.getS_name() + "\t");
+			System.out.print("  " + dto.getS_text() + "\t");
+			System.out.print("  " + dto.getC_num() + "\t");
+			System.out.print("  " + dto.getAge() + "\t");
+			System.out.println("\n-------------------------------------------------");
+		}
+		while (true) {
+			System.out.println("1.가입 0.돌아가기");
+			int btn = scanner.nextInt();
+			if (btn == 1) {
+				c_listadd();
+				break;
+			}
+			  else if (btn == 0) {
+				break;
+			} else {
+				System.out.println("잘못된 입력값 입니다.");
+			}
+		}
+	}
+	// [ 고객 ] history 리스트
+	public void history() {
+		ArrayList<WorkDto> listinsurance = WorkController.getInStance().history();
+		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+		System.out.println(" 번호   \t    명칭    \t 내용    \t    금액");
+		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+		for (WorkDto dto : listinsurance) {
+			System.out.print("  " + dto.getS_num() + "\t");
+			System.out.print("  " + dto.getS_name() + "\t");
+			System.out.print("  " + dto.getS_text() + "\t");
+			System.out.print("  " + dto.getC_num() + "\t");
+			System.out.print("  " + dto.getAge() + "\t");
+			System.out.println("\n-------------------------------------------------");
+		}
+		while (true) {
+			System.out.println("1.삭제 0.돌아가기");
+			int btn = scanner.nextInt();
+			if (btn == 1) {
+				c_delete();
+				break;
+			} 
+			 else if (btn == 0) {
+			} else {
+				System.out.println("잘못된 입력값 입니다.");
+				break;
+			}
+		}
+	}
+
+	// [ 고객 ] history list 추가
+	void c_listadd() {
+		System.out.println("가입할 보험 번호를 입력해주세요 ");
+		System.out.print(" 번호 : ");
+		int choice = scanner.nextInt();
+		boolean result = WorkController.c_listadd(choice);
+		if (result) {
+			System.out.println("안내) 암 보험 가입 완료 ");
+		} else {
+			System.out.println("안내) 암 보험 가입 오류 [ 관리자에게 문의 ] ");
+		}
+		return;
+	}
+	
+	//[ 고객 ] history list 삭제  
+	void c_delete() {
+		System.out.print(" 삭제할 번호 : ");
+		int delete = scanner.nextInt();
+		boolean result = WorkController.c_delete(delete);
+		if (result) {
+			System.out.println("리스트 삭제 성공");
+		} else {
+			System.out.println("리스트 삭제 실패");
+		}
+	}
+		
 	//암 list 추가
-	void listadd() {
-		System.out.println(">>> 암 list 추가 ");
-		System.out.print(" 명칭 : ");
-		String s_name = scanner.next();
-		System.out.print(" 내용 : ");
-		String s_text = scanner.next();
-		System.out.println(" 보장 나이 : ");
-		int age = scanner.nextInt();
-		
-		boolean result = WorkController.listadd(s_name, s_text, age);
-		if (result) {
-			System.out.println("안내) 암 등록 완료 ");
-		} else {
-			System.out.println("안내) 암 등록 오류 [ 관리자에게 문의 ] ");
-		}
-		return;
-	}
+   void listadd() {
+      System.out.println(">>> 암 list 추가 ");
+      System.out.print(" 명칭 : ");
+      String s_name = scanner.next();
+      System.out.print(" 내용 : ");
+      String s_text = scanner.next();
+      System.out.println(" 보장 나이 : ");
+      int age = scanner.nextInt();
+      
+      boolean result = WorkController.listadd(s_name, s_text, age);
+      if (result) {
+         System.out.println("안내) 암 등록 완료 ");
+      } else {
+         System.out.println("안내) 암 등록 오류 [ 관리자에게 문의 ] ");
+      }
+      return;
+   }
 
-	//손해 list 추가
-	void listadd2() {
-		System.out.println(">>> 손해 list 추가 ");
-		System.out.print(" 명칭 : ");
-		String s_name = scanner.next();
-		System.out.print(" 내용 : ");
-		String s_text = scanner.next();
-		System.out.println(" 보장 나이 : ");
-		int age = scanner.nextInt();
-		
-		boolean result = WorkController.listadd2(s_name, s_text, age);
-		if (result) {
-			System.out.println("안내) 손해 등록 완료 ");
-		} else {
-			System.out.println("안내) 손해 등록 오류 [ 관리자에게 문의 ] ");
-		}
-		return;
-	}
+   //손해 list 추가
+   void listadd2() {
+      System.out.println(">>> 손해 list 추가 ");
+      System.out.print(" 명칭 : ");
+      String s_name = scanner.next();
+      System.out.print(" 내용 : ");
+      String s_text = scanner.next();
+      System.out.println(" 보장 나이 : ");
+      int age = scanner.nextInt();
+      
+      boolean result = WorkController.listadd2(s_name, s_text, age);
+      if (result) {
+         System.out.println("안내) 손해 등록 완료 ");
+      } else {
+         System.out.println("안내) 손해 등록 오류 [ 관리자에게 문의 ] ");
+      }
+      return;
+   }
+   
+   //치아 list 추가
+   void listadd3() {
+      System.out.println(">>> 치아 list 추가 ");
+      System.out.print(" 명칭 : ");
+      String s_name = scanner.next();
+      System.out.print(" 내용 : ");
+      String s_text = scanner.next();
+      System.out.println(" 보장 나이 : ");
+      int age = scanner.nextInt();
+      
+      boolean result = WorkController.listadd3(s_name, s_text, age);
+      if (result) {
+         System.out.println("안내) 치아 등록 완료 ");
+      } else {
+         System.out.println("안내) 치아 등록 오류 [ 관리자에게 문의 ] ");
+      }
+      return;
+   }
 
-	//치아 list 추가
-	void listadd3() {
-		System.out.println(">>> 치아 list 추가 ");
-		System.out.print(" 명칭 : ");
-		String s_name = scanner.next();
-		System.out.print(" 내용 : ");
-		String s_text = scanner.next();
-		System.out.println(" 보장 나이 : ");
-		int age = scanner.nextInt();
-		
-		boolean result = WorkController.listadd3(s_name, s_text, age);
-		if (result) {
-			System.out.println("안내) 치아 등록 완료 ");
-		} else {
-			System.out.println("안내) 치아 등록 오류 [ 관리자에게 문의 ] ");
-		}
-		return;
-	}
-
-	//암 list 삭제  
+   //암 list 삭제  
 	void listdelete() {
 		System.out.print(" 삭제할 번호 : ");
 		int s_num = scanner.nextInt();
@@ -317,6 +467,6 @@ public class Workpage {
 			}
 		}
 
-	} // board_view 메소드 종료
+	} 
 
 }
