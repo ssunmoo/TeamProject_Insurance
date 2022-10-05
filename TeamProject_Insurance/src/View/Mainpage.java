@@ -61,8 +61,8 @@ public class Mainpage {
 					} else {
 						System.out.println(" [안내] 회원가입이 실패되었습니다. ");
 					}
-
-				}
+				} // ch == 1 종료
+				
 				//////////////////////////////////// 로그인///////////////////////////////////////////
 
 				if (state == 1 || ch == 2) {
@@ -92,15 +92,39 @@ public class Mainpage {
 						System.out.println("[취소]처음으로 돌아갑니다.");
 						continue;
 					}
-				}
-				break;
-
-			} else if (btn == 2) {
+					break;
+				} // state == 1 || ch == 2 종료
+			} // btn == 1 종료
+			
+			else if (btn == 2) { // 보험사 선택 시
+				while( true ) {
+					System.out.println(" 1. 게시판 확인  2. 상담사 관리 3. 보험내역 관리 4. 가입내역 확인");
+					int menu_ch = scanner.nextInt();
+					
+					if ( menu_ch == 1 ) {
+						Boardpage.getInstance().board_view();
+						continue;
+					}
+					else if ( menu_ch == 2 ) {
+						Workpage.getInstance().work();
+						continue;
+					}
+					else if ( menu_ch == 3 ) {
+						Workpage.getInstance().category();
+						continue;
+					}
+					else if ( menu_ch == 4 ) {
+						// 가입내역 확인 메소드
+						continue;
+					}
+					else {
+						System.err.println(" ▶ [오류] 잘못된 번호입니다.");
+					}
+				} // while 종료
 			} else {
 				System.out.println("경로가 없습니다.");
 			}
 		}
-
 	} // getsingup 메소드 종료
 
 	//////////////////////////////// 로그인이후 상태선택//////////////
@@ -115,8 +139,28 @@ public class Mainpage {
 				System.out.println("선택란 : ");
 				int ch2 = scanner.nextInt();
 				if (ch2 == 1) {
+					
+						while (true) {
+							System.out.println("[안내] 가입하려는 보험의 카테고리를 선택해주세요 ");
+							System.out.println("1.암보험 2.종합보험 3.운전자보험 4.치아보험 : ");
+							int cl = scanner.nextInt();
+							if (cl == 1) {
+									Workpage.getInstance().listinsurance();
+							} else if (cl == 2) {
+									Workpage.getInstance().listinsurance2();
+							} else if (cl == 3) {
+									Workpage.getInstance().listinsurance3();
+							} else if (cl == 4) {
+							} else {
+								System.err.println("알 수 없는 번호입니다.");
+							}
+
+							ArrayList<Dto> list = Controller.getInStance().list();
+						}
+					
 				} else if (ch2 == 2) {
 					myinsurance();
+					
 				} else if (ch2 == 3) {
 
 					Boardpage.getInstance().board();
@@ -260,11 +304,11 @@ public class Mainpage {
 			System.out.println("1.암보험 2.종합보험 3.운전자보험 4.치아보험 : ");
 			int cl = scanner.nextInt();
 			if (cl == 1) {
-
+					Workpage.getInstance().listinsurance();
 			} else if (cl == 2) {
-
+					Workpage.getInstance().listinsurance2();
 			} else if (cl == 3) {
-
+					Workpage.getInstance().listinsurance3();
 			} else if (cl == 4) {
 			} else {
 				System.err.println("알 수 없는 번호입니다.");
@@ -273,6 +317,13 @@ public class Mainpage {
 			ArrayList<Dto> list = Controller.getInStance().list();
 		}
 	}
+	
+///////////////////////////////////////////////////////////////////////////
+
+	
+	
+	
+	
 
 ///////////////////////////////////보험 내역 확인//////////////////////////////////////////////////
 	void myinsurance() {

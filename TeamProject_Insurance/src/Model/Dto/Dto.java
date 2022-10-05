@@ -71,7 +71,8 @@ public class Dto {
 	public Dto(int c_num) {
 		this.c_num = c_num;
 	}
-
+	
+	
 	// getter, setter
 	
 	
