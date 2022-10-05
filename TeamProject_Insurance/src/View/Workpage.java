@@ -10,7 +10,7 @@ import Model.Dto.Dto;
 import Model.Dto.WorkDto;
 
 public class Workpage {
-
+	char ck= 'x';
 	// 메인 머지후 커밋_221004.
 	
 	// 현재 페이지 객체 선언
@@ -39,6 +39,7 @@ public class Workpage {
 			if (btn == 1) {
 				view_regist();
 			} else if (btn == 2) {
+				break;
 			} else if (btn == 0) {
 				break;
 			} else {
@@ -60,14 +61,14 @@ public class Workpage {
 		}
 	}
 
-//상담사 추가
+	//상담사 추가
 	void view_regist() {
 		System.out.println(">>> 상담사 추가 ");
 		System.out.print(" 이름 : ");
 		String w_name = scanner.next();
-// 1. 메소드 호출[ 통신 ] 
+		// 1. 메소드 호출[ 통신 ] 
 		boolean result = WorkController.w_regist(w_name);
-// 2. 메소드 호출한 결과
+		// 2. 메소드 호출한 결과
 		if (result) {
 			System.out.println("안내) 상담사 등록 완료 ");
 		} else {
@@ -83,7 +84,7 @@ public class Workpage {
 	//보험 리스트 출력
 	void category() {
 		while (true) {
-			System.out.println("1.암보험 2.손해보험 3.치아보험");
+			System.out.println("1.암보험 2.손해보험 3.치아보험 0. 돌아가기");
 			int btn = scanner.nextInt();
 			if (btn == 1) {
 				listinsurance();
@@ -91,6 +92,8 @@ public class Workpage {
 				listinsurance2();
 			} else if (btn == 3) {
 				listinsurance3();
+			} else if (btn == 0) {
+				break;
 			}
 		}
 	}
@@ -99,7 +102,7 @@ public class Workpage {
 	//고객 히스토리 출력
 	void c_category() {
 		while (true) {
-			System.out.println("1.암보험 2.손해보험 3.치아보험");
+			System.out.println("1.암보험 2.손해보험 3.치아보험 0. 돌아가기");
 			int btn = scanner.nextInt();
 			if (btn == 1) {
 				c_listinsurance();
@@ -107,6 +110,8 @@ public class Workpage {
 				c_listinsurance2();
 			} else if (btn == 3) {
 				c_listinsurance3();
+			} else if (btn == 0) {
+				Mainpage.getInstance().loginnext();
 			}
 		}
 	}
@@ -115,13 +120,13 @@ public class Workpage {
 	public void listinsurance() {
 		ArrayList<WorkDto> listinsurance = WorkController.getInStance().listinsurance();
 		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
-		System.out.println(" 번호   \t    명칭    \t 내용    \t    금액");
+		System.out.println(" 번호   \t    명칭    \t 내용    \t    보장나이");
 		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
 		for (WorkDto dto : listinsurance) {
 			System.out.print("  " + dto.getS_num() + "\t");
 			System.out.print("  " + dto.getS_name() + "\t");
 			System.out.print("  " + dto.getS_text() + "\t");
-			System.out.print("  " + dto.getC_num() + "\t");
+			// System.out.print("  " + dto.getC_num() + "\t");
 			System.out.print("  " + dto.getAge() + "\t");
 			System.out.println("\n-------------------------------------------------");
 		}
@@ -146,13 +151,13 @@ public class Workpage {
 		public void listinsurance2() {
 			ArrayList<WorkDto> listinsurance = WorkController.getInStance().listinsurance2();
 			System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
-			System.out.println(" 번호   \t    명칭    \t 내용    \t    금액");
+			System.out.println(" 번호   \t    명칭    \t 내용    \t    보장나이");
 			System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
 			for (WorkDto dto : listinsurance) {
 				System.out.print("  " + dto.getS_num() + "\t");
 				System.out.print("  " + dto.getS_name() + "\t");
 				System.out.print("  " + dto.getS_text() + "\t");
-				System.out.print("  " + dto.getC_num() + "\t");
+				// System.out.print("  " + dto.getC_num() + "\t");
 				System.out.print("  " + dto.getAge() + "\t");
 				System.out.println("\n-------------------------------------------------");
 			}
@@ -177,13 +182,13 @@ public class Workpage {
 		public void listinsurance3() {
 			ArrayList<WorkDto> listinsurance = WorkController.getInStance().listinsurance3();
 			System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
-			System.out.println(" 번호   \t    명칭    \t 내용    \t    금액");
+			System.out.println(" 번호   \t    명칭    \t 내용    \t    보장나이");
 			System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
 			for (WorkDto dto : listinsurance) {
 				System.out.print("  " + dto.getS_num() + "\t");
 				System.out.print("  " + dto.getS_name() + "\t");
 				System.out.print("  " + dto.getS_text() + "\t");
-				System.out.print("  " + dto.getC_num() + "\t");
+				// System.out.print("  " + dto.getC_num() + "\t");
 				System.out.print("  " + dto.getAge() + "\t");
 				System.out.println("\n-------------------------------------------------");
 			}
@@ -209,13 +214,13 @@ public class Workpage {
 	public void c_listinsurance() {
 		ArrayList<WorkDto> listinsurance = WorkController.getInStance().listinsurance();
 		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
-		System.out.println(" 번호   \t    명칭    \t 내용    \t    금액");
+		System.out.println(" 번호   \t    명칭    \t 내용    \t    보장나이");
 		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
 		for (WorkDto dto : listinsurance) {
 			System.out.print("  " + dto.getS_num() + "\t");
 			System.out.print("  " + dto.getS_name() + "\t");
 			System.out.print("  " + dto.getS_text() + "\t");
-			System.out.print("  " + dto.getC_num() + "\t");
+			// System.out.print("  " + dto.getC_num() + "\t");
 			System.out.print("  " + dto.getAge() + "\t");
 			System.out.println("\n-------------------------------------------------");
 		}
@@ -237,13 +242,13 @@ public class Workpage {
 	public void c_listinsurance2() {
 		ArrayList<WorkDto> listinsurance = WorkController.getInStance().listinsurance2();
 		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
-		System.out.println(" 번호   \t    명칭    \t 내용    \t    금액");
+		System.out.println(" 번호   \t    명칭    \t 내용    \t    보장나이");
 		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
 		for (WorkDto dto : listinsurance) {
 			System.out.print("  " + dto.getS_num() + "\t");
 			System.out.print("  " + dto.getS_name() + "\t");
 			System.out.print("  " + dto.getS_text() + "\t");
-			System.out.print("  " + dto.getC_num() + "\t");
+			// System.out.print("  " + dto.getC_num() + "\t");
 			System.out.print("  " + dto.getAge() + "\t");
 			System.out.println("\n-------------------------------------------------");
 		}
@@ -265,13 +270,13 @@ public class Workpage {
 	public void c_listinsurance3() {
 		ArrayList<WorkDto> listinsurance = WorkController.getInStance().listinsurance3();
 		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
-		System.out.println(" 번호   \t    명칭    \t 내용    \t    금액");
+		System.out.println(" 번호   \t    명칭    \t 내용    \t    보장나이");
 		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
 		for (WorkDto dto : listinsurance) {
 			System.out.print("  " + dto.getS_num() + "\t");
 			System.out.print("  " + dto.getS_name() + "\t");
 			System.out.print("  " + dto.getS_text() + "\t");
-			System.out.print("  " + dto.getC_num() + "\t");
+			// System.out.print("  " + dto.getC_num() + "\t");
 			System.out.print("  " + dto.getAge() + "\t");
 			System.out.println("\n-------------------------------------------------");
 		}
@@ -305,13 +310,13 @@ public class Workpage {
 			String name = Mainpage.getInstance().name;
 			ArrayList<WorkDto> listinsurance = WorkController.getInStance().history();
 			System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
-			System.out.println(" 번호   \t    명칭    \t 내용    \t    금액");
+			System.out.println(" 번호   \t    명칭    \t 내용    \t    보장나이");
 			System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
 			for (WorkDto dto : listinsurance) {
 				System.out.print("  " + dto.getS_num() + "\t");
 				System.out.print("  " + dto.getS_name() + "\t");
 				System.out.print("  " + dto.getS_text() + "\t");
-				System.out.print("  " + dto.getC_num() + "\t");
+				// System.out.print("  " + dto.getC_num() + "\t");
 				System.out.print("  " + dto.getAge() + "\t");
 				System.out.println("\n-------------------------------------------------");
 			}
@@ -323,13 +328,13 @@ public class Workpage {
 					break;
 				} 
 				 else if (btn == 0) {
+					 Mainpage.getInstance().loginnext();
 				} else {
 					System.out.println("잘못된 입력값 입니다.");
-					break;
+					continue;
 				}
 			}
 		}
-
 
 
 	// [ 고객 ] history list 추가
@@ -340,9 +345,10 @@ public class Workpage {
 		String name = Mainpage.getInstance().name;
 		boolean result = WorkController.c_listadd(choice , name);
 		if (result) {
-			System.out.println("안내) 암 보험 가입 완료 ");
+			System.out.println("안내) 보험 가입 완료 ");
+			ck = 'o';
 		} else {
-			System.out.println("안내) 암 보험 가입 오류 [ 관리자에게 문의 ] ");
+			System.out.println("안내) 보험 가입 오류 [ 관리자에게 문의 ] ");
 		}
 		return;
 	}
@@ -428,7 +434,7 @@ public class Workpage {
 		}
 	}
 
-//손해 list 삭제  
+	//손해 list 삭제  
 	void listdelete2() {
 		System.out.print(" 삭제할 번호 : ");
 		int s_num = scanner.nextInt();
@@ -440,7 +446,7 @@ public class Workpage {
 		}
 	}
 
-//치아 list 삭제  
+	//치아 list 삭제  
 	void listdelete3() {
 		System.out.print(" 삭제할 번호 : ");
 		int s_num = scanner.nextInt();
@@ -457,21 +463,27 @@ public class Workpage {
 		String phone1 = Mainpage.getInstance().phone1;
 		String stringbirth = WorkController.age(phone1);
 		int intbirth = Integer.parseInt(stringbirth);
-		int age = (2022 - 1900 - intbirth + 1);
+		int age;
+		if(intbirth <23){
+			age = (2022-2000-intbirth +1);
+		}else {
+			age = (2022 - 1900 - intbirth + 1);
+		}
+		// System.out.println(age);
+		
 		String stringage = Integer.toString(age);
 		char A = stringage.charAt(0);
 		ArrayList<WorkDto> recommend = WorkController.getInStance().recommend(A);
-		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬추천보험▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
-		System.out.println("   명칭    \t 내용    \t    금액");
-		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬[추천보험]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+		System.out.println("명칭\t\t내용\t     보장나이");
+		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
 		for (WorkDto dto1 : recommend) {
-			System.out.print( dto1.getS_text() + "\t\t");
-			System.out.print( dto1.getS_name() + "\t\t");
-			System.out.print( dto1.getAge() + "\t\t\t");
-			System.out.println("\n-------------------------------------------------");
+			System.out.print( dto1.getS_text() + "\t");
+			System.out.print( dto1.getS_name() + "\t");
+			System.out.print( dto1.getAge() + "\t\n");
+			System.out.print("------------------------------------\n");
+			
 		}
-		
-
-	} // board_view 메소드 종료
+	}
 
 }

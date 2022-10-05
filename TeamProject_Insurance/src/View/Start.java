@@ -12,21 +12,12 @@ public class Start {
 	public static void main(String[] args) {
 		// Mainpage에 있는 첫 시작 메소드 호출만
 		Start start = new Start();
-		//start.board();
-		//start.board_view();
-
-	
-
 		start.getsingup();
 
 
 	} // main 종료
 	
 	// 첫화면
-	public void signup() {
-		
-		Mainpage.getInstance().getsingup();
-	}
 	
 	//가입하기 및 로그인
 	public void getsingup() {
@@ -37,8 +28,6 @@ public class Start {
 	//로그인후 상태
 	public void loginnext() {
 		Mainpage.getInstance().loginnext();
-		Mainpage.getInstance().mypage();
-		Mainpage.getInstance().list();
 	}
 	
 	// 게시판 보기

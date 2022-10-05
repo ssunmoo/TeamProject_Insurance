@@ -62,9 +62,9 @@ public class Boardpage {
 	public void board() {
 		ArrayList< BoardDto > list = BoardController.getInStance().board();
 	
-		System.out.println("   ▬▬▬▬▬▬▬▬▬▬▬▬▬▬[문의게시판]▬▬▬▬▬▬▬▬▬▬▬▬▬");
+		System.out.println(" ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[문의게시판]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
 		System.out.println("    번호\t\t제목\t이름\t연락처");
-		System.out.println("   ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n");
+		System.out.println(" ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n");
 		
 
 		for( BoardDto dto : list ) {

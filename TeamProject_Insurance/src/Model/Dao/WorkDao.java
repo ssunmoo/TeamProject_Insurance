@@ -87,7 +87,6 @@ public class WorkDao {
 	   public ArrayList<WorkDto> listinsurance() {
 	      ArrayList<WorkDto> listinsurance = new ArrayList<>();
 	      String sql = "select s_num, s_name, s_text, age from sublist";
-	      System.out.println(listinsurance.toString());
 	      try {
 	         ps = con.prepareStatement(sql);
 	         rs = ps.executeQuery();
@@ -148,7 +147,7 @@ public class WorkDao {
 	// [ 고객 ] history list 추가
 		public boolean c_make(String name) {
 			String sql ="create table "+name+"( \r\n"
-					+ "     s_num int auto_increment primary key,\r\n"
+					+ "  s_num int auto_increment primary key,\r\n"
 					+ "	 s_name varchar(10),\r\n"
 					+ "	 s_text text,\r\n"
 					+ "	 c_num int ,\r\n"
@@ -275,7 +274,7 @@ public class WorkDao {
 
 	// 손해 list 삭제  
 	public boolean listdelete2(int s_num) {
-		String sql = "delete from sublist where s_num = ?";
+		String sql = "delete from sublist2 where s_num = ?";
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, s_num);
@@ -288,10 +287,9 @@ public class WorkDao {
 
 	// 치아 list 삭제  
 	public boolean listdelete3(int s_num) {
-		String sql = "delete from sublist where s_num = ?";
+		String sql = "delete from sublist3 where s_num = "+s_num+"";
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, s_num);
 			ps.executeUpdate();
 			return true;
 		} catch (Exception e) {

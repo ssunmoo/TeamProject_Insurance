@@ -58,12 +58,11 @@ public class WorkDto {
 		this.w_num = w_num;
 		this.w_name = w_name;
 	}
+	
 	public WorkDto(String name, String phone) {
 		this.name = name;
 		this.phone = phone;
-		
 	}
-	
 
 	
 	@Override
