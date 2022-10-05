@@ -36,11 +36,10 @@ public class Mainpage {
 			System.out.println(" ==================[안내]=================== \n");
 			System.out.println(" \t   접속하려는 경로를 선택해주세요.\n");
 			System.out.println(" ================1.고객 2.보험사============== ");
-			System.out.println("▷ 선택 :");int btn = scanner.nextInt();
+			System.out.println("선택 :");int btn = scanner.nextInt();
 
 			if (btn == 1) { // 가입자 선택
-				System.out.println("=============[1.회원가입 2.로그인]=============");
-				System.out.println("▷ 선택 : ");
+				System.out.println("1.회원가입 2.로그인 :  ");
 				int ch = scanner.nextInt();
 
 				if (ch == 1) { // 회원가입 선택
@@ -63,7 +62,7 @@ public class Mainpage {
 
 					if (result) {
 						System.out.println(" [안내] 회원가입이 완료되었습니다. ");
-						this.state = 1;
+						state = 1;
 						this.name = name;
 						this.phone1 = phone;
 						Workpage.getInstance().c_make();
@@ -75,7 +74,7 @@ public class Mainpage {
 				
 				//////////////////////////////////// 로그인///////////////////////////////////////////
 
-				if (this.state == 1 || ch == 2) {
+				if (state == 1 || ch == 2) {
 					System.out.println("===============로그인 페이지===============");
 					System.out.println("▬▬▬▬▬▬▬▬[안내]로그인하시겠습니까?[Y/N]▬▬▬▬▬▬▬▬");
 					System.out.println("=======================================");
@@ -93,11 +92,11 @@ public class Mainpage {
 							this.phone1 = l_phone;
 								if(result1 ==true) {
 									System.out.println("\t\t\t"+l_name+"님 반갑습니다.");
-									Workpage.getInstance().age();
-									loginnext();
+									// Workpage.getInstance().age();
+
 								}
 						} else {
-							System.err.println("[※안내※]로그인 실패하였습니다.존재하지 않는 계정입니다 ");
+							System.err.println("[안내]로그인 실패하였습니다.존재하지 않는 계정입니다 ");
 							System.out.println("다시 선택해주세요");
 							continue;
 						}
@@ -131,7 +130,7 @@ public class Mainpage {
 						continue;
 					}
 					else {
-						System.err.println(" ▶ [※안내※] 잘못된 번호입니다.");
+						System.err.println(" ▶ [오류] 잘못된 번호입니다.");
 					}
 				} // while 종료
 			} else {
@@ -144,7 +143,7 @@ public class Mainpage {
 
 	void loginnext() {
 		while (true) {
-			if (this.state == 2) {
+			if (state == 2) {
 				System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬[선택이용]▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
 				System.out.println("[1.보험가입 2.가입한 보험내역 확인 3.게시판이용]");
 				System.out.println("========[4.로그아웃][5.마이페이지]========");
@@ -185,15 +184,15 @@ public class Mainpage {
 							break;
 						}
 						else {
-							System.err.println(" ▶ [※안내※] 잘못된 번호입니다.");
+							System.out.println(" ▶ [오류] 잘못된 번호입니다.");
 							continue;
 						}
 					} // while 종료
 				} // ch2 == 3 종료
-				else if(this.state==2&&ch2==4) {
-					System.out.println("\t\t\t다음에 또 만나요 ["+this.name+"] 님");
-					this.state = 0;
-					getsingup();}
+				else if(state==2&&ch2==4) {
+					System.out.println("다음에 또 만나요");
+					state = 0;
+					getsingup();break;}
 				else if (ch2==5) {
 					myinsurance();
 				}
@@ -209,7 +208,6 @@ public class Mainpage {
 			
 				System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[선택이용]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
 				System.out.println("==1.[회원정보수정]=============2.[회원탈퇴]==");
-				System.out.println("===============3.[뒤로가기]==============");
 				System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
 				try {
 					int mypage = scanner.nextInt();
@@ -218,7 +216,7 @@ public class Mainpage {
 						System.out.println("▬▬▬▬▬▬1.[이름]▬▬▬▬▬▬▬2.[비밀번호]▬▬▬▬▬▬");
 						System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
 						int update = scanner.nextInt();
-						if (update == 1 && this.state == 3) {
+						if (update == 1 && state == 3) {
 							System.out.println("[계정 인증]변경할 계정의 전화번호를 입력해주세요");
 							String phone = scanner.next();
 							System.out.println("변경할 이름을 입력해주세요");
@@ -231,7 +229,7 @@ public class Mainpage {
 								System.out.println("전화번호가 틀렸습니다.");
 							}
 
-						} else if (update == 2 && this.state == 3) {
+						} else if (update == 2 && state == 3) {
 							System.out.println("[계정 인증]수정할 계정의 전화번호를 입력해주세요");
 							String phone = scanner.next();
 							System.out.println("변경할 이름을 입력해주세요");
@@ -266,16 +264,13 @@ public class Mainpage {
 							}
 
 							else {
-								System.err.println("[※안내※] 탈퇴가 실패하였습니다.[계정없음]");
+								System.out.println("탈퇴가 실패하였습니다.[계정없음]");
 								continue;
 							}
 
 						} else {
 							System.out.println("취소하겠습니다");
 						}
-					}else if(mypage ==3) {
-						Workpage.getInstance().age();
-						loginnext();
 					}
 
 					else {
@@ -305,7 +300,7 @@ public class Mainpage {
 					Workpage.getInstance().listinsurance3();
 			} else if (cl == 4) {
 			} else {
-				System.err.println("[※안내※] 알 수 없는 번호입니다.");
+				System.err.println("알 수 없는 번호입니다.");
 			}
 
 			ArrayList<Dto> list = Controller.getInStance().list();
@@ -323,17 +318,20 @@ public class Mainpage {
 	void myinsurance() {
 		ArrayList<WorkDto>myinsur = Controller.getInStance().myinsur();
 				System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬마이페이지▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\t");
-				System.out.print("성명 : [" + this.name + "] 님\t\t");
+				System.out.print("성명 : [" + this.name + "] 님\t\t\t");
 				System.out.println("전화번호 : [" + this.phone1 + "]");
 				String phone1 = Mainpage.getInstance().phone1;
 				String stringbirth = WorkController.age(phone1);
 				int intbirth = Integer.parseInt(stringbirth);
 				int age = (2022 - 1900 - intbirth + 1);
-				System.out.print("나이 : ["+age+"] 세\t\t");
-				System.out.println(" 보험가입 여부 : "+ Workpage.getInstance().ck);
+				System.out.print("나이 : ["+age+"] 세\t\t\t");
+				System.out.println("나의 보험가입 여부 : []");
 		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
 			mypage();
-			
+		System.out.println("[뒤로가기][y]: "); String choice = scanner.next();
+			if(choice.equals("y")||choice.equals("Y")) {
+				loginnext();
+			}else {System.err.println("다시 입력해주세요");}
 			
 }
 
