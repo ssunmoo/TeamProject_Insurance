@@ -11,21 +11,15 @@
  <h3> 보험가입 게시판 </h3><br>
  
  <h2> :pushpin: Overview :pushpin: </h2>
-  <h4> 첫째. DB table 활용을 효율적으로 사용할 수 있을것 같아서 </h4>
+  <h4> 첫째. MVC 설계 및 DB 연결을 직접 구현함으로써 Java와 DB의 연결 구조에 대한 이해도를 높일 수 있도록 기능학습 </h4>
   <h4> 둘째. 수업시간에 배운 내용을 바탕으로 게시판 만들기에 좀 더 세부적인 내용을 추가하여 만들면 좋을꺼 같아서 </h4>
-  <h4> 셋째. </h4>
-  <h4> 넷째. </h4> <br>
-  <h5> 주제선정 이유 한줄 요약 </h5>
-
+  
 </div>
 
 <div align=center>
   <h2> :heavy_check_mark: Features :heavy_check_mark: </h2>
   <h4> 각 페이지 별 핵심 기능 </h4> <br><br>
-  
-  Package명 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Java 폴더명 | 핵심 기능 | 설명
-  --- |---|---|---
-  
+
   <br><br><h2> :raised_hands: 역할 분담 :raised_hands: </h2>
   <h4> 김경주 : 발표 </h4>
   로그인, 보험종류 분류
@@ -57,16 +51,16 @@
     <h4> 허혜영 :  문의게시판 오류수정, 게시판 상세보기&답글 추가 기능 구현</h4> <br><br>
     
   <h3> 10/04</h3>
-    <h4> 김경주 :  </h4>
-    <h4> 윤상진 :  </h4>
-    <h4> 성지혜 :  </h4>
-    <h4> 허혜영 :  </h4> <br><br>
+    <h4> 김경주 : 보험가입, 마이페이지 기능구현[ 회원탈퇴, 회원정보수정 ] </h4>
+    <h4> 윤상진 : 가입자=보험사 보험리스트 연동, 리스트출력</h4>
+    <h4> 성지혜 : 보험가입</h4>
+    <h4> 허혜영 : 게시판 오류수정 및 댓글추가 기능완성 </h4> <br><br>
     
   <h3> 10/05</h3>
-    <h4> 김경주 :  </h4>
-    <h4> 윤상진 :  </h4>
-    <h4> 성지혜 :  </h4>
-    <h4> 허혜영 :  </h4> <br><br>
+    <h4> 김경주 : 보험가입 기능구현, 마이페이지 기능수정 </h4>
+    <h4> 윤상진 : 보험 카테고리 기능추가 [ 연령별 보험추천기능 ] </h4>
+    <h4> 성지혜 : 콘솔 출력창 변경 [ 출력형식 꾸미기 ], 미완료 코드작성 지원 </h4>
+    <h4> 허혜영 : 미완료 코드작성 지원과 최종 취합 및 오류수정 </h4> <br><br>
     
   <h2> :hammer: Tools :hammer:: </h2>
   <h4> <img src="https://img.shields.io/badge/eclipse-2C2255?style=flat-square&logo=eclipse&logoColor=white"/>
@@ -77,9 +71,8 @@
        <img src="https://img.shields.io/badge/git-24292F?style=flat-square&logo=github&logoColor=white"/> </h4> <br><br>
        
   <h2> :round_pushpin: 추후 발전 방향 :round_pushpin: </h2>
-  1. <br>
-  2. <br>
-  3.
+  1. 보험 비밀번호 기능추가 <br>
+  2. 추가적인 보험 세부자료를 추가하여 이를 이용한 통계 값 산출 코드 추가<br>
        
 </div>
     
