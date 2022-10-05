@@ -63,17 +63,15 @@ public class Boardpage {
 		ArrayList< BoardDto > list = BoardController.getInStance().board();
 	
 		System.out.println(" ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[문의게시판]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
-		System.out.println("    번호\t\t제목\t이름\t연락처");
-		System.out.println(" ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n");
-		
+		System.out.println("  번호\t제목\t이름\t연락처");
+		System.out.println(" ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
 
 		for( BoardDto dto : list ) {
-		
 			System.out.print("  "+ dto.getB_num() + "\t");
-			System.out.print(dto.getB_title() + "\t");
+			System.out.print(dto.getB_title() +"\t");
 			System.out.print(dto.getName() + "\t");
-			System.out.print(dto.getPhone() + "\t");
-			System.out.println("\n-----------------------------------");
+			System.out.print(dto.getPhone());
+			System.out.println("\n -----------------------------------------");
 		}
 	} // board 메소드 종료
 	
