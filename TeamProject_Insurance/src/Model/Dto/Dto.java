@@ -67,6 +67,7 @@ public class Dto {
 		this.phone= phone;
 	}
 	
+	
 	// 보험가입 생성자
 	public Dto(int c_num) {
 		this.c_num = c_num;

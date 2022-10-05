@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import Model.Dao.Dao;
 import Model.Dto.BoardDto;
 import Model.Dto.Dto;
+import Model.Dto.WorkDto;
 
 public class Controller {
 
@@ -51,6 +52,10 @@ public class Controller {
 	
 	///////////////////////////////보험내역확인//////////////////////
 
+	
+	public ArrayList<WorkDto>myinsur(){
+		return Dao.getInstance().myinsur();
+	}
 	
 	
 } // class 종료

@@ -14,12 +14,17 @@ public class Start {
 		Start start = new Start();
 		//start.board();
 		//start.board_view();
+
+	
+
 		start.getsingup();
+
 
 	} // main 종료
 	
 	// 첫화면
 	public void signup() {
+		
 		Mainpage.getInstance().getsingup();
 	}
 	

@@ -80,7 +80,6 @@ public class Workpage {
 //////////////////////////////보험 /////////////////////////////////////
 	String phone1;
 
-
 	//보험 리스트 출력
 	void category() {
 		while (true) {

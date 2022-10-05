@@ -41,6 +41,10 @@ public class WorkDao {
 	} // WorkDao 메소드 종료
 
 
+	
+	
+	// --- 상담사 --- //
+		// --- 상담사 --- //
 		// --- 상담사 --- //
 		
 		// 상담사 리스트. 
@@ -76,11 +80,8 @@ public class WorkDao {
 	
 	
 	// --- 보험 --- //
-	// --- 보험 --- //
-	// --- 보험 --- //
-	
-	// 1. 보험 리스트
-	// 1. 보험 리스트
+
+
 	// 1. 보험 리스트
 	   // 암보험
 	   public ArrayList<WorkDto> listinsurance() {
