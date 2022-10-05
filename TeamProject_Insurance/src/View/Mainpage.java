@@ -63,6 +63,9 @@ public class Mainpage {
 						this.name = name;
 						this.phone1 = phone;
 						Workpage.getInstance().c_make();
+
+						Workpage.getInstance().age();
+						
 					} else {
 						System.out.println(" [안내] 회원가입이 실패되었습니다. ");
 					}
@@ -89,6 +92,7 @@ public class Mainpage {
 								if(result1 ==true) {
 									System.out.println("\t\t\t"+l_name+"님 반갑습니다.");
 									// Workpage.getInstance().age();
+
 								}
 						} else {
 							System.err.println("[안내]로그인 실패하였습니다.존재하지 않는 계정입니다 ");
