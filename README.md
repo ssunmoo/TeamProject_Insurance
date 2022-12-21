@@ -15,6 +15,9 @@
   <h4> 둘째. 수업시간에 배운 내용을 바탕으로 게시판 만들기에 좀 더 세부적인 내용을 추가하여 만들면 좋을꺼 같아서 </h4>
   
 </div>
+<div>
+ https://www.youtube.com/watch?v=tMtfH7W0DF8
+ </div>
 
 <div align=center>
 
